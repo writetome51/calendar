@@ -4,10 +4,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from '@app/calendar.component';
 import { FormsModule } from '@angular/forms';
+import { MonthNameComponent } from './month-name.component';
+import { YearComponent } from '@app/year.component';
+import { DayNamesComponent } from '@app/day-names.component';
+import { DaySquaresComponent } from '@app/day-squares.component';
 
 
 @NgModule({
-	declarations: [AppComponent, CalendarComponent],
+	declarations: [
+		AppComponent,
+		DayNamesComponent,
+		CalendarComponent,
+		MonthNameComponent,
+		YearComponent,
+		DaySquaresComponent
+	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

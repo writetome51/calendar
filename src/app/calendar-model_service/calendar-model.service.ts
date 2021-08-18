@@ -1,5 +1,5 @@
-import { CalendarValidatorService } from '@app/calendar-validator.service';
-import { CalendarCalculatorService } from '@app/calendar-calculator.service';
+import { CalendarValidatorService } from '@app/calendar-model_service/calendar-validator.service';
+import { CalendarCalculatorService } from '@app/calendar-model_service/calendar-calculator.service';
 import { Injectable } from '@angular/core';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 

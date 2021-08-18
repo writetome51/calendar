@@ -1,4 +1,4 @@
-import { CalendarModelService } from '@app/calendar-model.service';
+import { CalendarModelService } from '@app/calendar-model_service/calendar-model.service';
 import { Component } from '@angular/core';
 
 
@@ -17,15 +17,7 @@ import { Component } from '@angular/core';
 						</button>
 					</div>
 
-					<div id="month-name">
-						<select id="month-selector" name="monthNameOptions"
-								[(ngModel)]="model.currentMonthName" (change)="model.update()"
-						>
-							<option *ngFor="let monthName in model.monthNames">
-								{{monthName}}
-							</option>
-						</select>
-					</div>
+					<app-month-name></app-month-name>
 
 					<div id="forward-one-month-container">
 						<button class="month-button" id="forward-one-month"
@@ -35,21 +27,12 @@ import { Component } from '@angular/core';
 					</div>
 				</div>
 
-				<div id="year-container">
-					<input type="number" id="year" 
-						   [(ngModel)]="model.year" (change)="model.update()"
-						   min="1004" max="9999"
-					/>
-				</div>
+				<app-year></app-year>
 			</div>
 
-			<div class="day-name" *ngFor="let dayname in model.dayNames">
-				{{dayname}}
-			</div>
-
-			<div class="day-square" *ngFor="let day in model.daysOfCurrentMonth">
-				{{day}}
-			</div>
+			<app-day-names></app-day-names>
+			
+			<app-day-squares></app-day-squares>
 
 		</div>
 	`
