@@ -14,9 +14,9 @@ export class CalendarCalculatorService {
 	};
 
 
-	// It will return the first day of the passed month and year, in the
+	// Returns the first day of the passed month and year, in the
 	// form of a weekday index, from 0 to 6  (0 being Sunday).
-	firstDayOfRequestedMonth(monthIndex: number, year: number) {
+	firstDayOfRequestedMonth(monthIndex: number, year: number): number {
 		var jan1 = this.firstDayOfJanuary(year);
 
 		var totalDays = this.numDaysFromJanuaryFirstToFirstDayOfRequestedMonth(monthIndex, year);

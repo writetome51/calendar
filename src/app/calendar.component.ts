@@ -5,52 +5,50 @@ import { Component } from '@angular/core';
 @Component({
 	selector: 'app-calendar',
 	template: `
-		<div id='cal-boundary'>
+		<div id="cal-boundary">
 
-			<div id='month_and_year'>
-				<div id='month-and-buttons'>
+			<div id="month_and_year">
+				<div id="month-and-buttons">
 
-					<div id='back-one-month-container'>
-						<button class='month-button' id='back-one-month'
-								(click)="backOneMonthUpdate()">
+					<div id="back-one-month-container">
+						<button class="month-button" id="back-one-month"
+								(click)="backOneMonth()">
 							<-
 						</button>
 					</div>
 
-					<div id='month-name'>
-						<select id='month-selector' name='monthNameOptions' 
-								[(ngModel)]="model.monthName"
-								ng-options='item for item in cal.model.monthNames'
-								(change)="update()">
+					<div id="month-name">
+						<select id="month-selector" name="monthNameOptions"
+								[(ngModel)]="model.currentMonthName" (change)="model.update()"
+						>
+							<option *ngFor="let monthName in model.monthNames">
+								{{monthName}}
+							</option>
 						</select>
 					</div>
 
-					<div id='forward-one-month-container'>
-						<button class='month-button' id='forward-one-month'
-								ng-click='cal.forwardOneMonthUpdate()'>
+					<div id="forward-one-month-container">
+						<button class="month-button" id="forward-one-month"
+								(click)="forwardOneMonth()">
 							->
 						</button>
 					</div>
 				</div>
 
-				<div id='year-container'>
-					<input type='number' id='year' ng-model='cal.model.year'
-						   min='1004' max='9999'
-						   (change)="update()"
+				<div id="year-container">
+					<input type="number" id="year" 
+						   [(ngModel)]="model.year" (change)="model.update()"
+						   min="1004" max="9999"
 					/>
 				</div>
 			</div>
 
-			<div class='day-name' *ngFor="let dayname in model.days">
+			<div class="day-name" *ngFor="let dayname in model.dayNames">
 				{{dayname}}
 			</div>
 
-			<div class='cal-day' *ngFor="let daySquareNoNumber in model.daySquares.withoutNumbers">
-				{{daySquareNoNumber}}
-			</div>
-
-			<div class='cal-day' *ngFor="let numberedDaySquare in model.daySquares.withNumbers">
-				{{numberedDaySquare}}
+			<div class="day-square" *ngFor="let day in model.daysOfCurrentMonth">
+				{{day}}
 			</div>
 
 		</div>
@@ -61,26 +59,19 @@ export class CalendarComponent {
 	constructor(public model: CalendarModelService) {}
 
 
-	update() {
-		this.model.updateMonthID();
-		this.model.updateDaySquares();
-	}
-
-
-	backOneMonthUpdate() {
+	backOneMonth() {
 		this.changeMonthAndUpdateCalendar(-1);
 	}
 
 
-	forwardOneMonthUpdate() {
+	forwardOneMonth() {
 		this.changeMonthAndUpdateCalendar(1);
 	}
 
 
 	changeMonthAndUpdateCalendar(plusOrMinus: number) {
 		this.model.changeMonthBy(plusOrMinus);
-		this.update();
+		this.model.update();
 	}
-
 
 }
