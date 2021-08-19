@@ -3,7 +3,7 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 
 
 @Component({
-	selector: 'app-day-names',
+	selector: 'day-names',
 	template: `
 		<div class="day-name" *ngFor="let dayname in model.dayNames">
 			{{dayname}}

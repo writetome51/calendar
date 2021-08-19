@@ -11,7 +11,7 @@ export class CalendarCalculatorService {
 
 		const dayCountsForEachMonth = [31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 		return dayCountsForEachMonth[monthIndex];
-	};
+	}
 
 
 	// Returns the first day of the passed month and year, in the
@@ -24,7 +24,7 @@ export class CalendarCalculatorService {
 
 		// Since the day index can't be greater than 6, reset it:
 		return this.__resetToZeroThruSix(firstDayOfMonth);
-	};
+	}
 
 
 	firstDayOfJanuary(year: number) {
@@ -51,7 +51,7 @@ export class CalendarCalculatorService {
 			numDays += monthsDayCounts[month];
 		}
 		return numDays;
-	};
+	}
 
 
 	numLeapYearsBetween1004And(year: number) {

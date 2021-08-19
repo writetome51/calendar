@@ -7,7 +7,7 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 	template: `
 		<div id="forward-one-month-container">
 			<button class="month-button" id="forward-one-month"
-					(click)="forwardOneMonth()">
+					(click)="model.changeMonthAndUpdate(1)">
 				->
 			</button>
 		</div>
@@ -16,11 +16,5 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 export class ForwardOneMonthButtonComponent {
 
 	constructor(public model: CalendarModelService) {}
-
-
-	forwardOneMonth() {
-		this.model.changeMonthBy(1);
-		this.model.update();
-	}
 
 }

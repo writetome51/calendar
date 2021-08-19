@@ -7,7 +7,7 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 	template: `
 		<div id="back-one-month-container">
 			<button class="month-button" id="back-one-month"
-					(click)="backOneMonth()">
+					(click)="model.changeMonthAndUpdate(-1)">
 				<-
 			</button>
 		</div>
@@ -16,11 +16,5 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 export class BackOneMonthButtonComponent {
 
 	constructor(public model: CalendarModelService) {}
-
-
-	backOneMonth() {
-		this.model.changeMonthBy(-1);
-		this.model.update();
-	}
 
 }

@@ -1,5 +1,5 @@
-import { CalendarValidatorService } from '@app/calendar-model_service/calendar-validator.service';
-import { CalendarCalculatorService } from '@app/calendar-model_service/calendar-calculator.service';
+import { CalendarValidatorService } from './calendar-validator.service';
+import { CalendarCalculatorService } from './calendar-calculator.service';
 import { Injectable } from '@angular/core';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 
@@ -15,9 +15,8 @@ export class CalendarModelService {
 	dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
 	monthIndex = this.__todaysDate.getMonth();
-	currentMonthName = this.monthNames[this.monthIndex];
-
 	year = this.__todaysDate.getFullYear();
+	chosenMonthName = this.monthNames[this.monthIndex];
 
 	private __monthInfo: { numDays: number, firstDay: number }
 		= this.__getMonthInfo(this.monthIndex, this.year);
@@ -33,6 +32,12 @@ export class CalendarModelService {
 	) {}
 
 
+	changeMonthAndUpdate(plusOrMinus: number) {
+		this.changeMonthBy(plusOrMinus);
+		this.update();
+	}
+
+
 	update() {
 		this.update_monthIndex();
 		this.update_daysOfCurrentMonth();
@@ -40,7 +45,7 @@ export class CalendarModelService {
 
 
 	update_monthIndex() {
-		this.monthIndex = this.monthNames.indexOf(this.currentMonthName);
+		this.monthIndex = this.monthNames.indexOf(this.chosenMonthName);
 	}
 
 
@@ -59,7 +64,7 @@ export class CalendarModelService {
 	changeMonthBy(plusOrMinus: number) {
 		this.prepareIfEnteringNextOrPreviousYear(plusOrMinus);
 		this.monthIndex += plusOrMinus;
-		this.currentMonthName = this.monthNames[this.monthIndex];
+		this.chosenMonthName = this.monthNames[this.monthIndex];
 	}
 
 
