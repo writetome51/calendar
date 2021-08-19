@@ -35,38 +35,38 @@ export class CalendarModelService {
 
 	update() {
 		this.update_monthIndex();
-		this.updateDaysOfCurrentMonth();
+		this.update_daysOfCurrentMonth();
 	}
 
 
 	update_monthIndex() {
 		this.monthIndex = this.monthNames.indexOf(this.currentMonthName);
-	};
+	}
 
 
 	updateMonthInfo() {
 		this.__monthInfo = this.__getMonthInfo(this.monthIndex, this.year);
-	};
+	}
 
 
-	updateDaysOfCurrentMonth() {
+	update_daysOfCurrentMonth() {
 		this.updateMonthInfo();
 		this.daysWithNumbers = this.__getDaysWithNumbers(this.__monthInfo.numDays);
 		this.daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(this.__monthInfo.firstDay);
-	};
+	}
 
 
 	changeMonthBy(plusOrMinus: number) {
 		this.prepareIfEnteringNextOrPreviousYear(plusOrMinus);
 		this.monthIndex += plusOrMinus;
 		this.currentMonthName = this.monthNames[this.monthIndex];
-	};
+	}
 
 
 	prepareIfEnteringNextOrPreviousYear(plusOrMinus: number) {
 		this.__ifEnteringPreviousYear_ResetMonthIndexAndYear(plusOrMinus);
 		this.__ifEnteringNextYear_ResetMonthIndexAndYear(plusOrMinus);
-	};
+	}
 
 
 	private __ifEnteringPreviousYear_ResetMonthIndexAndYear(plusOrMinus: number) {
@@ -74,7 +74,7 @@ export class CalendarModelService {
 			this.monthIndex = 12;
 			--this.year;
 		}
-	};
+	}
 
 
 	private __ifEnteringNextYear_ResetMonthIndexAndYear(plusOrMinus: number) {
@@ -82,7 +82,7 @@ export class CalendarModelService {
 			this.monthIndex = -1;
 			++this.year;
 		}
-	};
+	}
 
 
 	private __getMonthInfo(monthIndex: number, year: number) {

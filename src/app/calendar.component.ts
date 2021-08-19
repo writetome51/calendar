@@ -9,22 +9,11 @@ import { Component } from '@angular/core';
 
 			<div id="month_and_year">
 				<div id="month-and-buttons">
-
-					<div id="back-one-month-container">
-						<button class="month-button" id="back-one-month"
-								(click)="backOneMonth()">
-							<-
-						</button>
-					</div>
-
+					<back-one-month-button></back-one-month-button>
+					
 					<app-month-name></app-month-name>
 
-					<div id="forward-one-month-container">
-						<button class="month-button" id="forward-one-month"
-								(click)="forwardOneMonth()">
-							->
-						</button>
-					</div>
+					<forward-one-month-button></forward-one-month-button>
 				</div>
 
 				<app-year></app-year>
@@ -40,21 +29,5 @@ import { Component } from '@angular/core';
 export class CalendarComponent {
 
 	constructor(public model: CalendarModelService) {}
-
-
-	backOneMonth() {
-		this.changeMonthAndUpdateCalendar(-1);
-	}
-
-
-	forwardOneMonth() {
-		this.changeMonthAndUpdateCalendar(1);
-	}
-
-
-	changeMonthAndUpdateCalendar(plusOrMinus: number) {
-		this.model.changeMonthBy(plusOrMinus);
-		this.model.update();
-	}
 
 }
