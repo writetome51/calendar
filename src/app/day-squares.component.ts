@@ -5,7 +5,7 @@ import { CalendarModelService } from './calendar-model_service/calendar-model.se
 @Component({
 	selector: 'day-squares',
 	template: `
-		<div class="day-square" *ngFor="let day in model.daysOfCurrentMonth">
+		<div class="day-square" *ngFor="let day in model.daysOfSelectedMonth">
 			{{day}}
 		</div>
 	`

@@ -7,7 +7,7 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 	template: `
 		<div id="year-container">
 			<input type="number" id="year"
-				   [(ngModel)]="model.year" (change)="model.update()"
+				   [(ngModel)]="model.year" (change)="model.update_daysOfSelectedMonth()"
 				   min="1004" max="9999"
 			/>
 		</div>

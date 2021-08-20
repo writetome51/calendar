@@ -7,86 +7,90 @@ import { getArrFilled } from '@writetome51/get-arr-filled';
 @Injectable({providedIn: 'root'})
 export class CalendarModelService {
 
-	private __todaysDate = new Date();  // sets to browser's local time.
-
 	monthNames = ["January", "February", "March", "April", "May", "June", "July",
 		"August", "September", "October", "November", "December"];
 
-	dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+	selectedMonthName: string;
+	daysOfSelectedMonth: (string | number)[];
+	year: number;
 
-	monthIndex = this.__todaysDate.getMonth();
-	year = this.__todaysDate.getFullYear();
-	chosenMonthName = this.monthNames[this.monthIndex];
-
-	private __monthInfo: { numDays: number, firstDay: number }
-		= this.__getMonthInfo(this.monthIndex, this.year);
-
-	daysWithNumbers = this.__getDaysWithNumbers(this.__monthInfo.numDays);
-	daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(this.__monthInfo.firstDay);
-	daysOfCurrentMonth = [];
+	private __monthIndex: number;
+	private __monthInfo: { numDays: number, firstDay: number };
+	private __todaysDate = new Date();  // sets to browser's local time.
 
 
 	constructor(
 		private __validator: CalendarValidatorService,
 		private __calculator: CalendarCalculatorService
-	) {}
+	) {
+		this.__monthIndex = this.__todaysDate.getMonth();
+		this.selectedMonthName = this.monthNames[this.__monthIndex];
+		this.year = this.__todaysDate.getFullYear();
+		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.year);
 
-
-	changeMonthAndUpdate(plusOrMinus: number) {
-		this.changeMonthBy(plusOrMinus);
-		this.update();
+		this.daysOfSelectedMonth = this.__get_daysOfSelectedMonth(this.__monthInfo);
 	}
 
 
-	update() {
-		this.update_monthIndex();
-		this.update_daysOfCurrentMonth();
+	incrementOrDecrementSelectedMonth(plusOrMinusOne: number) {
+		this.__incrementOrDecrement__monthIndex_and_selectedMonthName(plusOrMinusOne);
+		this.update_daysOfSelectedMonth();
 	}
 
 
-	update_monthIndex() {
-		this.monthIndex = this.monthNames.indexOf(this.chosenMonthName);
+	updateOnChangeOf_selectedMonthName() {
+		this.__monthIndex = this.monthNames.indexOf(this.selectedMonthName);
+		this.update_daysOfSelectedMonth();
 	}
 
 
-	updateMonthInfo() {
-		this.__monthInfo = this.__getMonthInfo(this.monthIndex, this.year);
+	update_daysOfSelectedMonth() {
+		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.year);
+		this.daysOfSelectedMonth = this.__get_daysOfSelectedMonth(this.__monthInfo);
 	}
 
 
-	update_daysOfCurrentMonth() {
-		this.updateMonthInfo();
-		this.daysWithNumbers = this.__getDaysWithNumbers(this.__monthInfo.numDays);
-		this.daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(this.__monthInfo.firstDay);
+	private __get_daysOfSelectedMonth(
+		monthInfo: { firstDay: number, numDays: number }
+	): (string | number)[] {
+		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(monthInfo.firstDay);
+		const daysWithNumbers = this.__getDaysWithNumbers(monthInfo.numDays);
+		return [...daysWithoutNumbers, ...daysWithNumbers];
 	}
 
 
-	changeMonthBy(plusOrMinus: number) {
-		this.prepareIfEnteringNextOrPreviousYear(plusOrMinus);
-		this.monthIndex += plusOrMinus;
-		this.chosenMonthName = this.monthNames[this.monthIndex];
+	private __incrementOrDecrement__monthIndex_and_selectedMonthName(plusOrMinusOne: number) {
+		this.__prepareIfEnteringNextOrPreviousYear(plusOrMinusOne);
+		this.__monthIndex += plusOrMinusOne;
+		this.selectedMonthName = this.monthNames[this.__monthIndex];
 	}
 
 
-	prepareIfEnteringNextOrPreviousYear(plusOrMinus: number) {
-		this.__ifEnteringPreviousYear_ResetMonthIndexAndYear(plusOrMinus);
-		this.__ifEnteringNextYear_ResetMonthIndexAndYear(plusOrMinus);
+	private __prepareIfEnteringNextOrPreviousYear(plusOrMinusOne: number) {
+		if (this.__enteringPreviousYear(plusOrMinusOne)) this.__prepareToEnterPreviousYear();
+		if (this.__enteringNextYear(plusOrMinusOne)) this.__prepareToEnterNextYear();
 	}
 
 
-	private __ifEnteringPreviousYear_ResetMonthIndexAndYear(plusOrMinus: number) {
-		if (plusOrMinus < 0 && this.monthIndex === 0) {
-			this.monthIndex = 12;
-			--this.year;
-		}
+	private __enteringPreviousYear(plusOrMinusOne: number): boolean {
+		return (plusOrMinusOne === -1 && this.__monthIndex === 0);
 	}
 
 
-	private __ifEnteringNextYear_ResetMonthIndexAndYear(plusOrMinus: number) {
-		if (plusOrMinus > 0 && this.monthIndex === 11) {
-			this.monthIndex = -1;
-			++this.year;
-		}
+	private __enteringNextYear(plusOrMinusOne: number): boolean {
+		return (plusOrMinusOne === 1 && this.__monthIndex === 11);
+	}
+
+
+	private __prepareToEnterPreviousYear() {
+		this.__monthIndex = 12;
+		--this.year;
+	}
+
+
+	private __prepareToEnterNextYear() {
+		this.__monthIndex = -1;
+		++this.year;
 	}
 
 

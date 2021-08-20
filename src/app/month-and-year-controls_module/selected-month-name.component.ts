@@ -3,11 +3,12 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 
 
 @Component({
-	selector: 'chosen-month-name',
+	selector: 'selected-month-name',
 	template: `
 		<div id="month-name">
 			<select id="month-selector" name="monthNameOptions"
-					[(ngModel)]="model.chosenMonthName" (change)="model.update()"
+					[(ngModel)]="model.selectedMonthName"
+					(change)="model.updateOnChangeOf_selectedMonthName()"
 			>
 				<option *ngFor="let monthName in model.monthNames">
 					{{monthName}}
@@ -16,7 +17,7 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 		</div>
 	`
 })
-export class ChosenMonthNameComponent {
+export class SelectedMonthNameComponent {
 
 	constructor(public model: CalendarModelService) {}
 

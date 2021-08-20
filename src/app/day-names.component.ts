@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { CalendarModelService } from './calendar-model_service/calendar-model.service';
 
 
 @Component({
 	selector: 'day-names',
 	template: `
-		<div class="day-name" *ngFor="let dayname in model.dayNames">
+		<div class="day-name" *ngFor="let dayname in dayNames">
 			{{dayname}}
 		</div>
 	`
 })
 export class DayNamesComponent {
 
-	constructor(public model: CalendarModelService) {}
+	dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 
 }

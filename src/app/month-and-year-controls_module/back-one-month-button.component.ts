@@ -7,7 +7,7 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 	template: `
 		<div id="back-one-month-container">
 			<button class="month-button" id="back-one-month"
-					(click)="model.changeMonthAndUpdate(-1)">
+					(click)="model.incrementOrDecrementSelectedMonth(-1)">
 				<-
 			</button>
 		</div>
