@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CalendarModelService } from '@app/calendar-model_service/calendar-model.service';
+import { MonthDisplayService } from '@app/month-display_service/month-display.service';
+import { YearData } from '../data/year.data';
 
 
 @Component({
@@ -7,14 +8,16 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 	template: `
 		<div id="year-container">
 			<input type="number" id="year"
-				   [(ngModel)]="model.year" (change)="model.update_daysOfSelectedMonth()"
-				   min="1004" max="9999"
+				[(ngModel)]="year" (change)="monthDisplay.updateDaysOfSelectedMonth()" 
+				min="1004" max="9999"
 			/>
 		</div>
 	`
 })
 export class YearComponent {
 
-	constructor(public model: CalendarModelService) {}
+	year = YearData;
+
+	constructor(public monthDisplay: MonthDisplayService) {}
 
 }

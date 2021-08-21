@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CalendarModelService } from '@app/calendar-model_service/calendar-model.service';
+import { MonthDisplayService } from '../month-display_service/month-display.service';
 
 
 @Component({
@@ -7,7 +7,8 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 	template: `
 		<div id="back-one-month-container">
 			<button class="month-button" id="back-one-month"
-					(click)="model.incrementOrDecrementSelectedMonth(-1)">
+				(click)="monthDisplay.goForwardOrBackOneMonth(-1)"
+			>
 				<-
 			</button>
 		</div>
@@ -15,6 +16,6 @@ import { CalendarModelService } from '@app/calendar-model_service/calendar-model
 })
 export class BackOneMonthButtonComponent {
 
-	constructor(public model: CalendarModelService) {}
+	constructor(public monthDisplay: MonthDisplayService) {}
 
 }

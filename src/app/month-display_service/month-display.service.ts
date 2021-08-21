@@ -1,21 +1,22 @@
 import { CalendarValidatorService } from './calendar-validator.service';
 import { CalendarCalculatorService } from './calendar-calculator.service';
-import { Injectable } from '@angular/core';
+import { DaysOfSelectedMonthData as daysOfSelectedMonth} from '../data/days-of-selected-month.data';
 import { getArrFilled } from '@writetome51/get-arr-filled';
+import { Injectable } from '@angular/core';
+import { MonthNamesData as monthNames } from '../data/month-names.data';
+import { setArray } from '@writetome51/set-array';
+import { SelectedMonthData } from '@app/data/selected-month.data';
+import { YearData } from '@app/data/year.data';
 
 
 @Injectable({providedIn: 'root'})
-export class CalendarModelService {
+export class MonthDisplayService {
 
-	monthNames = ["January", "February", "March", "April", "May", "June", "July",
-		"August", "September", "October", "November", "December"];
-
-	selectedMonthName: string;
-	daysOfSelectedMonth: (string | number)[];
-	year: number;
+	selectedMonth: string = SelectedMonthData;
+	year: number = YearData;
 
 	private __monthIndex: number;
-	private __monthInfo: { numDays: number, firstDay: number };
+	private __monthInfo = {numDays: 0, weekdayIndexOfFirstDay: -1};
 	private __todaysDate = new Date();  // sets to browser's local time.
 
 
@@ -24,36 +25,37 @@ export class CalendarModelService {
 		private __calculator: CalendarCalculatorService
 	) {
 		this.__monthIndex = this.__todaysDate.getMonth();
-		this.selectedMonthName = this.monthNames[this.__monthIndex];
+		this.selectedMonth = monthNames[this.__monthIndex];
 		this.year = this.__todaysDate.getFullYear();
-		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.year);
 
-		this.daysOfSelectedMonth = this.__get_daysOfSelectedMonth(this.__monthInfo);
+		this.updateDaysOfSelectedMonth();
 	}
 
 
-	incrementOrDecrementSelectedMonth(plusOrMinusOne: number) {
+	goForwardOrBackOneMonth(plusOrMinusOne: 1 | -1) {
 		this.__incrementOrDecrement__monthIndex_and_selectedMonthName(plusOrMinusOne);
-		this.update_daysOfSelectedMonth();
+		this.updateDaysOfSelectedMonth();
 	}
 
 
-	updateOnChangeOf_selectedMonthName() {
-		this.__monthIndex = this.monthNames.indexOf(this.selectedMonthName);
-		this.update_daysOfSelectedMonth();
+	updateOnChangeOf_selectedMonth() {
+		this.__monthIndex = monthNames.indexOf(this.selectedMonth);
+		this.updateDaysOfSelectedMonth();
 	}
 
 
-	update_daysOfSelectedMonth() {
+	updateDaysOfSelectedMonth() {
 		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.year);
-		this.daysOfSelectedMonth = this.__get_daysOfSelectedMonth(this.__monthInfo);
+		setArray(daysOfSelectedMonth, this.__get_daysOfSelectedMonth(this.__monthInfo));
 	}
 
 
 	private __get_daysOfSelectedMonth(
-		monthInfo: { firstDay: number, numDays: number }
+		monthInfo: { weekdayIndexOfFirstDay: number, numDays: number }
 	): (string | number)[] {
-		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(monthInfo.firstDay);
+		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(
+			monthInfo.weekdayIndexOfFirstDay
+		);
 		const daysWithNumbers = this.__getDaysWithNumbers(monthInfo.numDays);
 		return [...daysWithoutNumbers, ...daysWithNumbers];
 	}
@@ -62,13 +64,13 @@ export class CalendarModelService {
 	private __incrementOrDecrement__monthIndex_and_selectedMonthName(plusOrMinusOne: number) {
 		this.__prepareIfEnteringNextOrPreviousYear(plusOrMinusOne);
 		this.__monthIndex += plusOrMinusOne;
-		this.selectedMonthName = this.monthNames[this.__monthIndex];
+		this.selectedMonth = monthNames[this.__monthIndex];
 	}
 
 
 	private __prepareIfEnteringNextOrPreviousYear(plusOrMinusOne: number) {
 		if (this.__enteringPreviousYear(plusOrMinusOne)) this.__prepareToEnterPreviousYear();
-		if (this.__enteringNextYear(plusOrMinusOne)) this.__prepareToEnterNextYear();
+		else if (this.__enteringNextYear(plusOrMinusOne)) this.__prepareToEnterNextYear();
 	}
 
 
@@ -98,7 +100,8 @@ export class CalendarModelService {
 		if (this.__validator.monthAndYearValid(monthIndex, year)) {
 			return {
 				numDays: this.__calculator.getNumDaysInMonth(monthIndex, year),
-				firstDay: this.__calculator.firstDayOfRequestedMonth(monthIndex, year)
+				weekdayIndexOfFirstDay:
+					this.__calculator.getFirstDayOfRequestedMonthAsWeekdayIndex(monthIndex, year)
 			};
 		} else throw new Error('The month index and/or year are invalid');
 	}

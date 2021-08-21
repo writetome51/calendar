@@ -1,17 +1,13 @@
 import { Component } from '@angular/core';
-import { CalendarModelService } from './calendar-model_service/calendar-model.service';
+import { DaysOfSelectedMonthData } from '@app/data/days-of-selected-month.data';
 
 
 @Component({
 	selector: 'day-squares',
-	template: `
-		<div class="day-square" *ngFor="let day in model.daysOfSelectedMonth">
-			{{day}}
-		</div>
-	`
+	template: `<div class="day-square" *ngFor="let day in daysOfSelectedMonth">{{day}}</div>`
 })
 export class DaySquaresComponent {
 
-	constructor(public model: CalendarModelService) {}
+	daysOfSelectedMonth = DaysOfSelectedMonthData;
 
 }
