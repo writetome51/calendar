@@ -1,19 +1,13 @@
 import { CalendarValidatorService } from './calendar-validator.service';
 import { CalendarCalculatorService } from './calendar-calculator.service';
-import { DaysOfSelectedMonthData as daysOfSelectedMonth} from '../data/days-of-selected-month.data';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { Injectable } from '@angular/core';
-import { MonthNamesData as monthNames } from '../data/month-names.data';
 import { setArray } from '@writetome51/set-array';
-import { SelectedMonthData } from '@app/data/selected-month.data';
-import { YearData } from '@app/data/year.data';
+import { DisplayData as display } from '@app/data/display.data';
 
 
 @Injectable({providedIn: 'root'})
-export class MonthDisplayService {
-
-	selectedMonth: string = SelectedMonthData;
-	year: number = YearData;
+export class MonthService {
 
 	private __monthIndex: number;
 	private __monthInfo = {numDays: 0, weekdayIndexOfFirstDay: -1};
@@ -25,28 +19,29 @@ export class MonthDisplayService {
 		private __calculator: CalendarCalculatorService
 	) {
 		this.__monthIndex = this.__todaysDate.getMonth();
-		this.selectedMonth = monthNames[this.__monthIndex];
-		this.year = this.__todaysDate.getFullYear();
+		display.selectedMonth = display.monthNames[this.__monthIndex];
+		display.year = this.__todaysDate.getFullYear();
 
 		this.updateDaysOfSelectedMonth();
 	}
 
 
-	goForwardOrBackOneMonth(plusOrMinusOne: 1 | -1) {
-		this.__incrementOrDecrement__monthIndex_and_selectedMonthName(plusOrMinusOne);
+	goForwardOrBackOne(plusOrMinusOne: 1 | -1) {
+		this.__incrementOrDecrement__monthIndex(plusOrMinusOne);
+		display.selectedMonth = display.monthNames[this.__monthIndex];
 		this.updateDaysOfSelectedMonth();
 	}
 
 
 	updateOnChangeOf_selectedMonth() {
-		this.__monthIndex = monthNames.indexOf(this.selectedMonth);
+		this.__monthIndex = display.monthNames.indexOf(display.selectedMonth);
 		this.updateDaysOfSelectedMonth();
 	}
 
 
 	updateDaysOfSelectedMonth() {
-		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.year);
-		setArray(daysOfSelectedMonth, this.__get_daysOfSelectedMonth(this.__monthInfo));
+		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, display.year);
+		setArray(display.days, this.__get_daysOfSelectedMonth(this.__monthInfo));
 	}
 
 
@@ -61,10 +56,9 @@ export class MonthDisplayService {
 	}
 
 
-	private __incrementOrDecrement__monthIndex_and_selectedMonthName(plusOrMinusOne: number) {
+	private __incrementOrDecrement__monthIndex(plusOrMinusOne: number) {
 		this.__prepareIfEnteringNextOrPreviousYear(plusOrMinusOne);
 		this.__monthIndex += plusOrMinusOne;
-		this.selectedMonth = monthNames[this.__monthIndex];
 	}
 
 
@@ -86,13 +80,13 @@ export class MonthDisplayService {
 
 	private __prepareToEnterPreviousYear() {
 		this.__monthIndex = 12;
-		--this.year;
+		--display.year;
 	}
 
 
 	private __prepareToEnterNextYear() {
 		this.__monthIndex = -1;
-		++this.year;
+		++display.year;
 	}
 
 

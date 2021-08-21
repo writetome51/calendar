@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 			<div id="month-and-buttons">
 				<back-one-month-button></back-one-month-button>
 
-				<selected-month-name></selected-month-name>
+				<selected-month></selected-month>
 
 				<forward-one-month-button></forward-one-month-button>
 			</div>
