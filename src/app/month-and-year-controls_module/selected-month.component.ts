@@ -8,11 +8,11 @@ import { DisplayData } from '@app/data/display.data';
 	template: `
 		<div id="month-name">
 			<select id="month-selector" name="monthNameOptions"
-				[(ngModel)]="display.selectedMonth"
-				(change)="monthDisplay.updateOnChangeOf_selectedMonth()"
+					[(ngModel)]="display.selectedMonth"
+					(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
 			>
-				<option *ngFor="let monthName of display.monthNames" 
-					[value]="monthName" [selected]="monthName === display.selectedMonth"
+				<option *ngFor="let monthName of display.monthNames"
+						[value]="monthName" [selected]="monthName === display.selectedMonth"
 				>
 					{{monthName}}
 				</option>

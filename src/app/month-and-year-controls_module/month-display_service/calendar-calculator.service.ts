@@ -9,7 +9,6 @@ export class CalendarCalculatorService {
 	// It was a Sunday (weekday index 0.  Weekday indexes go from 0 to 6).
 	private readonly __startYear = 1004;
 	private readonly __first2DigitsOf__startYear = String(this.__startYear).substr(0, 2);
-	private __requestedYear = this.__startYear;
 
 
 	getNumDaysInMonth(monthIndex: number, year: number): number {
