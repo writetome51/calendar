@@ -9,7 +9,7 @@ import { DisplayData } from '@app/data/display.data';
 		<div id="month-name">
 			<select id="month-selector" name="monthNameOptions"
 					[(ngModel)]="display.selectedMonth"
-					(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
+					(change)="month.updateOnChangeOfSelectedMonthOrYear()"
 			>
 				<option *ngFor="let monthName of display.monthNames"
 						[value]="monthName" [selected]="monthName === display.selectedMonth"
@@ -24,6 +24,6 @@ export class SelectedMonthComponent {
 
 	display = DisplayData;
 
-	constructor(public monthDisplay: MonthService) {}
+	constructor(public month: MonthService) {}
 
 }

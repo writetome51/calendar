@@ -7,7 +7,7 @@ import { MonthService } from './month-display_service/month.service';
 	template: `
 		<div id="back-one-month-container">
 			<button class="month-button" id="back-one-month"
-					(click)="monthDisplay.goForwardOrBackOne(-1)"
+					(click)="month.goForwardOrBackOne(-1)"
 			>
 				<-
 			</button>
@@ -16,6 +16,6 @@ import { MonthService } from './month-display_service/month.service';
 })
 export class BackOneMonthButtonComponent {
 
-	constructor(public monthDisplay: MonthService) {}
+	constructor(public month: MonthService) {}
 
 }
