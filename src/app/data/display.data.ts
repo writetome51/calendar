@@ -12,6 +12,6 @@ export class DisplayData  {
 	// in that week are numberless), this will contain empty strings to represent any numberless days.
 	static days: Array<number | ''> = [];
 
-	static year = 1004;
+	static selectedYear = 1004;
 
 }

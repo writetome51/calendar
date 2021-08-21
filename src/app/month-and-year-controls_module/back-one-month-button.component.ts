@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MonthService } from './month-display_service/month.service';
+import { MonthService } from './month_service/month.service';
 
 
 @Component({

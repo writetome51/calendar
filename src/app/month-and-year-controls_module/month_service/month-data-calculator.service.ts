@@ -2,7 +2,6 @@ import { CalendarValidatorService } from './calendar-validator.service';
 import { CalendarCalculatorService } from './calendar-calculator.service';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { Injectable } from '@angular/core';
-import { setArray } from '@writetome51/set-array';
 import { DisplayData as display } from '@app/data/display.data';
 
 
@@ -10,6 +9,7 @@ import { DisplayData as display } from '@app/data/display.data';
 export class MonthDataCalculatorService {
 
 	private __monthIndex = 0;
+	private __year = 1000;
 	private __monthInfo = {numDays: 0, weekdayIndexOfFirstDay: -1};
 	private __todaysDate = new Date();  // sets to browser's local time.
 
@@ -17,34 +17,39 @@ export class MonthDataCalculatorService {
 	constructor(
 		private __validator: CalendarValidatorService,
 		private __calculator: CalendarCalculatorService
-	) {
-		display.year = this.__todaysDate.getFullYear();
-	}
+	) {}
 
 
-	setSelectedMonth(monthName: string) {
+	setMonthAndYear(monthName: string, year: number) {
 		this.__monthIndex = display.monthNames.indexOf(monthName);
-		this.__monthInfo = this.__getMonthInfo(this.__monthIndex);
+		this.__year = year;
+		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.__year);
 	}
 
 
-	getCurrentMonth(): string {
-		return display.monthNames[this.__todaysDate.getMonth()];
+	getMonthAndYear(): { month: string, year: number } {
+		return {
+			year: this.__year,
+			month: display.monthNames[this.__monthIndex]
+		};
 	}
 
 
-	getSelectedMonthName() {
-		return display.monthNames[this.__monthIndex];
+	getCurrentMonthAndYear(): { month: string, year: number } {
+		return {
+			year: this.__todaysDate.getFullYear(),
+			month: display.monthNames[this.__todaysDate.getMonth()]
+		};
 	}
 
 
-	incrementOrDecrementSelectedMonth(plusOrMinusOne: number) {
+	incrementOrDecrementMonth(plusOrMinusOne: 1 | -1) {
 		this.__incrementOrDecrement__monthIndex(plusOrMinusOne);
-		this.__monthInfo = this.__getMonthInfo(this.__monthIndex);
+		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.__year);
 	}
 
 
-	getDaysOfSelectedMonth(): (string | number)[] {
+	getDaysOfMonth(): (string | number)[] {
 		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(
 			this.__monthInfo.weekdayIndexOfFirstDay
 		);
@@ -60,12 +65,15 @@ export class MonthDataCalculatorService {
 
 
 	private __getIndexPreparedIfEnteringNextOrPreviousYear(plusOrMinusOne: number) {
-		if (this.__enteringPreviousYear(plusOrMinusOne))
-			return this.__getIndexPreparedToEnterPreviousYear();
-		else if (this.__enteringNextYear(plusOrMinusOne))
-			return this.__getIndexPreparedToEnterNextYear();
-
-		else return this.__monthIndex;
+		if (this.__enteringPreviousYear(plusOrMinusOne)) {
+			--this.__year;
+			return 12;
+		}
+		if (this.__enteringNextYear(plusOrMinusOne)){
+			++this.__year;
+			return -1;
+		}
+		return this.__monthIndex;
 	}
 
 
@@ -79,25 +87,13 @@ export class MonthDataCalculatorService {
 	}
 
 
-	private __getIndexPreparedToEnterPreviousYear() {
-		--display.year;
-		return 12;
-	}
-
-
-	private __getIndexPreparedToEnterNextYear() {
-		++display.year;
-		return -1;
-	}
-
-
-	private __getMonthInfo(monthIndex: number) {
-		if (this.__validator.monthAndYearValid(monthIndex, display.year)) {
+	private __getMonthInfo(monthIndex: number, year: number) {
+		if (this.__validator.monthAndYearValid(monthIndex, year)) {
 			return {
-				numDays: this.__calculator.getNumDaysInMonth(monthIndex, display.year),
+				numDays: this.__calculator.getNumDaysInMonth(monthIndex, year),
 				weekdayIndexOfFirstDay:
 					this.__calculator.getFirstDayOfRequestedMonthAsWeekdayIndex(
-						monthIndex, display.year
+						monthIndex, year
 					)
 			};
 		} else throw new Error('The month index and/or year are invalid');
