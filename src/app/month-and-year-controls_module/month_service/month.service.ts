@@ -1,33 +1,36 @@
 import { Injectable } from '@angular/core';
-import { setArray } from '@writetome51/set-array';
 import { DisplayData as display } from '@app/data/display.data';
 import { MonthDataCalculatorService } from './month-data-calculator.service';
+import { TodaysDateService } from './todays-date.service';
 
 
 @Injectable({providedIn: 'root'})
 export class MonthService {
 
-	constructor(private __monthCalculator: MonthDataCalculatorService) {
-		const {year, month} = this.__monthCalculator.getCurrentMonthAndYear();
-		display.selectedYear = year;
-		display.selectedMonth = month;
+	constructor(
+		private __todaysDate: TodaysDateService,
+		private __monthCalculator: MonthDataCalculatorService
+	) {
+		const todaysDate = this.__todaysDate.get();
+		display.selectedYear = todaysDate.year;
+		display.selectedMonth = todaysDate.month;
+
 		this.updateOnChangeOfSelectedMonthOrYear();
 	}
 
 
 	goForwardOrBackOne(plusOrMinusOne: 1 | -1) {
-		this.__monthCalculator.incrementOrDecrementMonth(plusOrMinusOne);
-		const {year, month} = this.__monthCalculator.getMonthAndYear();
+		const data = this.__monthCalculator.getNextOrPreviousMonthData(plusOrMinusOne);
 
-		display.selectedYear = year;
-		display.selectedMonth = month;
-		setArray(display.days, this.__monthCalculator.getDaysOfMonth());
+		display.selectedYear = data.year;
+		display.selectedMonth = data.month;
+		display.days = data.daysOfMonth;
 	}
 
 
 	updateOnChangeOfSelectedMonthOrYear() {
-		this.__monthCalculator.setMonthAndYear(display.selectedMonth, display.selectedYear);
-		setArray(display.days, this.__monthCalculator.getDaysOfMonth());
+		const data = this.__monthCalculator.getMonthData(display.selectedMonth, display.selectedYear);
+		display.days = data.daysOfMonth;
 	}
 
 }

@@ -7,7 +7,7 @@ import { MonthService } from '@app/month-and-year-controls_module/month_service/
 	template: `
 		<div id="forward-one-month-container">
 			<button class="month-button" id="forward-one-month"
-					(click)="month.goForwardOrBackOne(1)"
+				(click)="month.goForwardOrBackOne(1)"
 			>
 				->
 			</button>

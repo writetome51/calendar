@@ -7,7 +7,7 @@ import { MonthService } from './month_service/month.service';
 	template: `
 		<div id="back-one-month-container">
 			<button class="month-button" id="back-one-month"
-					(click)="month.goForwardOrBackOne(-1)"
+				(click)="month.goForwardOrBackOne(-1)"
 			>
 				<-
 			</button>

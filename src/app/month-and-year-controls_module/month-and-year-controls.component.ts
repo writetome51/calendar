@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
 				<forward-one-month-button></forward-one-month-button>
 			</div>
 
-			<app-year></app-year>
+			<selected-year></selected-year>
 		</div>
 	`
 })

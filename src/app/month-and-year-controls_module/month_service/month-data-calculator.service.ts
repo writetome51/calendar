@@ -11,7 +11,6 @@ export class MonthDataCalculatorService {
 	private __monthIndex = 0;
 	private __year = 1000;
 	private __monthInfo = {numDays: 0, weekdayIndexOfFirstDay: -1};
-	private __todaysDate = new Date();  // sets to browser's local time.
 
 
 	constructor(
@@ -20,36 +19,38 @@ export class MonthDataCalculatorService {
 	) {}
 
 
-	setMonthAndYear(monthName: string, year: number) {
+	getMonthData(
+		monthName?: string, year?: number
+	): { month: string, year: number, daysOfMonth: (number | '')[] } {
+
+		if (monthName && year) this.__setMonthAndYear(monthName, year);
+		return {
+			year: this.__year,
+			month: display.monthNames[this.__monthIndex],
+			daysOfMonth: this.__getDaysOfMonth()
+		};
+	}
+
+
+	getNextOrPreviousMonthData(
+		plusOrMinusOne: 1 | -1
+	): { month: string, year: number, daysOfMonth: (number | '')[] } {
+
+		this.__incrementOrDecrement__monthIndex(plusOrMinusOne);
+		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.__year);
+
+		return this.getMonthData();
+	}
+
+
+	private __setMonthAndYear(monthName: string, year: number) {
 		this.__monthIndex = display.monthNames.indexOf(monthName);
 		this.__year = year;
 		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.__year);
 	}
 
 
-	getMonthAndYear(): { month: string, year: number } {
-		return {
-			year: this.__year,
-			month: display.monthNames[this.__monthIndex]
-		};
-	}
-
-
-	getCurrentMonthAndYear(): { month: string, year: number } {
-		return {
-			year: this.__todaysDate.getFullYear(),
-			month: display.monthNames[this.__todaysDate.getMonth()]
-		};
-	}
-
-
-	incrementOrDecrementMonth(plusOrMinusOne: 1 | -1) {
-		this.__incrementOrDecrement__monthIndex(plusOrMinusOne);
-		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.__year);
-	}
-
-
-	getDaysOfMonth(): (string | number)[] {
+	private __getDaysOfMonth(): (number | '')[] {
 		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(
 			this.__monthInfo.weekdayIndexOfFirstDay
 		);
@@ -100,7 +101,7 @@ export class MonthDataCalculatorService {
 	}
 
 
-	private __getDaysThatDontHaveNumbersBefore(firstDayOfMonth: number): string[] {
+	private __getDaysThatDontHaveNumbersBefore(firstDayOfMonth: number): ''[] {
 		return getArrFilled(firstDayOfMonth, () => '');
 	}
 

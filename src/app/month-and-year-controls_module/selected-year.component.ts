@@ -4,7 +4,7 @@ import { DisplayData } from '@app/data/display.data';
 
 
 @Component({
-	selector: 'app-year',
+	selector: 'selected-year',
 	template: `
 		<div id="year-container">
 			<input type="number" id="year"
@@ -15,7 +15,7 @@ import { DisplayData } from '@app/data/display.data';
 		</div>
 	`
 })
-export class YearComponent {
+export class SelectedYearComponent {
 
 	display = DisplayData;
 

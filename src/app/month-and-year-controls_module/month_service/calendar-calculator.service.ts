@@ -9,18 +9,17 @@ export class CalendarCalculatorService {
 	// It was a Sunday (weekday index 0.  Weekday indexes go from 0 to 6).
 	private readonly __startYear = 1004;
 	private readonly __first2DigitsOf__startYear = String(this.__startYear).substr(0, 2);
+	private __dayCountsForEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	private __checkedYear = 0;
 
 
-	getNumDaysInMonth(monthIndex: number, year: number): number {
-		let feb = 28;
-		if (this.__isLeapYear(year)) feb = 29;
-
-		const dayCountsForEachMonth = [31, feb, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-		return dayCountsForEachMonth[monthIndex];
+	getNumDaysInMonth(monthIndex, year): number {
+		this.__checkYear(year);
+		return this.__dayCountsForEachMonth[monthIndex];
 	}
 
 
-	getFirstDayOfRequestedMonthAsWeekdayIndex(monthIndex: number, year: number): number {
+	getFirstDayOfRequestedMonthAsWeekdayIndex(monthIndex, year): number {
 		const jan1AsWeekdayIndex = this.__getFirstDayOfJanuaryAsWeekdayIndex(year);
 
 		const totalDays = this.__getNumDaysFromJanuaryFirstToFirstDayOfRequestedMonth(
@@ -33,11 +32,11 @@ export class CalendarCalculatorService {
 	}
 
 
-	private __getFirstDayOfJanuaryAsWeekdayIndex(year: number) {
+	private __getFirstDayOfJanuaryAsWeekdayIndex(year): number {
 		let numYearsSince__startYear = year - this.__startYear;
 
 		// For each leap year that's passed...
-		const numLeapYears = this.getNumLeapYearsAfter__startYear_endingAt(year);
+		const numLeapYears = this.__getNumLeapYearsAfter__startYear_endingAt(year);
 		numYearsSince__startYear += numLeapYears; // ... add 1.
 
 		const jan1 = numYearsSince__startYear;
@@ -45,34 +44,31 @@ export class CalendarCalculatorService {
 	}
 
 
-	private __getNumDaysFromJanuaryFirstToFirstDayOfRequestedMonth(monthIndex: number, year: number) {
-		let monthsDayCounts = [];
+	private __getNumDaysFromJanuaryFirstToFirstDayOfRequestedMonth(monthIndex, year): number {
+		this.__checkYear(year);
 
-		for (let month = 0; month < 12; ++month) {
-			monthsDayCounts[month] = this.getNumDaysInMonth(month, year);
-		}
 		for (var month = 0, numDays = 0; month < monthIndex; ++month) {
-			numDays += monthsDayCounts[month];
+			numDays += this.__dayCountsForEachMonth[month];
 		}
 		return numDays;
 	}
 
 
-	getNumLeapYearsAfter__startYear_endingAt(year: number) {
-		const numPossibleLeapYears = this.getNumPossibleLeapYearsAfter__startYear_endingAt(year);
+	private __getNumLeapYearsAfter__startYear_endingAt(year): number {
+		const numPossibleLeapYears = this.__getNumPossibleLeapYearsAfter__startYear_endingAt(year);
 		const numFalseLeapYears = this.__getNumFalseLeapYearsIn(numPossibleLeapYears, year);
 
 		return (numPossibleLeapYears - numFalseLeapYears);
 	}
 
 
-	getNumPossibleLeapYearsAfter__startYear_endingAt(year: number) {
+	private __getNumPossibleLeapYearsAfter__startYear_endingAt(year): number {
 		const difference = ((Math.floor(year)) - this.__startYear);
 		return Math.ceil(difference / 4);
 	}
 
 
-	private __getNumFalseLeapYearsIn(numPossibleLeapYears: number, year: any) {
+	private __getNumFalseLeapYearsIn(numPossibleLeapYears, year): number {
 
 		const first2DigitsOfYear = String(year).substr(0, 2);
 		// If we're still in same century as this.__startYear, there are no false leap years.
@@ -84,7 +80,7 @@ export class CalendarCalculatorService {
 	}
 
 
-	private ____getNumFalseLeapYearsIn(numPossibleLeapYears: number) {
+	private ____getNumFalseLeapYearsIn(numPossibleLeapYears): number {
 		for (var i = 1, numFalseLeapYears = 0; i <= numPossibleLeapYears; ++i) {
 			const year = (this.__startYear + (i * 4));
 			if (year % 100 === 0) {
@@ -95,7 +91,17 @@ export class CalendarCalculatorService {
 	}
 
 
-	private __isLeapYear(year: number) {
+	private __checkYear(year) {
+		if (year === this.__checkedYear) return;
+
+		if (this.__isLeapYear(year)) this.__dayCountsForEachMonth[1] = 29;
+		else this.__dayCountsForEachMonth[1] = 28;
+
+		this.__checkedYear = year;
+	}
+
+
+	private __isLeapYear(year): boolean {
 		return (
 			(year % 400 === 0) ||
 			(year % 4 === 0 && year % 100 !== 0)
@@ -103,8 +109,11 @@ export class CalendarCalculatorService {
 	}
 
 
-	private __getAsWeekdayIndex(dayIndex: number) {
-		while (dayIndex > 6) dayIndex -= 7;
+	private __getAsWeekdayIndex(dayIndex): number {
+		if (dayIndex > 6) {
+			const factor = Math.floor(dayIndex / 7);
+			dayIndex -= (7 * factor);
+		}
 		return dayIndex;
 	}
 

@@ -5,7 +5,7 @@ import { ForwardOneMonthButtonComponent } from './forward-one-month-button.compo
 import { SelectedMonthComponent }
 	from './selected-month.component';
 import { NgModule } from '@angular/core';
-import { YearComponent } from './year.component';
+import { SelectedYearComponent } from './selected-year.component';
 import { MonthAndYearControlsComponent } from './month-and-year-controls.component';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 		BackOneMonthButtonComponent,
 		ForwardOneMonthButtonComponent,
 		SelectedMonthComponent,
-		YearComponent,
+		SelectedYearComponent,
 		MonthAndYearControlsComponent,
 	],
 	imports: [
