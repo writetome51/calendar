@@ -2,17 +2,14 @@ import { Injectable } from '@angular/core';
 import { DisplayData as display } from '@app/data/display.data';
 import { MonthDataCalculatorService }
 	from './month-data-calculator_service/month-data-calculator.service';
-import { TodaysDateService } from './todays-date.service';
+import { TodaysDateService as __todaysDate } from './todays-date.service';
 
 
 @Injectable({providedIn: 'root'})
 export class MonthService {
 
-	constructor(
-		private __todaysDate: TodaysDateService,
-		private __monthCalculator: MonthDataCalculatorService
-	) {
-		const todaysDate = this.__todaysDate.get();
+	constructor(private __monthCalculator: MonthDataCalculatorService) {
+		const todaysDate = __todaysDate.get();
 		display.selectedYear = todaysDate.year;
 		display.selectedMonth = todaysDate.month;
 
