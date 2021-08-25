@@ -2,7 +2,7 @@ import { CalendarValidatorService as validator } from './calendar-validator.serv
 import { MonthDaysService } from './month-days_service/month-days.service';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { Injectable } from '@angular/core';
-import { DisplayData as display } from '@app/display.data';
+import { DisplayData as displayData } from '@app/display.data';
 
 
 @Injectable({providedIn: 'root'})
@@ -23,7 +23,7 @@ export class MonthDataCalculatorService {
 		if (monthName && year) this.__setMonthAndYear(monthName, year);
 		return {
 			year: this.__year,
-			month: display.monthNames[this.__monthIndex],
+			month: displayData.monthNames[this.__monthIndex],
 			daysOfMonth: this.__getDaysOfMonth()
 		};
 	}
@@ -41,7 +41,7 @@ export class MonthDataCalculatorService {
 
 
 	private __setMonthAndYear(monthName: string, year: number) {
-		this.__monthIndex = display.monthNames.indexOf(monthName);
+		this.__monthIndex = displayData.monthNames.indexOf(monthName);
 		this.__year = year;
 		this.__monthInfo = this.__getMonthInfo(this.__monthIndex, this.__year);
 	}
