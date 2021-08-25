@@ -1,8 +1,8 @@
-import { CalendarValidatorService } from './calendar-validator.service';
-import { CalendarCalculatorService } from './calendar-calculator_service/calendar-calculator.service';
+import { CalendarValidatorService as validator } from './calendar-validator.service';
+import { MonthDaysService } from './month-days_service/month-days.service';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { Injectable } from '@angular/core';
-import { DisplayData as display } from '@app/data/display.data';
+import { DisplayData as display } from '@app/display.data';
 
 
 @Injectable({providedIn: 'root'})
@@ -13,10 +13,7 @@ export class MonthDataCalculatorService {
 	private __monthInfo = {numDays: 0, weekdayIndexOfFirstDay: -1};
 
 
-	constructor(
-		private __validator: CalendarValidatorService,
-		private __calculator: CalendarCalculatorService
-	) {}
+	constructor(private __monthDays: MonthDaysService) {}
 
 
 	getMonthData(
@@ -89,13 +86,11 @@ export class MonthDataCalculatorService {
 
 
 	private __getMonthInfo(monthIndex: number, year: number) {
-		if (this.__validator.monthAndYearValid(monthIndex, year)) {
+		if (validator.monthAndYearValid(monthIndex, year)) {
 			return {
-				numDays: this.__calculator.getNumDaysInMonth(monthIndex, year),
+				numDays: this.__monthDays.getNumDaysInMonth(monthIndex, year),
 				weekdayIndexOfFirstDay:
-					this.__calculator.getFirstDayOfRequestedMonthAsWeekdayIndex(
-						monthIndex, year
-					)
+					this.__monthDays.getFirstDayOfRequestedMonthAsWeekdayIndex(monthIndex, year)
 			};
 		} else throw new Error('The month index and/or year are invalid');
 	}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MonthService } from './month_service/month.service';
-import { DisplayData } from '@app/data/display.data';
+import { MonthDisplayService } from './month-display_service/month-display.service';
+import { DisplayData } from '@app/display.data';
 
 
 @Component({
@@ -8,11 +8,11 @@ import { DisplayData } from '@app/data/display.data';
 	template: `
 		<div id="month-name">
 			<select id="month-selector" name="monthNameOptions"
-					[(ngModel)]="display.selectedMonth"
-					(change)="month.updateOnChangeOfSelectedMonthOrYear()"
+					[(ngModel)]="displayData.selectedMonth"
+					(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
 			>
-				<option *ngFor="let monthName of display.monthNames"
-						[value]="monthName" [selected]="monthName === display.selectedMonth"
+				<option *ngFor="let monthName of displayData.monthNames"
+						[value]="monthName" [selected]="monthName === displayData.selectedMonth"
 				>
 					{{monthName}}
 				</option>
@@ -22,8 +22,8 @@ import { DisplayData } from '@app/data/display.data';
 })
 export class SelectedMonthComponent {
 
-	display = DisplayData;
+	displayData = DisplayData;
 
-	constructor(public month: MonthService) {}
+	constructor(public monthDisplay: MonthDisplayService) {}
 
 }

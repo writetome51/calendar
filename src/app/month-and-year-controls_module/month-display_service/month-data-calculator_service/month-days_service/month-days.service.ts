@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { GetAsWeekdayIndexService as getAsWeekdayIndex } from './get-as-weekday-index.service';
-import { IsLeapYearService as isLeapYear } from './is-leap-year.service';
+import { getAsWeekdayIndex } from './get-as-weekday-index.function';
+import { isLeapYear } from './is-leap-year.function';
 import { LeapYearCounterService as leapYearCounter } from './leap-year-counter.service';
 
 
 @Injectable({providedIn: 'root'})
-export class CalendarCalculatorService {
+export class MonthDaysService {
 
 	// We're using January 1, 1004 A.D. as frame of reference.
 	// It was a Sunday (weekday index 0.  Weekday indexes go from 0 to 6).
@@ -29,7 +29,7 @@ export class CalendarCalculatorService {
 		const firstDayOfMonth = jan1AsWeekdayIndex + totalDays;
 
 		// Since the day index can't be greater than 6, reset it:
-		return getAsWeekdayIndex.go(firstDayOfMonth);
+		return getAsWeekdayIndex(firstDayOfMonth);
 	}
 
 
@@ -43,7 +43,7 @@ export class CalendarCalculatorService {
 		numYearsSince__startYear += numLeapYears; // ... add 1.
 
 		const jan1 = numYearsSince__startYear;
-		return getAsWeekdayIndex.go(jan1);
+		return getAsWeekdayIndex(jan1);
 	}
 
 
@@ -60,7 +60,7 @@ export class CalendarCalculatorService {
 	private __checkYear(year) {
 		if (year === this.__checkedYear) return;
 
-		if (isLeapYear.go(year)) this.__dayCountsForEachMonth[1] = 29;
+		if (isLeapYear(year)) this.__dayCountsForEachMonth[1] = 29;
 		else this.__dayCountsForEachMonth[1] = 28;
 
 		this.__checkedYear = year;

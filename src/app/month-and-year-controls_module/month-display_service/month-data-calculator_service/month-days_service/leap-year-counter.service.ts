@@ -1,5 +1,5 @@
 import { not } from '@writetome51/not';
-import { IsLeapYearService as isLeapYear } from './is-leap-year.service';
+import { isLeapYear } from './is-leap-year.function';
 
 
 export class LeapYearCounterService {
@@ -37,7 +37,7 @@ export class LeapYearCounterService {
 		for (var i = 1, numFalseLeapYears = 0; i <= numPossibleLeapYears; ++i) {
 			const year = (startYear + (i * 4));
 			if (year % 100 === 0) {
-				if (not(isLeapYear.go(year))) ++numFalseLeapYears;
+				if (not(isLeapYear(year))) ++numFalseLeapYears;
 			}
 		}
 		return numFalseLeapYears;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MonthService } from './month_service/month.service';
+import { MonthDisplayService } from './month-display_service/month-display.service';
 
 
 @Component({
@@ -7,7 +7,7 @@ import { MonthService } from './month_service/month.service';
 	template: `
 		<div id="back-one-month-container">
 			<button class="month-button" id="back-one-month"
-				(click)="month.goForwardOrBackOne(-1)"
+				(click)="monthDisplay.goForwardOrBackOne(-1)"
 			>
 				<-
 			</button>
@@ -16,6 +16,6 @@ import { MonthService } from './month_service/month.service';
 })
 export class BackOneMonthButtonComponent {
 
-	constructor(public month: MonthService) {}
+	constructor(public monthDisplay: MonthDisplayService) {}
 
 }
