@@ -10,7 +10,7 @@ import { CalendarData } from '@app/calendar.data';
 			<input type="number" id="year"
 				   [(ngModel)]="calendar.selectedYear"
 				   (change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
-				   min="1004" max="9999"
+				   [min]="calendar.startYear" max="9999"
 			/>
 		</div>
 	`

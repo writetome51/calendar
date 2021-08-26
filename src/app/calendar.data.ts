@@ -1,4 +1,11 @@
+import { DaysOfMonth } from './days-of-month.type';
+
+
 export class CalendarData {
+
+	// We're using January 1, 1004 A.D. as frame of reference.
+	// It was a Sunday (weekday index 0).
+	static readonly startYear = 1004;
 
 	static readonly monthNames = [
 		"January", "February", "March", "April", "May", "June",
@@ -7,11 +14,8 @@ export class CalendarData {
 
 	static selectedMonth = '';
 
-	// Since a displayed month often begins with days that don't have numbers (for instance, the
-	// first day of the month is a Saturday, so Saturday is labeled '1' and all the previous days
-	// in that week are numberless), this will contain empty strings to represent any numberless days.
-	static daysOfMonth: Array<number | ''> = [];
+	static daysOfMonth: DaysOfMonth = [];
 
-	static selectedYear = 1004;
+	static selectedYear: number;
 
 }

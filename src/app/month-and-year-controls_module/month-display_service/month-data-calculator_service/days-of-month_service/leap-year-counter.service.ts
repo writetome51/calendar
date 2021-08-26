@@ -4,7 +4,9 @@ import { isLeapYear } from './is-leap-year.function';
 
 export class LeapYearCounterService {
 
-	static getNumLeapYearsAfter({startYear, endingAtYear}): number {
+	static getNumLeapYearsPassed({startYear, endingAtYear}): number {
+		if (not(isLeapYear(startYear))) throw new Error(`The start year must be a leap year`);
+
 		const numPossibleLeapYears =
 			this.__getNumPossibleLeapYearsAfter({startYear, endingAtYear});
 		const numFalseLeapYears =
@@ -24,7 +26,7 @@ export class LeapYearCounterService {
 
 		const first2DigitsOfYear = String(endingAtYear).substr(0, 2);
 		const first2DigitsOf__startYear = String(startYear).substr(0, 2);
-		// If we're still in same century as this.__startYear, there are no false leap years.
+		// If we're still in same century as startYear, there are no false leap years.
 		if (first2DigitsOfYear === first2DigitsOf__startYear) return 0;
 
 		// False leap years are any year that is evenly divisible by 100,
