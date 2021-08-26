@@ -1,4 +1,4 @@
-import { DisplayData as display } from '@app/display.data';
+import { CalendarData as display } from '@app/calendar.data';
 
 
 export class TodaysDateService {

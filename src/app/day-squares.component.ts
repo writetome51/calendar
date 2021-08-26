@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { DisplayData } from '@app/display.data';
+import { CalendarData } from '@app/calendar.data';
 
 
 @Component({
 	selector: 'day-squares',
-	template: `<div class="day-square" *ngFor="let day of displayData.days">{{day}}</div>`
+	template: `<div class="day-square" *ngFor="let day of calendar.daysOfMonth">{{day}}</div>`
 })
 export class DaySquaresComponent {
 
-	displayData = DisplayData;
+	calendar = CalendarData;
 
 }
