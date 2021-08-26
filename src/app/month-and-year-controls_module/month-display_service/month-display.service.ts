@@ -22,7 +22,7 @@ export class MonthDisplayService {
 
 		calendar.selectedYear = data.year;
 		calendar.selectedMonth = data.month;
-		calendar.daysOfMonth = data.daysOfMonth;
+		calendar.daysOfMonth = data.days;
 	}
 
 
@@ -30,7 +30,7 @@ export class MonthDisplayService {
 		const data = this.__monthCalculator.getMonthData(
 			calendar.selectedMonth, calendar.selectedYear
 		);
-		calendar.daysOfMonth = data.daysOfMonth;
+		calendar.daysOfMonth = data.days;
 	}
 
 }

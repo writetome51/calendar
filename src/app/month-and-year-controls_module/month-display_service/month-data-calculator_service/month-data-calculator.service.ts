@@ -1,5 +1,5 @@
 import { CalendarData as calendar } from '@app/calendar.data';
-import { DaysOfMonthService } from './days-of-month_service/days-of-month.service';
+import { GetDaysOfMonthService } from './get-days-of-month_service/get-days-of-month.service';
 import { Injectable } from '@angular/core';
 import { MonthData } from '../month-data.type';
 
@@ -11,7 +11,7 @@ export class MonthDataCalculatorService {
 	private __year = calendar.startYear;
 
 
-	constructor(private __daysOfMonth: DaysOfMonthService) {}
+	constructor(private __getDaysOfMonth: GetDaysOfMonthService) {}
 
 
 	getMonthData(monthName?: string, year?: number): MonthData {
@@ -20,7 +20,7 @@ export class MonthDataCalculatorService {
 		return {
 			year: this.__year,
 			month: calendar.monthNames[this.__monthIndex],
-			daysOfMonth: this.__daysOfMonth.get(this.__monthIndex, this.__year)
+			days: this.__getDaysOfMonth.go(this.__monthIndex, this.__year)
 		};
 	}
 

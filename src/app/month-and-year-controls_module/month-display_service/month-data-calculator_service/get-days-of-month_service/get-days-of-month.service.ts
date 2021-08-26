@@ -1,21 +1,23 @@
 import { CalendarData as calendar } from '@app/calendar.data';
 import { CalendarValidatorService as validator } from './calendar-validator.service';
+import { DaysOfMonth } from '@app/days-of-month.type';
 import { getAsWeekdayIndex } from './get-as-weekday-index.function';
 import { getArrFilled } from '@writetome51/get-arr-filled';
+import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }
+	from './get-num-leap-years-passed.service';
 import { Injectable } from '@angular/core';
 import { isLeapYear } from './is-leap-year.function';
-import { LeapYearCounterService as leapYearCounter } from './leap-year-counter.service';
 import { WeekdayIndex } from './weekday-index.type';
 
 
 @Injectable({providedIn: 'root'})
-export class DaysOfMonthService {
+export class GetDaysOfMonthService {
 
 	private __dayCountsForEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	private __checkedYear = 0;
 
 
-	get(monthIndex, year): (number | '')[] {
+	go(monthIndex, year): DaysOfMonth {
 		const {numDays, weekdayIndexOfFirstDay} = this.__getInfo(monthIndex, year);
 
 		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(weekdayIndexOfFirstDay);
@@ -56,7 +58,7 @@ export class DaysOfMonthService {
 		let numYearsSince__startYear = year - calendar.startYear;
 
 		// For each leap year that's passed...
-		const numLeapYearsPassed = leapYearCounter.getNumLeapYearsPassed(
+		const numLeapYearsPassed = getNumLeapYearsPassed.go(
 			{startYear: calendar.startYear, endingAtYear: year}
 		);
 		numYearsSince__startYear += numLeapYearsPassed; // ... add 1.

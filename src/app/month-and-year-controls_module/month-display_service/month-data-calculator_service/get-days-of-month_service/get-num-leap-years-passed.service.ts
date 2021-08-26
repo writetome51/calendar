@@ -2,9 +2,9 @@ import { not } from '@writetome51/not';
 import { isLeapYear } from './is-leap-year.function';
 
 
-export class LeapYearCounterService {
+export class GetNumLeapYearsPassedService {
 
-	static getNumLeapYearsPassed({startYear, endingAtYear}): number {
+	static go({startYear, endingAtYear}): number {
 		if (not(isLeapYear(startYear))) throw new Error(`The start year must be a leap year`);
 
 		const numPossibleLeapYears =
