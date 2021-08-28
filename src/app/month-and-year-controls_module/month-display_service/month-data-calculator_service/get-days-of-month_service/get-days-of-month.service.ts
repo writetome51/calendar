@@ -5,19 +5,17 @@ import { getAsWeekdayIndex } from './get-as-weekday-index.function';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }
 	from './get-num-leap-years-passed.service';
-import { Injectable } from '@angular/core';
 import { isLeapYear } from './is-leap-year.function';
 import { WeekdayIndex } from './weekday-index.type';
 
 
-@Injectable({providedIn: 'root'})
 export class GetDaysOfMonthService {
 
-	private __dayCountsForEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	private __checkedYear = 0;
+	private static __dayCountsForEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	private static __checkedYear = 0;
 
 
-	go(monthIndex, year): DaysOfMonth {
+	static go(monthIndex, year): DaysOfMonth {
 		const {numDays, weekdayIndexOfFirstDay} = this.__getInfo(monthIndex, year);
 
 		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(weekdayIndexOfFirstDay);
@@ -26,7 +24,9 @@ export class GetDaysOfMonthService {
 	}
 
 
-	private __getInfo(monthIndex, year): { numDays: number, weekdayIndexOfFirstDay: WeekdayIndex } {
+	private static __getInfo(
+		monthIndex, year
+	): { numDays: number, weekdayIndexOfFirstDay: WeekdayIndex } {
 		if (validator.monthAndYearValid(monthIndex, year)) {
 			return {
 				numDays: this.__getNumDaysInMonth(monthIndex, year),
@@ -37,16 +37,18 @@ export class GetDaysOfMonthService {
 	}
 
 
-	private __getNumDaysInMonth(monthIndex, year): number {
+	private static __getNumDaysInMonth(monthIndex, year): number {
 		this.__checkYear(year);
 		return this.__dayCountsForEachMonth[monthIndex];
 	}
 
 
-	private __getFirstOfMonthAsWeekdayIndex(monthIndex, year): WeekdayIndex {
+	private static __getFirstOfMonthAsWeekdayIndex(monthIndex, year): WeekdayIndex {
 		const jan1AsWeekdayIndex = this.__getFirstOfJanuaryAsWeekdayIndex(year);
 
-		const totalDays = this.__getNumDaysFromJanuaryFirstToFirstOfRequestedMonth(monthIndex, year);
+		const totalDays = this.__getNumDaysFromJanuaryFirstToFirstOfRequestedMonth(
+			monthIndex, year
+		);
 		const firstDayOfMonth = jan1AsWeekdayIndex + totalDays;
 
 		// Since the day index can't be greater than 6, reset it:
@@ -54,7 +56,7 @@ export class GetDaysOfMonthService {
 	}
 
 
-	private __getFirstOfJanuaryAsWeekdayIndex(year): WeekdayIndex {
+	private static __getFirstOfJanuaryAsWeekdayIndex(year): WeekdayIndex {
 		let numYearsSince__startYear = year - calendar.startYear;
 
 		// For each leap year that's passed...
@@ -68,7 +70,7 @@ export class GetDaysOfMonthService {
 	}
 
 
-	private __getNumDaysFromJanuaryFirstToFirstOfRequestedMonth(monthIndex, year): number {
+	private static __getNumDaysFromJanuaryFirstToFirstOfRequestedMonth(monthIndex, year): number {
 		this.__checkYear(year);
 
 		for (var month = 0, numDays = 0; month < monthIndex; ++month) {
@@ -78,7 +80,7 @@ export class GetDaysOfMonthService {
 	}
 
 
-	private __checkYear(year) {
+	private static __checkYear(year) {
 		if (year === this.__checkedYear) return;
 
 		if (isLeapYear(year)) this.__dayCountsForEachMonth[1] = 29;
@@ -88,12 +90,12 @@ export class GetDaysOfMonthService {
 	}
 
 
-	private __getDaysThatDontHaveNumbersBefore(weekdayIndex: WeekdayIndex): ''[] {
+	private static __getDaysThatDontHaveNumbersBefore(weekdayIndex: WeekdayIndex): ''[] {
 		return getArrFilled(weekdayIndex, () => '');
 	}
 
 
-	private __getDaysWithNumbers(numberOfDays: number): number[] {
+	private static __getDaysWithNumbers(numberOfDays: number): number[] {
 		// @ts-ignore
 		return getArrFilled(numberOfDays, (i) => (i + 1));
 	}
