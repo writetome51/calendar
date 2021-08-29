@@ -15,11 +15,11 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 })
 export class WeeksOfMonthComponent {
 
-	@Input() set days(value: DaysOfMonth) {
+	@Input() set days(dys: DaysOfMonth) {
 		this.weeks = getArrFilled(
-			getRoundedUp(value.length / 7),
+			getRoundedUp(dys.length / 7),
 			// @ts-ignore
-			(i) => getPage(i+1, 7, value)
+			(i) => getPage(i+1, 7, dys)
 		);
 	}
 
