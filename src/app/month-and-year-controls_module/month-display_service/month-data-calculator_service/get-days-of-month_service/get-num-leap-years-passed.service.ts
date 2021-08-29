@@ -1,5 +1,6 @@
 import { not } from '@writetome51/not';
 import { isLeapYear } from './is-leap-year.function';
+import { getRoundedDown, getRoundedUp } from '@writetome51/get-rounded-up-down';
 
 
 export class GetNumLeapYearsPassedService {
@@ -17,8 +18,8 @@ export class GetNumLeapYearsPassedService {
 
 
 	private static __getNumPossibleLeapYearsAfter({startYear, endingAtYear}): number {
-		const difference = ((Math.floor(endingAtYear)) - startYear);
-		return Math.ceil(difference / 4);
+		const difference = ((getRoundedDown(endingAtYear)) - startYear);
+		return getRoundedUp(difference / 4);
 	}
 
 

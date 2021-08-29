@@ -3,7 +3,11 @@ import { Component } from '@angular/core';
 
 @Component({
 	selector: 'day-names',
-	template: `<div class="day-name" *ngFor="let dayname of dayNames"> {{dayname}} </div>`
+	template: `
+		<div class="week-block">
+			<div class="day-name" *ngFor="let dayname of dayNames"> {{dayname}} </div>
+		</div>
+	`
 })
 export class DayNamesComponent {
 

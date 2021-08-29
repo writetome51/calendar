@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CalendarData } from '@app/calendar.data';
 
 
 @Component({
@@ -8,9 +9,13 @@ import { Component } from '@angular/core';
 			<month-and-year-controls></month-and-year-controls>
 
 			<day-names></day-names>
-			
-			<day-squares></day-squares>
+
+			<weeks-of-month [days]="calendar.daysOfMonth"></weeks-of-month>
 		</div>
 	`
 })
-export class CalendarComponent {}
+export class CalendarComponent {
+
+	calendar = CalendarData;
+
+}
