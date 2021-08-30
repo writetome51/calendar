@@ -1,4 +1,3 @@
-import { CalendarData as calendar } from '@app/calendar.data';
 import { CalendarValidatorService as validator } from './calendar-validator.service';
 import { DaysOfMonth } from '@app/days-of-month.type';
 import { getAsWeekdayIndex } from './get-as-weekday-index.function';
@@ -7,6 +6,7 @@ import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }
 	from './get-num-leap-years-passed.service';
 import { isLeapYear } from './is-leap-year.function';
 import { WeekdayIndex } from './weekday-index.type';
+import { StartYearData as startYear } from '@app/month-and-year-controls_module/start-year.data';
 
 
 export class GetDaysOfMonthService {
@@ -57,11 +57,11 @@ export class GetDaysOfMonthService {
 
 
 	private static __getFirstOfJanuaryAsWeekdayIndex(year): WeekdayIndex {
-		let numYearsSince__startYear = year - calendar.startYear;
+		let numYearsSince__startYear = year - startYear;
 
 		// For each leap year that's passed...
 		const numLeapYearsPassed = getNumLeapYearsPassed.go(
-			{startYear: calendar.startYear, endingAtYear: year}
+			{startYear: startYear, endingAtYear: year}
 		);
 		numYearsSince__startYear += numLeapYearsPassed; // ... add 1.
 

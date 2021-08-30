@@ -1,4 +1,4 @@
-import { CalendarData as display } from '@app/calendar.data';
+import { CalendarData as calendar } from '@app/calendar.data';
 
 
 export class TodaysDateService {
@@ -9,7 +9,7 @@ export class TodaysDateService {
 	static get(): { day: number, month: string, year: number } {
 		return {
 			year: this.__todaysDate.getFullYear(),
-			month: display.monthNames[this.__todaysDate.getMonth()],
+			month: calendar.monthNames[this.__todaysDate.getMonth()],
 			day: this.__todaysDate.getDay()
 		};
 	}

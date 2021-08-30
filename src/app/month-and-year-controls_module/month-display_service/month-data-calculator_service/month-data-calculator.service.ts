@@ -2,12 +2,13 @@ import { CalendarData as calendar } from '@app/calendar.data';
 import { GetDaysOfMonthService as getDaysOfMonth }
 	from './get-days-of-month_service/get-days-of-month.service';
 import { MonthData } from '../month-data.type';
+import { StartYearData } from '@app/month-and-year-controls_module/start-year.data';
 
 
 export class MonthDataCalculatorService {
 
 	private static __monthIndex = 0;
-	private static __year = calendar.startYear;
+	private static __year = StartYearData;
 
 
 	static getMonthData(monthName?: string, year?: number): MonthData {
