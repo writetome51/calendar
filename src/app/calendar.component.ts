@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CalendarData } from '@app/calendar.data';
+import { VisibleData } from '@app/visible.data';
 
 
 @Component({
@@ -10,12 +10,12 @@ import { CalendarData } from '@app/calendar.data';
 
 			<day-names></day-names>
 
-			<weeks-of-month [days]="calendar.daysOfMonth"></weeks-of-month>
+			<weeks-of-month [days]="visible.daysOfMonth"></weeks-of-month>
 		</div>
 	`
 })
 export class CalendarComponent {
 
-	calendar = CalendarData;
+	visible = VisibleData;
 
 }

@@ -1,8 +1,8 @@
-import { CalendarData as calendar } from '@app/calendar.data';
 import { GetDaysOfMonthService as getDaysOfMonth }
 	from './get-days-of-month_service/get-days-of-month.service';
 import { MonthData } from '../month-data.type';
 import { StartYearData } from '@app/month-and-year-controls_module/start-year.data';
+import { MonthNamesData as monthNames } from '../../month-names.data';
 
 
 export class MonthDataCalculatorService {
@@ -16,7 +16,7 @@ export class MonthDataCalculatorService {
 
 		return {
 			year: this.__year,
-			month: calendar.monthNames[this.__monthIndex],
+			month: monthNames.data[this.__monthIndex],
 			days: getDaysOfMonth.go(this.__monthIndex, this.__year)
 		};
 	}
@@ -29,7 +29,7 @@ export class MonthDataCalculatorService {
 
 
 	private static __setMonthAndYear(monthName: string, year: number) {
-		this.__monthIndex = calendar.monthNames.indexOf(monthName);
+		this.__monthIndex = monthNames.data.indexOf(monthName);
 		this.__year = year;
 	}
 

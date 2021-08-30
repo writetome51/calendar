@@ -1,4 +1,4 @@
-import { CalendarData as calendar } from '@app/calendar.data';
+import { VisibleData as visible } from '@app/visible.data';
 import { Injectable } from '@angular/core';
 import { MonthDataCalculatorService as monthCalculator }
 	from './month-data-calculator_service/month-data-calculator.service';
@@ -11,8 +11,8 @@ export class MonthDisplayService {
 
 	constructor() {
 		const todaysDate = __todaysDate.get();
-		calendar.selectedYear = todaysDate.year;
-		calendar.selectedMonth = todaysDate.month;
+		visible.selectedYear = todaysDate.year;
+		visible.selectedMonth = todaysDate.month;
 
 		this.updateOnChangeOfSelectedMonthOrYear();
 	}
@@ -21,15 +21,15 @@ export class MonthDisplayService {
 	goForwardOrBackOne(plusOrMinusOne: 1 | -1) {
 		const data = monthCalculator.getNextOrPreviousMonthData(plusOrMinusOne);
 
-		calendar.selectedYear = data.year;
-		calendar.selectedMonth = data.month;
-		calendar.daysOfMonth = data.days;
+		visible.selectedYear = data.year;
+		visible.selectedMonth = data.month;
+		visible.daysOfMonth = data.days;
 	}
 
 
 	updateOnChangeOfSelectedMonthOrYear() {
-		const data = monthCalculator.getMonthData(calendar.selectedMonth, calendar.selectedYear);
-		calendar.daysOfMonth = data.days;
+		const data = monthCalculator.getMonthData(visible.selectedMonth, visible.selectedYear);
+		visible.daysOfMonth = data.days;
 	}
 
 }
