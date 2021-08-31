@@ -1,7 +1,7 @@
 import { GetDaysOfMonthService as getDaysOfMonth }
 	from './get-days-of-month_service/get-days-of-month.service';
 import { MonthData } from '../month-data.type';
-import { StartYearData } from '@app/month-and-year-controls_module/start-year.data';
+import { StartYearData } from '../../start-year.data';
 import { MonthNamesData as monthNames } from '../../month-names.data';
 
 
