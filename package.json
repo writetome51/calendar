@@ -14,6 +14,7 @@
 		"@angular/common": "~12.2.0",
 		"@angular/compiler": "~12.2.0",
 		"@angular/core": "~12.2.0",
+		"@angular/elements": "^12.2.1",
 		"@angular/forms": "~12.2.0",
 		"@angular/platform-browser": "~12.2.0",
 		"@angular/platform-browser-dynamic": "~12.2.0",
@@ -23,6 +24,7 @@
 		"@writetome51/get-rounded-up-down": "^3.0.1",
 		"@writetome51/not": "^2.0.0",
 		"@writetome51/set-array": "^2.0.2",
+		"document-register-element": "^1.7.2",
 		"rxjs": "~6.6.0",
 		"tslib": "^2.3.0",
 		"zone.js": "~0.11.4"

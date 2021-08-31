@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CalendarComponent } from '@app/calendar.component';
 import { DayNamesComponent } from '@app/day-names.component';
+import { DayOfMonthComponent } from '@app/day-of-month.component';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { MonthAndYearControlsModule }
@@ -15,7 +16,8 @@ import { WeeksOfMonthComponent } from '@app/weeks-of-month.component';
 		AppComponent,
 		CalendarComponent,
 		DayNamesComponent,
-		WeeksOfMonthComponent
+		WeeksOfMonthComponent,
+		DayOfMonthComponent
 	],
 	imports: [
 		BrowserModule,

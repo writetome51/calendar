@@ -9,7 +9,7 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 	selector: 'weeks-of-month',
 	template: `
 		<div class="week-block" *ngFor="let week of weeks">
-			<div class="day-square" *ngFor="let day of week">{{day}}</div>
+			<day-of-month *ngFor="let day of week" [label]="day"></day-of-month>
 		</div>
 	`
 })

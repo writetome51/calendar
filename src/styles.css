@@ -14,7 +14,7 @@ div {
 #cal-boundary {
     left: 10px;
     top: 10px;
-    width: 310px;
+  /*  width: 310px; */
     height: auto;
     border: 1px solid grey;
     margin-left: 0;
