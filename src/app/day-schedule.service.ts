@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Appointment } from '@app/appointment.interface';
+import { ImplementationContainerService } from '@app/implementation-container.abstract.service';
 
 
 @Injectable()
-export class DayScheduleService {
-
-	private __contextSchedule; // CalendarContextDayScheduleService
-
-
-	setContext(daySchedule) {
-		this.__contextSchedule = daySchedule;
-	}
-
+export class DayScheduleService
+	extends ImplementationContainerService<{ get: (y, m, d) => Appointment[] }> {
 
 	get(year: number, month: number, dayOfMonth: number): Appointment[] | undefined {
-		if (!(this.__contextSchedule)) return;
+		if (!(this._implementation)) return;
 		if (dayOfMonth < 1) return;
 
-		return this.__contextSchedule.get(year, month, dayOfMonth);
+		return this._implementation.get(year, month, dayOfMonth);
 	}
 
 }

@@ -19,6 +19,7 @@ import { CalendarContext } from '@app/calendar-context.interface';
 })
 export class CalendarComponent implements OnInit {
 
+	// If left undefined, the calendar is a simple date-picker widget.
 	@Input() context: CalendarContext | undefined;
 
 	daysOfMonth = DaysOfMonthData;
@@ -28,7 +29,7 @@ export class CalendarComponent implements OnInit {
 
 
 	ngOnInit() {
-		if (this.context) this.__daySchedule.setContext(this.context.daySchedule);
+		if (this.context) this.__daySchedule.setImplementation(this.context.daySchedule);
 	}
 
 }
