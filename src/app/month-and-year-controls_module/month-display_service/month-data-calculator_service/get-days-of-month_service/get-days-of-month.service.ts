@@ -1,4 +1,4 @@
-import { CalendarValidatorService as validator } from './calendar-validator.service';
+import { yearValid } from '../../../year-valid.function';
 import { DaysOfMonth } from '@app/days-of-month.type';
 import { getAsWeekdayIndex } from './get-as-weekday-index.function';
 import { getArrFilled } from '@writetome51/get-arr-filled';
@@ -27,13 +27,14 @@ export class GetDaysOfMonthService {
 	private static __getInfo(
 		monthIndex, year
 	): { numDays: number, weekdayIndexOfFirstDay: WeekdayIndex } {
-		if (validator.monthAndYearValid(monthIndex, year)) {
+		if (yearValid(year)) {
 			return {
 				numDays: this.__getNumDaysInMonth(monthIndex, year),
 				weekdayIndexOfFirstDay:
 					this.__getFirstOfMonthAsWeekdayIndex(monthIndex, year)
 			};
-		} else throw new Error('The month index and/or year are invalid');
+		}
+		else throw new Error('The year is invalid');
 	}
 
 
