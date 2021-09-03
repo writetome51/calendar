@@ -9,7 +9,7 @@ import { yearValid } from './year-valid.function';
 	selector: 'selected-year',
 	template: `
 		<div id="year-container">
-			<mat-form-field class="example-full-width" appearance="outline">
+			<mat-form-field  appearance="outline">
 				<mat-label hidden>Year</mat-label>
 
 				<input matInput  type="number" id="year" placeholder="Year"
@@ -18,7 +18,7 @@ import { yearValid } from './year-valid.function';
 					(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
 				/>
 
-				<mat-error *ngIf="valid">Year invalid</mat-error>
+				<mat-error *ngIf="!(yearValid(selected.year))">Year invalid</mat-error>
 			</mat-form-field>
 		</div>
 	`
@@ -29,9 +29,6 @@ export class SelectedYearComponent {
 	startYear = StartYearData;
 	yearValid = yearValid;
 
-	get valid(){
-		return yearValid(this.selected.year);
-	}
 
 	constructor(public monthDisplay: MonthDisplayService) {}
 

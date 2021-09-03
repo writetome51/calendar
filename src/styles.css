@@ -24,8 +24,8 @@ div {
 #cal-boundary {
 	left: 10px;
 	top: 10px;
-	width: 410px;
-	min-height: 250px;
+	width: 370px;
+	min-height: 363px;
 	border: 1px solid grey;
 	margin-left: 0;
 	padding: 2px;
@@ -39,8 +39,8 @@ div {
 
 .day-square {
 	display: inline-block;
-	width: 12.25%;
-	/*	height: 36px; */
+	width: 12.5%;
+	height: 40px;
 	border: 1px solid lightgrey;
 	text-align: right;
 	padding-left: 2px;
@@ -49,19 +49,19 @@ div {
 
 .day-name {
 	display: inline-block;
-	border: none;
 	width: 12.5%;
-	height: 12px;
-	padding: 2px;
-	padding-left: 3px;
+	height: 14px;
+	border: 1px solid transparent;
+	padding-left: 2px;
 	padding-bottom: 6px;
+	margin-left: 2px;
 	text-align: center;
 }
 
 #month-and-year-controls {
 	display: block;
 	width: 100%;
-	height:75px;
+	height: 75px;
 	border: none;
 	text-align: center;
 	margin-bottom: 8px;
@@ -70,42 +70,10 @@ div {
 #month-and-buttons {
 	display: inline-block;
 	left: 5px;
-	height:50px;
+	height: 50px;
 	font-size: 28px;
 	margin-top: 4px;
 	margin-right: 35px;
-}
-
-#year-container {
-	display: inline-block;
-	position: relative;
-	left: 5px;
-	height:50px;
-}
-
-#year-container mat-form-field {
-	width: 100px;
-	height:100%;
-}
-
-
-#year-container mat-form-field div {
-	width: 100%;
-	height:100%;
-	margin-top: 0;
-	padding-top: 0;
-}
-
-
-#year {
-	font-size: 24px;
-	margin-top: 3px;
-	padding-left: 5px;
-}
-
-.month-button {
-	padding: 2px;
-	top: 0;
 }
 
 #month-name {
@@ -124,8 +92,46 @@ div {
 	display: block;
 	position: relative;
 	font-size: 16px;
-	width:100%;
+	width: 100%;
 	padding-left: 4px;
 	height: 100%;
 	top: 0;
+}
+
+
+.month-button {
+	padding: 2px;
+	top: 0;
+}
+
+
+#year-container {
+	display: inline-block;
+	position: relative;
+	left: 5px;
+	height: 50px;
+}
+
+#year-container mat-form-field {
+	width: 100px;
+	height: 100%;
+}
+
+
+#year-container mat-form-field div {
+	width: 100%;
+	height: 100%;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+#year-container mat-error {
+	margin-top: 10px;
+}
+
+
+#year {
+	font-size: 24px;
+	margin-top: 3px;
+	padding-left: 5px;
 }
