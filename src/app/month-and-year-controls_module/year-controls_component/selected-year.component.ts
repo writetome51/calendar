@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { MonthDisplayService } from './month-display_service/month-display.service';
+import { MonthDisplayService } from '../month-display_service/month-display.service';
 import { StartYearData } from '@app/month-and-year-controls_module/start-year.data';
 import { SelectedData } from '@app/month-and-year-controls_module/selected.data';
-import { yearValid } from './year-valid.function';
+import { yearValid } from '../year-valid.function';
 
 
 @Component({
@@ -18,7 +18,9 @@ import { yearValid } from './year-valid.function';
 					(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
 				/>
 
-				<mat-error *ngIf="!(yearValid(selected.year))">Year invalid</mat-error>
+				<mat-error *ngIf="!(yearValid(selected.year))">
+					Must be within 1004 - 9999
+				</mat-error>
 			</mat-form-field>
 		</div>
 	`
