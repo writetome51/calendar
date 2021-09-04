@@ -8,7 +8,10 @@ export abstract class RapidRepeatActionButtonDirective {
 	protected abstract _singleAction(): void
 
 
-	startActionOnBegin() {
+	startActionOnBegin(event) {
+		event.preventDefault();
+		event.stopPropagation();
+
 		if (!(this.__actionEnded)) return;
 		this.__actionEnded = false;
 		this._singleAction();

@@ -11,8 +11,8 @@ import { RapidRepeatActionButtonDirective } from './rapid-repeat-action-button.a
 
 			<button mat-icon-button aria-label="add one year"
 				class="year-button" id="forward-one-year"
-				(mousedown)="startActionOnBegin()" (mouseup)="stopActionOnEnd()"
-				(touchstart)="startActionOnBegin()" (touchend)="stopActionOnEnd()"
+				(mousedown)="startActionOnBegin($event)" (mouseup)="stopActionOnEnd()"
+				(touchstart)="startActionOnBegin($event)" (touchend)="stopActionOnEnd()"
 			>
 				<mat-icon>keyboard_arrow_up</mat-icon>
 			</button>
