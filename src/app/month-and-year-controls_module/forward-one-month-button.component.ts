@@ -5,7 +5,7 @@ import { MonthDisplayService } from './month-display_service/month-display.servi
 @Component({
 	selector: 'forward-one-month-button',
 	template: `
-		<div id="forward-one-month-container">
+		<div id="forward-one-month-container" class="month-button-container">
 			<button class="month-button" id="forward-one-month"
 				(click)="monthDisplay.goForwardOrBackOne(1)"
 			>
