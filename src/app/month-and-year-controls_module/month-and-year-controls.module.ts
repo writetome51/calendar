@@ -14,9 +14,7 @@ import { YearControlsComponent }
 	from '@app/month-and-year-controls_module/year-controls_component/year-controls.component';
 import { BackOneYearButtonComponent } from '@app/month-and-year-controls_module/year-controls_component/back-one-year-button.component';
 import { ForwardOneYearButtonComponent } from '@app/month-and-year-controls_module/year-controls_component/forward-one-year-button.component';
-import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 
 
@@ -38,9 +36,7 @@ import { MatButtonModule } from '@angular/material/button';
 		MatInputModule,
 		MatFormFieldModule,
 		MonthAndYearControlsServicesModule,
-		MatStepperModule,
 		MatIconModule,
-		MatButtonToggleModule,
 		MatButtonModule
 	],
 	exports: [MonthAndYearControlsComponent]

@@ -2,34 +2,35 @@ export abstract class RapidRepeatActionButtonDirective {
 
 	protected _initialDelayBeforeRapid = 500; // ms
 	protected _rapidDelay = 70; // ms
-	private __clickEnded = true;
+	private __actionEnded = true;
 
 
 	protected abstract _singleAction(): void
 
 
 	startActionOnBegin() {
-		this.__clickEnded = false;
+		if (!(this.__actionEnded)) return;
+		this.__actionEnded = false;
 		this._singleAction();
 
-		let outer = setInterval(
+		const outerInterval = setInterval(
 			() => {
-				let inner = setInterval(
-					() => {
-						if (!(this.__clickEnded)) this._singleAction();
-						else clearInterval(inner);
-					},
-					this._rapidDelay
-				);
-				clearInterval(outer);
+				const inner = setInterval(() => this.__actionToRepeat(inner), this._rapidDelay);
+				clearInterval(outerInterval);
 			},
-			this._initialDelayBeforeRapid
+			this._initialDelayBeforeRapid // only happens once
 		);
 	}
 
 
 	stopActionOnEnd() {
-		this.__clickEnded = true;
+		this.__actionEnded = true;
+	}
+
+
+	private __actionToRepeat(interval) {
+		if (!(this.__actionEnded)) this._singleAction();
+		else clearInterval(interval);
 	}
 
 }
