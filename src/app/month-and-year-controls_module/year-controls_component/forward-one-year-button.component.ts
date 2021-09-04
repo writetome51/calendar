@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MonthDisplayService } from '../month-display_service/month-display.service';
 import { SelectedData } from '@app/month-and-year-controls_module/selected.data';
-import { RapidRepeatActionButtonComponent } from './rapid-repeat-action-button.abstract.component';
+import { RapidRepeatActionButtonDirective } from './rapid-repeat-action-button.abstract.directive';
 
 
 @Component({
@@ -10,8 +10,9 @@ import { RapidRepeatActionButtonComponent } from './rapid-repeat-action-button.a
 		<div id="forward-one-year-container" class="year-button-container">
 
 			<button mat-icon-button aria-label="add one year"
-				class="year-button" id="back-one-year"
-				(mousedown)="actionOnMousedown()" (mouseup)="stopRapidActionOnMouseup()"
+				class="year-button" id="forward-one-year"
+				(mousedown)="startActionOnBegin()" (mouseup)="stopActionOnEnd()"
+				(touchstart)="startActionOnBegin()" (touchend)="stopActionOnEnd()"
 			>
 				<mat-icon>keyboard_arrow_up</mat-icon>
 			</button>
@@ -19,7 +20,7 @@ import { RapidRepeatActionButtonComponent } from './rapid-repeat-action-button.a
 		</div>
 	`
 })
-export class ForwardOneYearButtonComponent extends RapidRepeatActionButtonComponent {
+export class ForwardOneYearButtonComponent extends RapidRepeatActionButtonDirective {
 
 	selected = SelectedData;
 

@@ -1,4 +1,4 @@
-export abstract class RapidRepeatActionButtonComponent {
+export abstract class RapidRepeatActionButtonDirective {
 
 	protected _initialDelayBeforeRapid = 500; // ms
 	protected _rapidDelay = 70; // ms
@@ -8,7 +8,7 @@ export abstract class RapidRepeatActionButtonComponent {
 	protected abstract _singleAction(): void
 
 
-	actionOnMousedown() {
+	startActionOnBegin() {
 		this.__clickEnded = false;
 		this._singleAction();
 
@@ -28,7 +28,7 @@ export abstract class RapidRepeatActionButtonComponent {
 	}
 
 
-	stopRapidActionOnMouseup() {
+	stopActionOnEnd() {
 		this.__clickEnded = true;
 	}
 
