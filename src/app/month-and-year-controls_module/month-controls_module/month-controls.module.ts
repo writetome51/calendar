@@ -10,8 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MonthControlsComponent } from '@app/month-and-year-controls_module/month-controls_module/month-controls.component';
-import { ClickExecuteRapidRepeatComponent }
-	from '@app/month-and-year-controls_module/click-execute-rapid-repeat.component';
 import { YearControlsModule } from '@app/month-and-year-controls_module/year-controls_module/year-controls.module';
 
 
@@ -21,7 +19,6 @@ import { YearControlsModule } from '@app/month-and-year-controls_module/year-con
 		ForwardOneMonthButtonComponent,
 		SelectedMonthComponent,
 		MonthControlsComponent,
-		ClickExecuteRapidRepeatComponent
 	],
 	imports: [
 		CommonModule,
