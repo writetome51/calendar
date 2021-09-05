@@ -17,6 +17,8 @@ import { ForwardOneYearButtonComponent } from '@app/month-and-year-controls_modu
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MonthControlsComponent } from '@app/month-and-year-controls_module/month-controls.component';
+import { ClickExecuteRapidRepeatComponent }
+	from '@app/month-and-year-controls_module/click-execute-rapid-repeat.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { MonthControlsComponent } from '@app/month-and-year-controls_module/mont
 		BackOneYearButtonComponent,
 		ForwardOneYearButtonComponent,
 		MonthAndYearControlsComponent,
-		MonthControlsComponent
+		MonthControlsComponent,
+		ClickExecuteRapidRepeatComponent
 	],
 	imports: [
 		CommonModule,
