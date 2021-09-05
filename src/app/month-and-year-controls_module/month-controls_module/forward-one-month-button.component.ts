@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MonthDisplayService } from './month-display_service/month-display.service';
-import { RapidRepeatActionButtonDirective } from './rapid-repeat-action-button.abstract.directive';
+import { MonthDisplayService } from '../month-display_service/month-display.service';
+import { RapidRepeatActionButtonDirective } from '../rapid-repeat-action-button.abstract.directive';
 
 
 @Component({

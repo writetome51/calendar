@@ -1,22 +1,27 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MonthAndYearControlsComponent } from './month-and-year-controls.component';
-import { MonthAndYearControlsServicesModule } from './month-and-year-controls-services.module';
 import { NgModule } from '@angular/core';
+import { SelectedYearComponent } from './selected-year.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { YearControlsComponent }
+	from '@app/month-and-year-controls_module/year-controls_module/year-controls.component';
+import { BackOneYearButtonComponent } from '@app/month-and-year-controls_module/year-controls_module/back-one-year-button.component';
+import { ForwardOneYearButtonComponent } from '@app/month-and-year-controls_module/year-controls_module/forward-one-year-button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ClickExecuteRapidRepeatComponent }
 	from '@app/month-and-year-controls_module/click-execute-rapid-repeat.component';
-import { YearControlsModule } from '@app/month-and-year-controls_module/year-controls_module/year-controls.module';
-import { MonthControlsModule } from '@app/month-and-year-controls_module/month-controls_module/month-controls.module';
 
 
 @NgModule({
 	declarations: [
-		MonthAndYearControlsComponent,
+		SelectedYearComponent,
+		YearControlsComponent,
+		BackOneYearButtonComponent,
+		ForwardOneYearButtonComponent,
 		ClickExecuteRapidRepeatComponent
 	],
 	imports: [
@@ -25,12 +30,9 @@ import { MonthControlsModule } from '@app/month-and-year-controls_module/month-c
 		FormsModule,
 		MatInputModule,
 		MatFormFieldModule,
-		MonthAndYearControlsServicesModule,
 		MatIconModule,
-		MatButtonModule,
-		MonthControlsModule,
-		YearControlsModule
+		MatButtonModule
 	],
-	exports: [MonthAndYearControlsComponent]
+	exports: [YearControlsComponent]
 })
-export class MonthAndYearControlsModule {}
+export class YearControlsModule {}
