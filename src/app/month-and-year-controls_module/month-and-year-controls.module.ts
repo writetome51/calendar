@@ -16,6 +16,7 @@ import { BackOneYearButtonComponent } from '@app/month-and-year-controls_module/
 import { ForwardOneYearButtonComponent } from '@app/month-and-year-controls_module/year-controls_component/forward-one-year-button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MonthControlsComponent } from '@app/month-and-year-controls_module/month-controls.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
 		BackOneYearButtonComponent,
 		ForwardOneYearButtonComponent,
 		MonthAndYearControlsComponent,
+		MonthControlsComponent
 	],
 	imports: [
 		CommonModule,

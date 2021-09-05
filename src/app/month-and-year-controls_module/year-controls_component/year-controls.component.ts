@@ -5,14 +5,12 @@ import { Component } from '@angular/core';
 	selector: 'year-controls',
 	template: `
 		<div id="year-controls">
-
 			<selected-year></selected-year>
 
-			<div id="year-buttons-container">
+			<div class="up-and-down-buttons-container">
 				<forward-one-year-button></forward-one-year-button>
 				<back-one-year-button></back-one-year-button>
 			</div>
-
 		</div>
 	`
 })

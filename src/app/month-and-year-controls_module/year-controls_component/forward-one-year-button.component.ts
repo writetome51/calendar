@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MonthDisplayService } from '../month-display_service/month-display.service';
 import { SelectedData } from '@app/month-and-year-controls_module/selected.data';
-import { RapidRepeatActionButtonDirective } from './rapid-repeat-action-button.abstract.directive';
+import { RapidRepeatActionButtonDirective } from '../rapid-repeat-action-button.abstract.directive';
 
 
 @Component({
