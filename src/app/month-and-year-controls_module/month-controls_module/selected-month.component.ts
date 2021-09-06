@@ -8,16 +8,14 @@ import { SelectedData } from '@app/month-and-year-controls_module/selected.data'
 	selector: 'selected-month',
 	template: `
 		<div id="month-name">
-			<select id="month-selector" name="monthNameOptions"
-					[(ngModel)]="selected.month"
-					(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
+			<mat-select id="month-selector" name="monthNameOptions"
+				[(ngModel)]="selected.month"
+				(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
 			>
-				<option *ngFor="let monthName of monthNames.data"
-						[value]="monthName" [selected]="monthName === selected.month"
-				>
+				<mat-option *ngFor="let monthName of monthNames.data" [value]="monthName">
 					{{monthName}}
-				</option>
-			</select>
+				</mat-option>
+			</mat-select>
 		</div>
 	`
 })

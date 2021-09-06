@@ -1,32 +1,27 @@
 import { Component } from '@angular/core';
 import { MonthDisplayService } from '../month-display_service/month-display.service';
-import { RapidRepeatActionButtonDirective }
-	from '../rapid-repeat-action-button.abstract.directive';
 
 
 @Component({
 	selector: 'back-one-month-button',
 	template: `
-		<div id="back-one-month-container" class="month-button-container">
-
+		<click-execute-rapid-repeat-function [context]="this"
+			id="back-one-month-container" class="month-button-container"
+		>
 			<button mat-icon-button aria-label="subtract one month"
-					class="month-button" id="back-one-month"
-					(mousedown)="startActionOnBegin($event)" (mouseup)="stopActionOnEnd()"
-					(touchstart)="startActionOnBegin($event)" (touchend)="stopActionOnEnd()"
+				class="month-button" id="back-one-month"
 			>
 				<mat-icon>keyboard_arrow_down</mat-icon>
 			</button>
-
-		</div>
+		</click-execute-rapid-repeat-function>
 	`
 })
-export class BackOneMonthButtonComponent extends RapidRepeatActionButtonDirective {
+export class BackOneMonthButtonComponent {
 
-	constructor(public monthDisplay: MonthDisplayService) {
-		super();
-	}
+	constructor(public monthDisplay: MonthDisplayService) {}
 
-	protected _singleAction() {
+
+	function() {
 		this.monthDisplay.goForwardOrBackOne(-1);
 	}
 

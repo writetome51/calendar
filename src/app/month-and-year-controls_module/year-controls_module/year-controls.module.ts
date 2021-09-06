@@ -1,17 +1,17 @@
-
 import { BrowserModule } from '@angular/platform-browser';
+import { BackOneYearButtonComponent } from './back-one-year-button.component';
+import { ClickExecuteRapidRepeatFunctionModule }
+	from '../../click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ForwardOneYearButtonComponent } from './forward-one-year-button.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { SelectedYearComponent } from './selected-year.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { YearControlsComponent }
-	from '@app/month-and-year-controls_module/year-controls_module/year-controls.component';
-import { BackOneYearButtonComponent } from '@app/month-and-year-controls_module/year-controls_module/back-one-year-button.component';
-import { ForwardOneYearButtonComponent } from '@app/month-and-year-controls_module/year-controls_module/forward-one-year-button.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { YearControlsComponent } from './year-controls.component';
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
 		MatInputModule,
 		MatFormFieldModule,
 		MatIconModule,
-		MatButtonModule
+		MatButtonModule,
+		ClickExecuteRapidRepeatFunctionModule
 	],
 	exports: [YearControlsComponent]
 })
