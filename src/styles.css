@@ -34,11 +34,19 @@ div {
 
 
 #cal-boundary {
-	min-height: 363px;
+	box-sizing: border-box;
 	border: 1px solid lightgrey;
 	margin-left: 0;
 	padding: 2px 4px;
 	font-size: 15px;
+}
+
+
+.calendar-day {
+	display: inline;
+	box-sizing: border-box;
+	width: 13.7%;
+	margin-left: 2px;
 }
 
 

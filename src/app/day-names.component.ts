@@ -5,18 +5,16 @@ import { Component } from '@angular/core';
 	selector: 'day-names',
 	template: `
 		<week-block>
-			<div class="day-name" *ngFor="let dayName of dayNames"> {{dayName}} </div>
+			<div class="day-name calendar-day" *ngFor="let dayName of dayNames">
+				{{dayName}}
+			</div>
 		</week-block>
 	`,
 	styles: [`
 		.day-name {
-			display: inline-block;
-			width: 12.5%;
-			height: 14px;
+			height: fit-content;
 			border: 1px solid transparent;
-			padding-left: 2px;
-			padding-bottom: 6px;
-			margin-left: 2px;
+			padding-bottom: 3px;
 			text-align: center;
 		}
 	`]

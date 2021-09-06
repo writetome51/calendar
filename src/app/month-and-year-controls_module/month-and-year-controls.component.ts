@@ -16,7 +16,6 @@ import { Component } from '@angular/core';
 			height: fit-content;
 			border: none;
 			text-align: center;
-			margin-bottom: 6px;
 		}
 	`]
 })

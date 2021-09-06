@@ -20,8 +20,8 @@ export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
 
 	@Input() context: {
 		function: () => void;
-		initialDelayBeforeRapid?: number;
-		rapidDelay?: number;
+		initialDelayBeforeRapid?: number; // ms
+		rapidDelay?: number; // ms
 	} = { function: () => undefined };
 
 	private readonly __defaultInitialDelayBeforeRapid = 500; // ms

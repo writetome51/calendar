@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DaysOfMonthData } from './shared/days-of-month.data';
+import { DaysOfMonthData } from '@shared/days-of-month.data';
 import { DayScheduleService } from '@app/day-schedule.service';
 import { CalendarContext } from '@app/calendar-context.interface';
 

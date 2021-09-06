@@ -9,7 +9,7 @@ import { MonthNamesData as monthNames }
 @Component({
 	selector: 'day-of-month',
 	template: `
-		<div class="day-square">
+		<div class="day-square calendar-day">
 			{{label}}
 
 			<span *ngIf="appointments && appointments.length" class="num-appointments">
@@ -19,13 +19,10 @@ import { MonthNamesData as monthNames }
 	`,
 	styles: [`
 		.day-square {
-			display: inline-block;
-			width: 12.5%;
-			height: 40px;
+			min-height: 50px;
+			height: 100%;
 			border: 1px solid lightgrey;
 			text-align: right;
-			padding-left: 2px;
-			margin-left: 2px;
 		}
 	`]
 })
