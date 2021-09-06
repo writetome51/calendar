@@ -9,8 +9,8 @@ import { SelectedData } from '@app/month-and-year-controls_module/selected.data'
 	template: `
 		<div id="month-name">
 			<mat-select id="month-selector" name="monthNameOptions"
-				[(ngModel)]="selected.month"
-				(change)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
+				[(ngModel)]="selected.month" [(value)]="selected.month"
+				(ngModelChange)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
 			>
 				<mat-option *ngFor="let monthName of monthNames.data" [value]="monthName">
 					{{monthName}}

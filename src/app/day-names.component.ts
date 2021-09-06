@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 	selector: 'day-names',
 	template: `
 		<div class="week-block">
-			<div class="day-name" *ngFor="let dayname of dayNames"> {{dayname}} </div>
+			<div class="day-name" *ngFor="let dayName of dayNames"> {{dayName}} </div>
 		</div>
 	`
 })

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BackOneYearButtonComponent } from './back-one-year-button.component';
 import { ClickExecuteRapidRepeatFunctionModule }
-	from '../../click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function.module';
+	from '@app/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ForwardOneYearButtonComponent } from './forward-one-year-button.component';
@@ -22,14 +22,14 @@ import { YearControlsComponent } from './year-controls.component';
 		ForwardOneYearButtonComponent
 	],
 	imports: [
+		ClickExecuteRapidRepeatFunctionModule,
 		CommonModule,
 		BrowserModule,
 		FormsModule,
 		MatInputModule,
 		MatFormFieldModule,
 		MatIconModule,
-		MatButtonModule,
-		ClickExecuteRapidRepeatFunctionModule
+		MatButtonModule
 	],
 	exports: [YearControlsComponent]
 })
