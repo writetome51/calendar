@@ -5,13 +5,19 @@ import { Component } from '@angular/core';
 	selector: 'month-controls',
 	template: `
 		<div id="month-controls">
+			<back-one-month-button></back-one-month-button>
 			<selected-month></selected-month>
-
-			<div class="up-and-down-buttons-container">
-				<forward-one-month-button></forward-one-month-button>
-				<back-one-month-button></back-one-month-button>
-			</div>
+			<forward-one-month-button></forward-one-month-button>
 		</div>
-	`
+	`,
+	styles: [`
+		#month-controls {
+			display: inline-block;
+			height: 50px;
+			font-size: 28px;
+			margin-top: 4px;
+			margin-right: 15px;
+		}
+	`]
 })
 export class MonthControlsComponent {}

@@ -1,4 +1,4 @@
-import { DaysOfMonthData as daysOfMonth } from '@app/days-of-month.data';
+import { DaysOfMonthData as daysOfMonth } from '@app/shared/days-of-month.data';
 import { Injectable } from '@angular/core';
 import { MonthDataCalculatorService as monthCalculator }
 	from './month-data-calculator_service/month-data-calculator.service';

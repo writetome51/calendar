@@ -1,7 +1,7 @@
 import { BackOneMonthButtonComponent } from './back-one-month-button.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ClickExecuteRapidRepeatFunctionModule }
-	from '../../click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function.module';
+	from '../../shared/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ForwardOneMonthButtonComponent } from './forward-one-month-button.component';

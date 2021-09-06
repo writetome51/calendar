@@ -6,10 +6,10 @@ import { MonthDisplayService } from '../month-display_service/month-display.serv
 	selector: 'back-one-month-button',
 	template: `
 		<click-execute-rapid-repeat-function [context]="this"
-			id="back-one-month-container" class="month-button-container"
+			id="back-one-month-container" class="month-button-container fills-parent-height"
 		>
-			<button mat-icon-button aria-label="subtract one month"
-				class="month-button" id="back-one-month"
+			<button mat-icon-button aria-label="subtract one month" id="back-one-month"
+				class="month-button fills-parent-dimensions"
 			>
 				<mat-icon>keyboard_arrow_down</mat-icon>
 			</button>

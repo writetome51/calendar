@@ -8,6 +8,16 @@ import { Component } from '@angular/core';
 			<month-controls></month-controls>
 			<year-controls></year-controls>
 		</div>
-	`
+	`,
+	styles: [`
+		#month-and-year-controls {
+			display: block;
+			width: 100%;
+			height: fit-content;
+			border: none;
+			text-align: center;
+			margin-bottom: 6px;
+		}
+	`]
 })
 export class MonthAndYearControlsComponent {}

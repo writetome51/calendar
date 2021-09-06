@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
 				<back-one-year-button></back-one-year-button>
 			</div>
 		</div>
-	`
+	`,
+	styles: [`#year-controls {height: 100%;}`]
 })
 export class YearControlsComponent {}

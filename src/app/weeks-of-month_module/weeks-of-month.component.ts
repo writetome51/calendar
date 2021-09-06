@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DaysOfMonth } from '@app/days-of-month.type';
+import { DaysOfMonth } from '@app/shared/days-of-month.type';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { getPage } from '@writetome51/array-get-page';
 import { getRoundedUp } from '@writetome51/get-rounded-up-down';
@@ -8,9 +8,9 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 @Component({
 	selector: 'weeks-of-month',
 	template: `
-		<div class="week-block" *ngFor="let week of weeks">
+		<week-block *ngFor="let week of weeks">
 			<day-of-month *ngFor="let day of week" [label]="day"></day-of-month>
-		</div>
+		</week-block>
 	`
 })
 export class WeeksOfMonthComponent {

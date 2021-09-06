@@ -1,5 +1,5 @@
 import { yearValid } from '../../../year-valid.function';
-import { DaysOfMonth } from '@app/days-of-month.type';
+import { DaysOfMonth } from '@app/shared/days-of-month.type';
 import { getAsWeekdayIndex } from './get-as-weekday-index.function';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }

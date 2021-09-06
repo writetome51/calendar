@@ -6,10 +6,10 @@ import { MonthDisplayService } from '../month-display_service/month-display.serv
 	selector: 'forward-one-month-button',
 	template: `
 		<click-execute-rapid-repeat-function [context]="this"
-			id="forward-one-month-container" class="month-button-container"
+			id="forward-one-month-container" class="month-button-container fills-parent-height"
 		>
-			<button mat-icon-button aria-label="add one month"
-				class="month-button" id="forward-one-month"
+			<button mat-icon-button aria-label="add one month" id="forward-one-month"
+				class="month-button fills-parent-dimensions"
 			>
 				<mat-icon>keyboard_arrow_up</mat-icon>
 			</button>

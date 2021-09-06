@@ -7,13 +7,16 @@
 }
 
 
-html, body {
+html,
+body,
+.fills-parent-height,
+.fills-parent-dimensions,
+#year-container mat-form-field div {
 	height: 100%;
 }
 
 
 body {
-	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -22,8 +25,15 @@ div {
 	float: left;
 }
 
-#cal-boundary {
+
+.fills-parent-width,
+.fills-parent-dimensions,
+#year-container mat-form-field div {
 	width: 100%;
+}
+
+
+#cal-boundary {
 	min-height: 363px;
 	border: 1px solid lightgrey;
 	margin-left: 0;
@@ -31,128 +41,15 @@ div {
 	font-size: 15px;
 }
 
-.week-block {
-	display: block;
-	width: 100%;
-}
-
-
-.day-square {
-	display: inline-block;
-	width: 12.5%;
-	height: 40px;
-	border: 1px solid lightgrey;
-	text-align: right;
-	padding-left: 2px;
-	margin-left: 2px;
-}
-
-
-.day-name {
-	display: inline-block;
-	width: 12.5%;
-	height: 14px;
-	border: 1px solid transparent;
-	padding-left: 2px;
-	padding-bottom: 6px;
-	margin-left: 2px;
-	text-align: center;
-}
-
-
-#month-and-year-controls {
-	display: block;
-	width: 100%;
-	height: fit-content;
-	border: none;
-	text-align: center;
-	margin-bottom: 6px;
-}
-
-
-#month-controls {
-	display: inline-block;
-	height: 50px;
-	font-size: 28px;
-	margin-top: 4px;
-	margin-right: 15px;
-}
-
-
-#month-name {
-	display: inline;
-	position: relative;
-	width: max-content;
-	height: 100%;
-	margin-left: 0;
-	margin-right: 0;
-	padding-left: 4px;
-	padding-right: 4px;
-}
-
-
-#month-selector {
-	display: inline;
-	position: relative;
-	font-size: 16px;
-	width: 100%;
-	padding-left: 4px;
-	height: 100%;
-	border: 1px solid lightgrey;
-}
-
 
 .month-button-container {
 	display: inline-block;
-	height: 100%;
 	width: 35px;
 }
 
 
 .month-button {
-	height: 100%;
-	width: 100%;
 	padding: 2px;
-}
-
-
-#year-controls {
-	height:100%;
-}
-
-
-
-#year-container {
-	display: inline-block;
-	position: relative;
-	width: 105px;
-	height: 50px;
-}
-
-
-#year-container mat-form-field {
-	width: 100%;
-	height: 100%;
-}
-
-
-#year-container mat-form-field div {
-	width: 100%;
-	height: 100%;
-	margin-top: 0;
-	padding-top: 0;
-}
-
-
-#year-container mat-error {
-	margin-top: 10px;
-}
-
-
-#year {
-	font-size: 24px;
-	margin-top: 3px;
-	padding-left: 5px;
 }
 
 
@@ -162,23 +59,31 @@ div {
 
 
 .year-button-container {
-	display:block;
+	display: block;
 	float: none;
-	height:fit-content;
-	width:fit-content;
+	height: fit-content;
+	width: fit-content;
 }
+
 
 .year-button-container .year-button {
-	width:fit-content;
-	height:fit-content;
-	margin:auto;
+	width: fit-content;
+	height: fit-content;
+	margin: auto;
 }
 
 
-#forward-one-year-container{
-	bottom:5px;
+#forward-one-year-container {
+	bottom: 5px;
 }
 
-#back-one-year-container{
-	bottom:15px;
+
+#back-one-year-container {
+	bottom: 15px;
+}
+
+
+#year-container mat-form-field div {
+	margin-top: 0;
+	padding-top: 0;
 }

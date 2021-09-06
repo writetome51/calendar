@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DaysOfMonthData } from './days-of-month.data';
+import { DaysOfMonthData } from './shared/days-of-month.data';
 import { DayScheduleService } from '@app/day-schedule.service';
 import { CalendarContext } from '@app/calendar-context.interface';
 
@@ -7,7 +7,7 @@ import { CalendarContext } from '@app/calendar-context.interface';
 @Component({
 	selector: 'app-calendar',
 	template: `
-		<div id="cal-boundary">
+		<div id="cal-boundary" class="fills-parent-width">
 			<month-and-year-controls></month-and-year-controls>
 
 			<day-names></day-names>
