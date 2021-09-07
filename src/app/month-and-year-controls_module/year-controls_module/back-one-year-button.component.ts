@@ -12,7 +12,7 @@ import { SelectedData } from '../selected.data';
 			<button mat-icon-button aria-label="subtract one year"
 				class="year-button" id="back-one-year"
 			>
-				<mat-icon>keyboard_arrow_down</mat-icon>
+				<mat-icon>keyboard_arrow_left</mat-icon>
 			</button>
 		</click-execute-rapid-repeat-function>
 	`
