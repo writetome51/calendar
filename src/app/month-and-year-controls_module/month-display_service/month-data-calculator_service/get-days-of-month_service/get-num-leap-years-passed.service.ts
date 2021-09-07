@@ -23,7 +23,9 @@ export class GetNumLeapYearsPassedService {
 	}
 
 
-	private static __getNumFalseLeapYearsIn(numPossibleLeapYears, startYear, endingAtYear): number {
+	private static __getNumFalseLeapYearsIn(
+		numPossibleLeapYears, startYear, endingAtYear
+	): number {
 
 		const first2DigitsOfYear = String(endingAtYear).substr(0, 2);
 		const first2DigitsOf__startYear = String(startYear).substr(0, 2);

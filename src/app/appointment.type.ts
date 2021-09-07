@@ -1,4 +1,4 @@
-export interface Appointment {
+export type Appointment = {
 
 	name: string;
 	startTime: string;

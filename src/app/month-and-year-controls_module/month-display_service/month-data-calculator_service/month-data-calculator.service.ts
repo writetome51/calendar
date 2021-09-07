@@ -2,7 +2,6 @@ import { GetDaysOfMonthService as getDaysOfMonth }
 	from './get-days-of-month_service/get-days-of-month.service';
 import { MonthData } from '../month-data.type';
 import { StartYearData } from '../../start-year.data';
-import { MonthNamesData as monthNames } from '../../month-names.data';
 
 
 export class MonthDataCalculatorService {
@@ -11,12 +10,12 @@ export class MonthDataCalculatorService {
 	private static __year = StartYearData;
 
 
-	static getMonthData(monthName?: string, year?: number): MonthData {
-		if (monthName && year) this.__setMonthAndYear(monthName, year);
+	static getMonthData(monthIndex?: number, year?: number): MonthData {
+		if (monthIndex && year) this.__setMonthAndYear(monthIndex, year);
 
 		return {
 			year: this.__year,
-			month: monthNames.data[this.__monthIndex],
+			monthIndex: this.__monthIndex,
 			days: getDaysOfMonth.go(this.__monthIndex, this.__year)
 		};
 	}
@@ -28,8 +27,8 @@ export class MonthDataCalculatorService {
 	}
 
 
-	private static __setMonthAndYear(monthName: string, year: number) {
-		this.__monthIndex = monthNames.data.indexOf(monthName);
+	private static __setMonthAndYear(monthIndex: number, year: number) {
+		this.__monthIndex = monthIndex;
 		this.__year = year;
 	}
 

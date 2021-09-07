@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Appointment } from '@app/appointment.interface';
+import { Appointment } from '@app/appointment.type';
 import { DayScheduleService } from '@app/day-schedule.service';
 import { SelectedData as selected } from '@app/month-and-year-controls_module/selected.data';
 import { MonthNamesData as monthNames }

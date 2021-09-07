@@ -1,12 +1,12 @@
-import { yearValid } from '../../../year-valid.function';
-import { DaysOfMonth } from '@app/shared/days-of-month.type';
+import { DaysOfMonth } from '@shared/days-of-month.type';
 import { getAsWeekdayIndex } from './get-as-weekday-index.function';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }
 	from './get-num-leap-years-passed.service';
 import { isLeapYear } from './is-leap-year.function';
+import { StartYearData as startYear } from '../../../start-year.data';
 import { WeekdayIndex } from './weekday-index.type';
-import { StartYearData as startYear } from '@app/month-and-year-controls_module/start-year.data';
+import { yearValid } from '../../../year-valid.function';
 
 
 export class GetDaysOfMonthService {
@@ -18,7 +18,9 @@ export class GetDaysOfMonthService {
 	static go(monthIndex, year): DaysOfMonth {
 		const {numDays, weekdayIndexOfFirstDay} = this.__getInfo(monthIndex, year);
 
-		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(weekdayIndexOfFirstDay);
+		const daysWithoutNumbers = this.__getDaysThatDontHaveNumbersBefore(
+			weekdayIndexOfFirstDay
+		);
 		const daysWithNumbers = this.__getDaysWithNumbers(numDays);
 		return [...daysWithoutNumbers, ...daysWithNumbers];
 	}

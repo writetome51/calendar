@@ -1,4 +1,4 @@
-export abstract class ImplementationContainerService<T> {
+export abstract class ImplementationContainer<T> {
 
 	protected _implementation: T | undefined;
 

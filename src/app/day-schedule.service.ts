@@ -1,13 +1,17 @@
+import { Appointment } from '@app/appointment.type';
+import { CalendarContextDaySchedule } from '@app/calendar-context-day-schedule.interface';
 import { Injectable } from '@angular/core';
-import { Appointment } from '@app/appointment.interface';
-import { ImplementationContainerService } from '@app/implementation-container.abstract.service';
+import { ImplementationContainer } from '@app/implementation-container';
 
 
 @Injectable()
 export class DayScheduleService
-	extends ImplementationContainerService<{ get: (y, m, d) => Appointment[] }> {
+	extends ImplementationContainer<CalendarContextDaySchedule> {
 
-	get(year: number, month: number, dayOfMonth: number): Appointment[] | undefined {
+	async get(
+		year: number, month: number, dayOfMonth: number
+	): Promise<Appointment[] | void> {
+
 		if (!(this._implementation)) return;
 		if (dayOfMonth < 1) return;
 
