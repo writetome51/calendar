@@ -11,7 +11,7 @@ import { MonthDisplayService } from '../month-display_service/month-display.serv
 			<button mat-icon-button aria-label="add one month" id="forward-one-month"
 				class="month-button fills-parent-dimensions"
 			>
-				<mat-icon>keyboard_arrow_up</mat-icon>
+				<mat-icon>keyboard_arrow_right</mat-icon>
 			</button>
 		</click-execute-rapid-repeat-function>
 	`

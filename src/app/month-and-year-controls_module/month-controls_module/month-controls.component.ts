@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
 	template: `
 		<div id="month-controls">
 			<back-one-month-button></back-one-month-button>
-			<selected-month></selected-month>
 			<forward-one-month-button></forward-one-month-button>
+			<selected-month></selected-month>
 		</div>
 	`,
 	styles: [`

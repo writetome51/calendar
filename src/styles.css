@@ -25,6 +25,18 @@ div {
 	float: left;
 }
 
+#month-name div {
+	float: none;
+}
+
+#month-name mat-form-field div{
+	padding: 0;
+	margin:0;
+}
+#month-name mat-select div{
+	padding: 0;
+}
+
 
 .fills-parent-width,
 .fills-parent-dimensions,

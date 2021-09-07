@@ -11,7 +11,7 @@ import { MonthDisplayService } from '../month-display_service/month-display.serv
 			<button mat-icon-button aria-label="subtract one month" id="back-one-month"
 				class="month-button fills-parent-dimensions"
 			>
-				<mat-icon>keyboard_arrow_down</mat-icon>
+				<mat-icon>keyboard_arrow_left</mat-icon>
 			</button>
 		</click-execute-rapid-repeat-function>
 	`

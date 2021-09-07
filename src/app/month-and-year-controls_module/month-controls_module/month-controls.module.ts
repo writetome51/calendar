@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { NgModule } from '@angular/core';
 import { SelectedMonthComponent } from './selected-month.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SelectedMonthComponent } from './selected-month.component';
 		BrowserModule,
 		FormsModule,
 		ClickExecuteRapidRepeatFunctionModule,
+		MatFormFieldModule,
 		MatIconModule,
 		MatButtonModule,
 		MatSelectModule,
