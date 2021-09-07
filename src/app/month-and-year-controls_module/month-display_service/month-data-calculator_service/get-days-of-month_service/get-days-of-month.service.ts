@@ -3,6 +3,8 @@ import { getAsWeekdayIndex } from './get-as-weekday-index.function';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }
 	from './get-num-leap-years-passed.service';
+import { getHead } from '@writetome51/array-get-head-tail';
+import { getSum } from '@writetome51/get-sum-average-product';
 import { isLeapYear } from './is-leap-year.function';
 import { StartYearData as startYear } from '../../../start-year.data';
 import { WeekdayIndex } from './weekday-index.type';
@@ -73,13 +75,14 @@ export class GetDaysOfMonthService {
 	}
 
 
-	private static __getNumDaysFromJanuaryFirstToFirstOfRequestedMonth(monthIndex, year): number {
+	private static __getNumDaysFromJanuaryFirstToFirstOfRequestedMonth(
+		monthIndex, year
+	): number {
 		this.__checkYear(year);
+		if (monthIndex < 1) return 0;
 
-		for (var month = 0, numDays = 0; month < monthIndex; ++month) {
-			numDays += this.__dayCountsForEachMonth[month];
-		}
-		return numDays;
+		const dayCounts = getHead(monthIndex, this.__dayCountsForEachMonth);
+		return getSum(dayCounts);
 	}
 
 
