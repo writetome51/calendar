@@ -1,6 +1,8 @@
-import { not } from '@writetome51/not';
 import { isLeapYear } from './is-leap-year.function';
-import { getRoundedDown, getRoundedUp } from '@writetome51/get-rounded-up-down';
+import { not } from '@writetome51/not';
+import { getRoundedUp } from '@writetome51/get-rounded-up-down';
+import { getRoundedToPrecision } from '@writetome51/get-rounded-to-precision';
+import { toStr } from '@writetome51/to-str';
 
 
 export class GetNumLeapYearsPassedService {
@@ -9,41 +11,52 @@ export class GetNumLeapYearsPassedService {
 		if (not(isLeapYear(startYear))) throw new Error(`The start year must be a leap year`);
 
 		const numPossibleLeapYears =
-			this.__getNumPossibleLeapYearsAfter({startYear, endingAtYear});
-		const numFalseLeapYears =
-			this.__getNumFalseLeapYearsIn(numPossibleLeapYears, startYear, endingAtYear);
+			this.__getNumPossibleLeapYearsWithin(endingAtYear - startYear);
+		const numFalseLeapYears = this.__getNumFalseLeapYearsPassed(startYear, endingAtYear);
 
 		return (numPossibleLeapYears - numFalseLeapYears);
 	}
 
 
-	private static __getNumPossibleLeapYearsAfter({startYear, endingAtYear}): number {
-		const difference = ((getRoundedDown(endingAtYear)) - startYear);
-		return getRoundedUp(difference / 4);
+	private static __getNumPossibleLeapYearsWithin(numYears): number {
+		return getRoundedUp(numYears / 4);
 	}
 
 
-	private static __getNumFalseLeapYearsIn(
-		numPossibleLeapYears, startYear, endingAtYear
-	): number {
+	private static __getNumFalseLeapYearsPassed(startYear, endingAtYear): number {
+		const [centuryOfEndYear, centuryOfStartYear] = getThe2CenturiesWithoutTheirLast2Digits();
 
-		const first2DigitsOfYear = String(endingAtYear).substr(0, 2);
-		const first2DigitsOf__startYear = String(startYear).substr(0, 2);
 		// If we're still in same century as startYear, there are no false leap years.
-		if (first2DigitsOfYear === first2DigitsOf__startYear) return 0;
+		if (centuryOfEndYear === centuryOfStartYear) return 0;
 
-		// False leap years are any year that is evenly divisible by 100,
-		// evenly divisible by 4, but not evenly divisible by 400.
-		else return this.____getNumFalseLeapYearsIn(numPossibleLeapYears, startYear);
+		const numCenturiesToCheck = centuryOfEndYear - centuryOfStartYear;
+
+		// False leap years are any year that begins a new century (evenly divisible by 100),
+		// but is not evenly divisible by 400.
+		return this.____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear);
+
+
+		function getThe2CenturiesWithoutTheirLast2Digits(): [number, number] {
+			const numDigitsEnd = toStr(endingAtYear).length;
+			const numDigitsStart = toStr(startYear).length;
+			return [
+				Number( toStr(endingAtYear).substr(0, numDigitsEnd - 2) ),
+				Number( toStr(startYear).substr(0, numDigitsStart - 2) )
+			];
+		}
 	}
 
 
-	private static ____getNumFalseLeapYearsIn(numPossibleLeapYears, startYear): number {
-		for (var i = 1, numFalseLeapYears = 0; i <= numPossibleLeapYears; ++i) {
-			const year = (startYear + (i * 4));
-			if (year % 100 === 0) {
-				if (not(isLeapYear(year))) ++numFalseLeapYears;
-			}
+	private static ____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear): number {
+		let yearToCheck = getRoundedToPrecision(startYear, -2);
+		// temp:
+		console.log('year to check: ', yearToCheck);
+
+		let numFalseLeapYears = 0;
+
+		for (let i = 0; i < numCenturiesToCheck; ++i) {
+			yearToCheck += 100;
+			if (not(isLeapYear(yearToCheck))) ++numFalseLeapYears;
 		}
 		return numFalseLeapYears;
 	}

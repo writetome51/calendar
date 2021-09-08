@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MonthDisplayService } from '../month-display_service/month-display.service';
-import { MonthNamesData } from '../month-names.data';
+import { MonthNamesData } from '@shared/month-names.data';
 import { SelectedData } from '@app/month-and-year-controls_module/selected.data';
 
 

@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
 import { Appointment } from '@app/appointment.type';
+import { Component, Input, OnInit } from '@angular/core';
 import { DayScheduleService } from '@app/day-schedule.service';
+import { MonthNamesData as monthNames } from '@shared/month-names.data';
 import { SelectedData as selected } from '@app/month-and-year-controls_module/selected.data';
-import { MonthNamesData as monthNames }
-	from '@app/month-and-year-controls_module/month-names.data';
 
 
 @Component({
@@ -26,19 +25,20 @@ import { MonthNamesData as monthNames }
 		}
 	`]
 })
-export class DayOfMonthComponent {
+export class DayOfMonthComponent implements OnInit {
 
 	@Input() label: '' | number = '';
-
-
-	get appointments(): Appointment[] | undefined {
-		return this.__schedule.get(
-			selected.year, this.__getMonthNumber(selected.month), Number(this.label)
-		);
-	}
+	appointments: Appointment[] | undefined;
 
 
 	constructor(private __schedule: DayScheduleService) {}
+
+
+	async ngOnInit() { // @ts-ignore
+		this.appointments = await this.__schedule.get(
+			selected.year, this.__getMonthNumber(selected.month), Number(this.label)
+		);
+	}
 
 
 	private __getMonthNumber(monthName) {
