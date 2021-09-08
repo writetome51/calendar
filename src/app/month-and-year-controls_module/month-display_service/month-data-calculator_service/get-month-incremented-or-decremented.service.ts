@@ -1,10 +1,10 @@
 export class GetMonthIncrementedOrDecrementedService {
 
 	static go(plusOrMinusOne: 1 | -1, {monthIndex, year}): { monthIndex, year } {
-		let data: { monthIndex, year } =
-			this.__getMonthIndexAndYearPreparedIfEnteringNextOrPreviousYear(
-				plusOrMinusOne, monthIndex, year
-			);
+
+		let data = this.__getMonthIndexAndYearPreparedIfEnteringNextOrPreviousYear(
+			plusOrMinusOne, monthIndex, year
+		);
 		data.monthIndex += plusOrMinusOne;
 		return data;
 	}
