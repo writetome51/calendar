@@ -21,19 +21,20 @@ export class MonthDisplayService {
 
 
 	goForwardOrBackOne(plusOrMinusOne: 1 | -1) {
-		const monthData = monthCalculator.getNextOrPreviousMonthData(plusOrMinusOne);
+		const {year, monthIndex, days} =
+			monthCalculator.getNextOrPreviousMonthData(plusOrMinusOne);
 
-		selected.year = monthData.year;
-		selected.month = monthNames.data[monthData.monthIndex];
-		daysOfMonth.data = monthData.days;
+		selected.year = year;
+		selected.month = monthNames.data[monthIndex];
+		daysOfMonth.data = days;
 	}
 
 
 	updateOnChangeOfSelectedMonthOrYear() {
-		const monthData = monthCalculator.getMonthData(
+		const {days} = monthCalculator.getMonthData(
 			monthNames.data.indexOf(selected.month), selected.year
 		);
-		daysOfMonth.data = monthData.days;
+		daysOfMonth.data = days;
 	}
 
 }
