@@ -1,7 +1,7 @@
-import { isLeapYear } from '@writetome51/is-leap-year';
-import { getRoundedDown, getRoundedUp } from '@writetome51/get-rounded-up-down';
-import { getRoundedToPrecision } from '@writetome51/get-rounded-to-precision';
+import { isLeapYear } from './is-leap-year.function';
 import { not } from '@writetome51/not';
+import { getRoundedUp } from '@writetome51/get-rounded-up-down';
+import { getRoundedToPrecision } from '@writetome51/get-rounded-to-precision';
 import { toStr } from '@writetome51/to-str';
 
 
@@ -25,6 +25,7 @@ export class GetNumLeapYearsPassedService {
 
 	private static __getNumFalseLeapYearsPassed(startYear, endingAtYear): number {
 		const [centuryOfEndYear, centuryOfStartYear] = getThe2CenturiesWithoutTheirLast2Digits();
+
 		// If we're still in same century as startYear, there are no false leap years.
 		if (centuryOfEndYear === centuryOfStartYear) return 0;
 
@@ -32,7 +33,7 @@ export class GetNumLeapYearsPassedService {
 
 		// False leap years are any year that begins a new century (evenly divisible by 100),
 		// but is not evenly divisible by 400.
-		return this.__getNumFalseLeapYearsIn(numCenturiesToCheck, startYear);
+		return this.____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear);
 
 
 		function getThe2CenturiesWithoutTheirLast2Digits(): [number, number] {
@@ -46,19 +47,18 @@ export class GetNumLeapYearsPassedService {
 	}
 
 
-	private static __getNumFalseLeapYearsIn(numCenturiesToCheck, startYear): number {
-		let centuryToCheck = getRoundedToPrecision(startYear, -2);
+	private static ____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear): number {
+		let yearToCheck = getRoundedToPrecision(startYear, -2);
+		// temp:
+		console.log('year to check: ', yearToCheck);
+
 		let numFalseLeapYears = 0;
 
 		for (let i = 0; i < numCenturiesToCheck; ++i) {
-			centuryToCheck += 100;
-			if (not(isLeapYear(centuryToCheck))) ++numFalseLeapYears;
-			else i = numCenturiesToCheck; // break
+			yearToCheck += 100;
+			if (not(isLeapYear(yearToCheck))) ++numFalseLeapYears;
 		}
-		numCenturiesToCheck -= numFalseLeapYears;
-		let numRealLeapYears = getRoundedDown((numCenturiesToCheck * 100) / 400);
-
-		return numCenturiesToCheck - numRealLeapYears;
+		return numFalseLeapYears;
 	}
 
 }

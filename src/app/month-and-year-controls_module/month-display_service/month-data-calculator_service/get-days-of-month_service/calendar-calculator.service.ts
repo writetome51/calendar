@@ -3,12 +3,12 @@ import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }
 	from './get-num-leap-years-passed.service';
 import { getHead } from '@writetome51/array-get-head-tail';
 import { getSum } from '@writetome51/get-sum-average-product';
+import { isLeapYear } from './is-leap-year.function';
 import { StartYearData as startYear } from '../../../start-year.data';
 import { WeekdayIndex } from './weekday-index.type';
 import { yearValid } from '../../../year-valid.function';
 import { YMD_asNumbers } from './y-m-d_as-numbers.type';
 import { getObjectCopy } from '@writetome51/get-object-copy';
-import { isLeapYear } from '@writetome51/is-leap-year';
 
 
 export class CalendarCalculatorService {
