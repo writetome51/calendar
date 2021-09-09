@@ -1,6 +1,6 @@
-import { isLeapYear } from './is-leap-year.function';
-import { not } from '@writetome51/not';
 import { getRoundedUp } from '@writetome51/get-rounded-up-down';
+import { isLeapYear } from '@writetome51/is-leap-year';
+import { not } from '@writetome51/not';
 import { toStr } from '@writetome51/to-str';
 
 
@@ -23,41 +23,51 @@ export class GetNumLeapYearsPassedService {
 
 
 	private static __getNumFalseLeapYearsPassed(startYear, endingAtYear): number {
-		const [centuryOfEndYear, centuryOfStartYear] = getThe2Centuries();
+		// if `endingAtYear` begins a new century, it cannot be counted!
+		// This is because we're ending on it, meaning it hasn't passed.
+		if (toStr(endingAtYear).endsWith('00')) --endingAtYear;
+
+		let [centuryOfStartYear, centuryOfEndYear] =
+			this.__getThe2CenturiesWithoutTheirLast2Digits(startYear, endingAtYear);
+
 		// If we're still in same century as startYear, there are no false leap years.
 		if (centuryOfEndYear === centuryOfStartYear) return 0;
 
-		const numCenturiesToCheck = ((centuryOfEndYear / 100) - (centuryOfStartYear / 100));
+		const numCenturiesToCheck = centuryOfEndYear - centuryOfStartYear;
 
 		// False leap years are any year that begins a new century (evenly divisible by 100),
 		// but is not evenly divisible by 400.
-		return this.____getNumFalseLeapYearsIn(numCenturiesToCheck, centuryOfStartYear);
-
-
-		function getThe2Centuries(): [number, number] {
-			const numDigitsEnd = toStr(endingAtYear).length;
-			const numDigitsStart = toStr(startYear).length;
-			return [
-				Number(toStr(endingAtYear).substr(0, numDigitsEnd - 2) + '00'),
-				Number(toStr(startYear).substr(0, numDigitsStart - 2) + '00')
-			];
-		}
+		return this.____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear);
 	}
 
 
-	private static ____getNumFalseLeapYearsIn(numCenturiesToCheck, centuryOfStartYear): number {
-		let centuryToCheck = centuryOfStartYear + 100;
+	private static ____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear): number {
+		let centuryToCheck = Number(
+			toStr(this.__withoutLast2Digits(startYear)) + '00'
+		);
 		let numFalseLeapYears = 0;
 
-		while (not(isLeapYear(centuryToCheck))) {
-			++numFalseLeapYears;
+		for (let i = 0; i < numCenturiesToCheck; ++i) {
 			centuryToCheck += 100;
+			if (not(isLeapYear(centuryToCheck))) ++numFalseLeapYears;
 		}
-		// the extra 1 counts the last call of isLeapYear(centuryToCheck):
-		numCenturiesToCheck -= (numFalseLeapYears + 1);
+		return numFalseLeapYears;
+	}
 
-		let numRealLeapYearsRemaining = Math.round(numCenturiesToCheck / 4);
-		return numCenturiesToCheck - numRealLeapYearsRemaining + numFalseLeapYears;
+
+	private static __getThe2CenturiesWithoutTheirLast2Digits(
+		startYear, endingAtYear
+	): [number, number] {
+		return [
+			this.__withoutLast2Digits(startYear),
+			this.__withoutLast2Digits(endingAtYear)
+		];
+	}
+
+
+	private static __withoutLast2Digits(num): number {
+		const numDigits = toStr(num).length;
+		return Number( toStr(num).substr(0, numDigits - 2) );
 	}
 
 }
