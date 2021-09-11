@@ -27,20 +27,7 @@ export class GetNumLeapYearsPassedService {
 
 	private static __getNumFalseLeapYearsPassed(startYear, endingAtYear): number {
 		const numCenturiesToCheck =  this.__getNumCenturiesToCheck(startYear, endingAtYear);
-		return this.____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear);
-	}
-
-
-	private static ____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear): number {
-		let centuryToCheck = Number(
-			toStr(this.__withoutLast2Digits(startYear)) + '00'
-		);
-
-		for (var i = 0, numFalseLeapYears = 0; i < numCenturiesToCheck; ++i) {
-			centuryToCheck += 100;
-			if (not(isLeapYear(centuryToCheck))) ++numFalseLeapYears;
-		}
-		return numFalseLeapYears;
+		return this.__getNumFalseLeapYearsIn(numCenturiesToCheck, startYear);
 	}
 
 
@@ -53,6 +40,19 @@ export class GetNumLeapYearsPassedService {
 			this.__getThe2CenturiesWithoutTheirLast2Digits(startYear, endingAtYear);
 
 		return centuryOfEndYear - centuryOfStartYear;
+	}
+
+
+	private static __getNumFalseLeapYearsIn(numCenturiesToCheck, startYear): number {
+		let centuryToCheck = Number(
+			toStr(this.__withoutLast2Digits(startYear)) + '00'
+		);
+
+		for (var i = 0, numFalseLeapYears = 0; i < numCenturiesToCheck; ++i) {
+			centuryToCheck += 100;
+			if (not(isLeapYear(centuryToCheck))) ++numFalseLeapYears;
+		}
+		return numFalseLeapYears;
 	}
 
 
