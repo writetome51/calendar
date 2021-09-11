@@ -54,7 +54,6 @@ export class SelectedMonthComponent {
 	monthNames = MonthNamesData;
 
 
-	constructor(public monthDisplay: MonthDisplayService) {
-	}
+	constructor(public monthDisplay: MonthDisplayService) {}
 
 }

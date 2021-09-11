@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
 import { MonthDisplayService } from '../month-display_service/month-display.service';
+import { ClickExecuteRapidRepeatFunctionContext }
+	from '@shared/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function-context.interface';
 
 
 @Component({
 	selector: 'back-one-month-button',
 	template: `
-		<click-execute-rapid-repeat-function [context]="this"
-			id="back-one-month-container" class="month-button-container fills-parent-height"
+		<rapid-repeat-mat-icon-button [context]="this" aria-label="subtract one month"
+			id="back-one-month" class="month-button fills-parent-dimensions"
 		>
-			<button mat-icon-button aria-label="subtract one month" id="back-one-month"
-				class="month-button fills-parent-dimensions"
-			>
-				<mat-icon>keyboard_arrow_left</mat-icon>
-			</button>
-		</click-execute-rapid-repeat-function>
+			<mat-icon>keyboard_arrow_left</mat-icon>
+		</rapid-repeat-mat-icon-button>
 	`
 })
-export class BackOneMonthButtonComponent {
+export class BackOneMonthButtonComponent implements ClickExecuteRapidRepeatFunctionContext {
 
 	constructor(public monthDisplay: MonthDisplayService) {}
 
