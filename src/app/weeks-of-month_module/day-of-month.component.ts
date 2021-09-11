@@ -1,6 +1,6 @@
-import { Appointment } from '@app/appointment.type';
+import { Appointment } from '@shared/appointment.type';
 import { Component, Input, OnInit } from '@angular/core';
-import { DayScheduleService } from '@app/day-schedule.service';
+import { DayScheduleService } from '@shared/day-schedule.service';
 import { MonthNamesData as monthNames } from '@shared/month-names.data';
 import { SelectedData as selected } from '@app/month-and-year-controls_module/selected.data';
 

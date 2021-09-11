@@ -3,21 +3,19 @@ import { GetNumLeapYearsPassedService as getNumLeapYearsPassed }
 	from './get-num-leap-years-passed.service';
 import { getHead } from '@writetome51/array-get-head-tail';
 import { getSum } from '@writetome51/get-sum-average-product';
-import { StartYearData as startYear } from '../../../start-year.data';
-import { WeekdayIndex } from './weekday-index.type';
-import { yearValid } from '../../../year-valid.function';
-import { YMD_asNumbers } from './y-m-d_as-numbers.type';
-import { getObjectCopy } from '@writetome51/get-object-copy';
+import { StartYearData as startYear } from '../../../../start-year.data';
+import { WeekdayIndex } from '../weekday-index.type';
+import { yearValid } from '../../../../year-valid.function';
 import { isLeapYear } from '@writetome51/is-leap-year';
 
 
-export class CalendarCalculatorService {
+export class MonthInfoService {
 
 	private static __dayCountsForEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	private static __checkedYear = 0;
 
 
-	private static __getInfo(
+	static getInfo(
 		monthIndex, year
 	): { numDays: number, weekdayIndexOfFirstDay: WeekdayIndex } {
 		if (yearValid(year)) {
@@ -33,21 +31,6 @@ export class CalendarCalculatorService {
 	static getNumDaysInMonth(monthIndex, year): number {
 		this.__checkYear(year);
 		return this.__dayCountsForEachMonth[monthIndex];
-	}
-
-
-	static getDateWithDaysAdded(numDays, ymd: YMD_asNumbers): YMD_asNumbers {
-		let newYmd = getObjectCopy(ymd);
-
-		let numDaysRemainingInMonth = this.getNumDaysInMonth(ymd.m - 1, ymd.y) - ymd.d;
-		let numDaysRemaining = numDays - numDaysRemainingInMonth;
-
-		while (numDaysRemaining > 0) {
-
-		}
-
-		newYmd.d += numDays;
-		return newYmd;
 	}
 
 

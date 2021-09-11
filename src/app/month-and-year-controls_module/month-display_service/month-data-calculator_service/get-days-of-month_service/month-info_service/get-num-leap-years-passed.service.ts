@@ -11,6 +11,9 @@ export class GetNumLeapYearsPassedService {
 
 		const numPossibleLeapYears =
 			this.__getNumPossibleLeapYearsWithin(endingAtYear - startYear);
+
+		// False leap years are any year that begins a new century (ends with '00'),
+		// but is not evenly divisible by 400.
 		const numFalseLeapYears = this.__getNumFalseLeapYearsPassed(startYear, endingAtYear);
 
 		return (numPossibleLeapYears - numFalseLeapYears);
@@ -23,20 +26,7 @@ export class GetNumLeapYearsPassedService {
 
 
 	private static __getNumFalseLeapYearsPassed(startYear, endingAtYear): number {
-		// if `endingAtYear` begins a new century, it cannot be counted!
-		// This is because we're ending on it, meaning it hasn't passed.
-		if (toStr(endingAtYear).endsWith('00')) --endingAtYear;
-
-		let [centuryOfStartYear, centuryOfEndYear] =
-			this.__getThe2CenturiesWithoutTheirLast2Digits(startYear, endingAtYear);
-
-		// If we're still in same century as startYear, there are no false leap years.
-		if (centuryOfEndYear === centuryOfStartYear) return 0;
-
-		const numCenturiesToCheck = centuryOfEndYear - centuryOfStartYear;
-
-		// False leap years are any year that begins a new century (evenly divisible by 100),
-		// but is not evenly divisible by 400.
+		const numCenturiesToCheck =  this.__getNumCenturiesToCheck(startYear, endingAtYear);
 		return this.____getNumFalseLeapYearsIn(numCenturiesToCheck, startYear);
 	}
 
@@ -45,13 +35,24 @@ export class GetNumLeapYearsPassedService {
 		let centuryToCheck = Number(
 			toStr(this.__withoutLast2Digits(startYear)) + '00'
 		);
-		let numFalseLeapYears = 0;
 
-		for (let i = 0; i < numCenturiesToCheck; ++i) {
+		for (var i = 0, numFalseLeapYears = 0; i < numCenturiesToCheck; ++i) {
 			centuryToCheck += 100;
 			if (not(isLeapYear(centuryToCheck))) ++numFalseLeapYears;
 		}
 		return numFalseLeapYears;
+	}
+
+
+	private static __getNumCenturiesToCheck(startYear, endingAtYear): number {
+		// if `endingAtYear` begins a new century, it cannot be counted as a century to check.
+		// This is because we're ending on it, meaning it hasn't passed.
+		if (toStr(endingAtYear).endsWith('00')) --endingAtYear;
+
+		let [centuryOfStartYear, centuryOfEndYear] =
+			this.__getThe2CenturiesWithoutTheirLast2Digits(startYear, endingAtYear);
+
+		return centuryOfEndYear - centuryOfStartYear;
 	}
 
 

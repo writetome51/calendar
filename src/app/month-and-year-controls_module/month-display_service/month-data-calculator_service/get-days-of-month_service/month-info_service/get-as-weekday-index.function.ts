@@ -1,4 +1,4 @@
-import { WeekdayIndex } from './weekday-index.type';
+import { WeekdayIndex } from '../weekday-index.type';
 import { getRoundedDown } from '@writetome51/get-rounded-up-down';
 
 

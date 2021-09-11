@@ -2,7 +2,7 @@ import { GetDaysOfMonthService as getDaysOfMonth }
 	from './get-days-of-month_service/get-days-of-month.service';
 import { GetMonthIncrementedOrDecrementedService as getMonthIncrementedOrDecremented }
 	from './get-month-incremented-or-decremented.service';
-import { MonthData } from '../month-data.type';
+import { MonthData } from './month-data.type';
 import { StartYearData } from '../../start-year.data';
 
 
@@ -25,21 +25,17 @@ export class MonthDataCalculatorService {
 
 
 	static getNextOrPreviousMonthData(plusOrMinusOne: 1 | -1): MonthData {
-		this.__incrementOrDecrement__monthIndex(plusOrMinusOne);
+		const {monthIndex, year} = getMonthIncrementedOrDecremented.go(
+			plusOrMinusOne, {monthIndex: this.__monthIndex,  year: this.__year}
+		);
+		this.__monthIndex = monthIndex;
+		this.__year = year;
+
 		return this.getMonthData();
 	}
 
 
 	private static __setMonthAndYear(monthIndex: number, year: number) {
-		this.__monthIndex = monthIndex;
-		this.__year = year;
-	}
-
-
-	private static __incrementOrDecrement__monthIndex(plusOrMinusOne) {
-		const {monthIndex, year} = getMonthIncrementedOrDecremented.go(
-			plusOrMinusOne, {monthIndex: this.__monthIndex,  year: this.__year}
-		);
 		this.__monthIndex = monthIndex;
 		this.__year = year;
 	}

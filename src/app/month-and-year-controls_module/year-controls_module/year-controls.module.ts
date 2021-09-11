@@ -6,7 +6,6 @@ import { ForwardOneYearButtonComponent } from './forward-one-year-button.compone
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { RapidRepeatMatIconButtonModule }
 	from '@shared/rapid-repeat-mat-icon-button_module/rapid-repeat-mat-icon-button.module';
@@ -29,7 +28,6 @@ import { YearControlsComponent } from './year-controls.component';
 		MatInputModule,
 		MatFormFieldModule,
 		MatIconModule,
-		MatButtonModule
 	],
 	exports: [YearControlsComponent]
 })
