@@ -15,10 +15,7 @@ import { SelectedData as selected } from '@app/month-and-year-controls_module/se
 				{{appointments.length}}
 			</span>
 		</div>
-	`,
-	styles: [`
-
-	`]
+	`
 })
 export class DayOfMonthComponent implements OnInit {
 
