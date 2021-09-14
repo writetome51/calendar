@@ -25,18 +25,12 @@ import { SelectedData } from '@app/month-and-year-controls_module/selected.data'
 	styles: [
 		`#month-name {
 			display: inline-block;
-			height:65px;
 		}`,
 		`mat-form-field {
-			width: 100px;
-			padding: 0;
-		}`,
-		`mat-select {
+			width: 140px;
 			padding: 0;
 		}`,
 		`#month-selector {
-			display: inline;
-			font-size: 0.5em;
 			padding-left: 4px;
 		}`
 	]

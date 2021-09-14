@@ -30,14 +30,8 @@ import { yearValid } from '../year-valid.function';
 		}`,
 		`#year-container mat-form-field {
 			width: 100%;
-			height: 100%;
-		}`,
-		`#year-container mat-error {
-			margin-top: 10px;
 		}`,
 		`#year-input {
-			font-size: 24px;
-			margin-top: 3px;
 			padding-left: 5px;
 		}`
 	]

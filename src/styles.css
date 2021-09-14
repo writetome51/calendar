@@ -10,8 +10,7 @@
 html,
 body,
 .fills-parent-height,
-.fills-parent-dimensions,
-#year-container mat-form-field div {
+.fills-parent-dimensions {
 	height: 100%;
 }
 
@@ -29,57 +28,19 @@ body {
 
 
 #month-controls {
-	bottom: 11px;
-}
-
-
-#month-name mat-form-field {
-	width: 140px;
-}
-
-#month-name mat-form-field .mat-form-field-outline {
-	height: 55px;
 
 }
 
-#month-name mat-select {
-	font-size: 1em;
-	padding-left: 20px;
-}
-
-
-#month-name mat-form-field div {
-	padding: 0;
-	margin: 0;
-	font-size: 1em;
-}
-
-
-#month-name mat-select div {
-	font-size: 18px;
-	padding: 0;
-}
-
-#month-name .mat-select-value {
-	top: 8px;
-	padding-left: 10px;
-}
-
-#month-name mat-form-field div.mat-select-arrow {
-	top: 10px;
-	right: 20px;
-	font-size: 10px;
-}
 
 .fills-parent-width,
-.fills-parent-dimensions,
-#year-container mat-form-field div {
+.fills-parent-dimensions {
 	width: 100%;
 }
 
 
 .controls-container {
 	display: inline-block;
+	font-size: 18px;
 }
 
 
@@ -132,22 +93,7 @@ body {
 	text-align: center;
 }
 
-#month-controls .left-and-right-arrow-buttons-container {
-	top: 5px;
-}
-
-#year-controls .left-and-right-arrow-buttons-container {
-	bottom: 6px;
-}
-
 
 .left-and-right-arrow-buttons-container {
 	display: inline-block;
-	font-size: 40px;
-}
-
-
-#year-container mat-form-field div {
-	margin-top: 0;
-	padding-top: 0;
 }
