@@ -27,6 +27,22 @@ import { WeekBlockModule } from '@shared/week-block_module/week-block.module';
 		BrowserAnimationsModule,
 		WeekBlockModule
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [
+		AppComponent,
+		// CalendarComponent  // To export CalendarComponent as a Web Component
+	]
 })
-export class AppModule {}
+export class AppModule {
+
+	/****************
+	Code needed to export the CalendarComponent as a Web Component:
+
+	 constructor(private injector: Injector) {
+		const el = createCustomElement(CalendarComponent, {injector});
+		customElements.define('calendar-widget', el);
+	}
+
+	ngDoBootstrap() {}
+	 ****************/
+
+}

@@ -4,23 +4,22 @@ import { Component } from '@angular/core';
 @Component({
 	selector: 'day-names',
 	template: `
-		<week-block>
-			<div class="calendar-day day-name" *ngFor="let dayName of dayNames">
+		<div class="week-block">
+			<div class="calendar-day day-name" *ngFor="let dayName of data">
 				{{dayName}}
 			</div>
-		</week-block>
+		</div>
 	`,
-	styles: [`
-		.day-name {
-			height: fit-content;
+	styles: [
+		`.day-name {
 			border: 1px solid transparent;
 			padding-bottom: 3px;
 			text-align: center;
-		}
-	`]
+		}`
+	]
 })
 export class DayNamesComponent {
 
-	readonly dayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+	readonly data = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
 
 }

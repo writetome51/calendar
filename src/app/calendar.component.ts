@@ -7,7 +7,7 @@ import { DayScheduleService } from '@shared/day-schedule.service';
 @Component({
 	selector: 'app-calendar',
 	template: `
-		<div id="cal-boundary" class="fills-parent-width">
+		<div id="cal-boundary">
 			<month-and-year-controls></month-and-year-controls>
 
 			<day-names></day-names>

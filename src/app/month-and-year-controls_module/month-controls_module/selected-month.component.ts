@@ -7,10 +7,10 @@ import { SelectedData } from '@app/month-and-year-controls_module/selected.data'
 @Component({
 	selector: 'selected-month',
 	template: `
-		<div id="month-name" class="fills-parent-height">
-
+		<div id="month-name" class="calendar-input-container">
 			<mat-form-field appearance="outline" class="fills-parent-height">
-				<mat-select id="month-selector" class="fills-parent-height"
+
+				<mat-select id="month-selector" class="fills-parent-dimensions"
 							[(value)]="selected.month" [placeholder]="selected.month"
 							(valueChange)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
 				>
@@ -18,32 +18,28 @@ import { SelectedData } from '@app/month-and-year-controls_module/selected.data'
 						{{monthName}}
 					</mat-option>
 				</mat-select>
-			</mat-form-field>
 
+			</mat-form-field>
 		</div>
 	`,
 	styles: [
 		`#month-name {
-			display: inline;
-			height:50px;
 			margin-left: 0;
 			margin-right: 0;
 			padding-left: 4px;
 			padding-right: 4px;
+			height:fit-content;
 		}`,
 		`mat-form-field {
 			width: 100px;
-			height:50px;
 			padding: 0;
 		}`,
 		`mat-select {
 			padding: 0;
-			width:100%;
-			height:50px;
 		}`,
 		`#month-selector {
 			display: inline;
-			font-size: 0.25em;
+			font-size: 0.5em;
 			padding-left: 4px;
 		}`
 	]

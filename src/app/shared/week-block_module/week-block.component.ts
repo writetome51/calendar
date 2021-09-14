@@ -3,10 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'week-block',
   template: `
-	  <div class="week-block">
+	  <div class="week-block fills-parent-dimensions">
 		 <ng-content></ng-content>
 	  </div>
-  `,
-  styles: [`.week-block {display: block; width: 100%;}`]
+  `
 })
 export class WeekBlockComponent {}

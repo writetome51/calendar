@@ -9,7 +9,7 @@ import { SelectedData as selected } from '@app/month-and-year-controls_module/se
 	selector: 'day-of-month',
 	template: `
 		<div class="day-square calendar-day">
-			{{label}}
+			{{number}}
 
 			<span *ngIf="appointments && appointments.length" class="num-appointments">
 				{{appointments.length}}
@@ -27,7 +27,7 @@ import { SelectedData as selected } from '@app/month-and-year-controls_module/se
 })
 export class DayOfMonthComponent implements OnInit {
 
-	@Input() label: '' | number = '';
+	@Input() number: '' | number = '';
 	appointments: Appointment[] | undefined;
 
 
@@ -36,7 +36,7 @@ export class DayOfMonthComponent implements OnInit {
 
 	async ngOnInit() { // @ts-ignore
 		this.appointments = await this.__schedule.get(
-			selected.year, this.__getMonthNumber(selected.month), Number(this.label)
+			selected.year, this.__getMonthNumber(selected.month), Number(this.number)
 		);
 	}
 

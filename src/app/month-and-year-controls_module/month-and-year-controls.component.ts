@@ -9,14 +9,11 @@ import { Component } from '@angular/core';
 			<year-controls></year-controls>
 		</div>
 	`,
-	styles: [`
-		#month-and-year-controls {
-			display: block;
-			width: 100%;
-			height: fit-content;
-			border: none;
+	styles: [
+		`#month-and-year-controls {
+
 			text-align: center;
-		}
-	`]
+		}`
+	]
 })
 export class MonthAndYearControlsComponent {}
