@@ -22,23 +22,54 @@ body {
 
 
 #cal-boundary {
-	height: fit-content;
 	border: 1px solid lightgrey;
 	padding: 2px 4px;
 	font-size: 1em;
 }
 
 
+#month-controls {
+	bottom: 11px;
+}
+
+
+#month-name mat-form-field {
+	width: 140px;
+}
+
+#month-name mat-form-field .mat-form-field-outline {
+	height: 55px;
+
+}
+
+#month-name mat-select {
+	font-size: 1em;
+	padding-left: 20px;
+}
+
+
 #month-name mat-form-field div {
 	padding: 0;
 	margin: 0;
+	font-size: 1em;
 }
 
 
 #month-name mat-select div {
+	font-size: 18px;
 	padding: 0;
 }
 
+#month-name .mat-select-value {
+	top: 8px;
+	padding-left: 10px;
+}
+
+#month-name mat-form-field div.mat-select-arrow {
+	top: 10px;
+	right: 20px;
+	font-size: 10px;
+}
 
 .fills-parent-width,
 .fills-parent-dimensions,
@@ -58,64 +89,61 @@ body {
 
 
 .calendar-input-container {
-	height: 100%;
 	display: inline-block;
+	padding-left: 4px;
+	padding-right: 4px;
 }
 
 
 .week-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 	margin: auto;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.day-column {
+	display: inline-block;
+	justify-content: center;
+	width: 13.7%;
+	margin: auto auto auto 2px;
 }
 
 
 .calendar-day {
-	display: inline-flex;
-	flex-flow: row;
-	box-sizing: border-box;
-
-	margin-left: 2px;
-}
-
-
-.month-button-container {
 	display: inline-block;
-	width: 35px;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	box-sizing: border-box;
+}
+
+.day-square {
+	text-align: center;
+	padding-bottom: 3px;
 }
 
 
-.month-button {
-	padding: 2px;
+.day-name {
+	border: 1px solid transparent;
+	padding-bottom: 3px;
+	text-align: center;
+}
+
+#month-controls .left-and-right-arrow-buttons-container {
+	top: 5px;
+}
+
+#year-controls .left-and-right-arrow-buttons-container {
+	bottom: 6px;
 }
 
 
 .left-and-right-arrow-buttons-container {
 	display: inline-block;
-	height: fit-content;
-}
-
-
-.year-button-container {
-	display: block;
-	float: none;
-	height: fit-content;
-	width: fit-content;
-}
-
-
-.year-button-container .year-button {
-	width: fit-content;
-	height: fit-content;
-	margin: auto;
-}
-
-
-#forward-one-year-container {
-	bottom: 5px;
-}
-
-
-#back-one-year-container {
-	bottom: 15px;
+	font-size: 40px;
 }
 
 

@@ -8,7 +8,7 @@ import { SelectedData as selected } from '@app/month-and-year-controls_module/se
 @Component({
 	selector: 'day-of-month',
 	template: `
-		<div class="day-square calendar-day">
+		<div class="calendar-day day-square">
 			{{number}}
 
 			<span *ngIf="appointments && appointments.length" class="num-appointments">
@@ -17,12 +17,7 @@ import { SelectedData as selected } from '@app/month-and-year-controls_module/se
 		</div>
 	`,
 	styles: [`
-		.day-square {
-			min-height: 50px;
-			height: 100%;
-			border: 1px solid lightgrey;
-			text-align: right;
-		}
+
 	`]
 })
 export class DayOfMonthComponent implements OnInit {

@@ -9,13 +9,10 @@ import { Component } from '@angular/core';
 			<selected-year></selected-year>
 
 			<div class="left-and-right-arrow-buttons-container">
-				<forward-one-year-button></forward-one-year-button>
 				<back-one-year-button></back-one-year-button>
+				<forward-one-year-button></forward-one-year-button>
 			</div>
 		</div>
-	`,
-	styles: [
-		`* {height:100%;}`,
-	]
+	`
 })
 export class YearControlsComponent {}

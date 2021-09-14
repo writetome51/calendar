@@ -26,7 +26,7 @@ import { yearValid } from '../year-valid.function';
 	`,
 	styles: [
 		`#year-container {
-			width: 95px;
+			width: 100px;
 		}`,
 		`#year-container mat-form-field {
 			width: 100%;

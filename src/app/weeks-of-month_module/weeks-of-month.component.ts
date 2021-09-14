@@ -8,21 +8,29 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 @Component({
 	selector: 'weeks-of-month',
 	template: `
-		<div id="weeks-of-month">
-			<div *ngFor="let week of weeks" class="week-block">
-				<day-of-month *ngFor="let day of week" [number]="day"></day-of-month>
+		<div *ngFor="let week of weeks" class="week-block">
+			<div *ngFor="let day of week" class="day-column">
+				<day-of-month [number]="day"></day-of-month>
 			</div>
 		</div>
 	`
 })
 export class WeeksOfMonthComponent {
 
+	readonly data = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+
+
 	@Input() set days(dys: DaysOfMonth) {
 		this.weeks = getArrFilled(
 			getRoundedUp(dys.length / 7),
 			// @ts-ignore
-			(i) => getPage(i+1, 7, dys)
+			(i) => getPage(i + 1, 7, dys)
 		);
+		let last = this.weeks.length - 1, lastLen = this.weeks[last].length;
+		if (lastLen < 7) {
+			let filler: DaysOfMonth = getArrFilled(7 - lastLen, () => '');
+			this.weeks[last].push(...filler);
+		}
 	}
 
 

@@ -13,10 +13,7 @@ import { not } from '@writetome51/not';
 		>
 			<ng-content></ng-content>
 		</div>
-	`,
-	styles: [`.click-execute-rapid-repeat-function {
-		margin:0; padding:0; width:fit-content; height:fit-content;
-	}`]
+	`
 })
 export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
 

@@ -16,12 +16,8 @@ import { Component } from '@angular/core';
 	`,
 	styles: [`
 		#month-controls {
-			margin-top: 4px;
+			margin-top: 0;
 			margin-right: 15px;
-		}`,`
-		selected-month{
-			height:fit-content;
-		}
-	`]
+		}`]
 })
 export class MonthControlsComponent {}

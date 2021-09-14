@@ -5,18 +5,11 @@ import { Component } from '@angular/core';
 	selector: 'day-names',
 	template: `
 		<div class="week-block">
-			<div class="calendar-day day-name" *ngFor="let dayName of data">
-				{{dayName}}
+			<div class="day-column" *ngFor="let dayName of data">
+				<div class="calendar-day day-name">{{dayName}}</div>
 			</div>
 		</div>
-	`,
-	styles: [
-		`.day-name {
-			border: 1px solid transparent;
-			padding-bottom: 3px;
-			text-align: center;
-		}`
-	]
+	`
 })
 export class DayNamesComponent {
 

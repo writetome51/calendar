@@ -24,11 +24,8 @@ import { SelectedData } from '@app/month-and-year-controls_module/selected.data'
 	`,
 	styles: [
 		`#month-name {
-			margin-left: 0;
-			margin-right: 0;
-			padding-left: 4px;
-			padding-right: 4px;
-			height:fit-content;
+			display: inline-block;
+			height:65px;
 		}`,
 		`mat-form-field {
 			width: 100px;
