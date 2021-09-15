@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
 				<div class="calendar-day day-name">{{dayName}}</div>
 			</div>
 		</div>
-	`
+	`,
+	styles:[`.day-column {border: 1px solid transparent;}`]
 })
 export class DayNamesComponent {
 
