@@ -9,7 +9,7 @@ import { SelectedData as selected } from '@app/month-and-year-controls_module/se
 	selector: 'day-of-month',
 	template: `
 		<div class="calendar-day day-square">
-			{{number}}
+			&nbsp;{{number}}&nbsp;
 
 			<span *ngIf="appointments && appointments.length" class="num-appointments">
 				{{appointments.length}}
