@@ -17,6 +17,7 @@ import { Component } from '@angular/core';
 	styles: [
 		`.left-and-right-arrow-buttons-container{
 			margin-left: 5px;
+			height:100%;
 		}`
 	]
 })
