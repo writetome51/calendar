@@ -25,8 +25,6 @@ import { YearControlsComponent } from './year-controls.component';
 		CommonModule,
 		BrowserModule,
 		FormsModule,
-		MatInputModule,
-		MatFormFieldModule,
 		MatIconModule,
 	],
 	exports: [YearControlsComponent]
