@@ -13,6 +13,11 @@ import { Component } from '@angular/core';
 				<forward-one-year-button></forward-one-year-button>
 			</div>
 		</div>
-	`
+	`,
+	styles: [
+		`.left-and-right-arrow-buttons-container{
+			margin-left: 5px;
+		}`
+	]
 })
 export class YearControlsComponent {}

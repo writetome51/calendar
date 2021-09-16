@@ -17,7 +17,11 @@ import { Component } from '@angular/core';
 	styles: [`
 		#month-controls {
 			margin-top: 0;
-			margin-right: 15px;
-		}`]
+			margin-right: 5px;
+		}
+		.left-and-right-arrow-buttons-container{
+			margin-right: 5px;
+		}
+	`]
 })
 export class MonthControlsComponent {}

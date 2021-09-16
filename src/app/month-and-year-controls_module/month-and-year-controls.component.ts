@@ -11,8 +11,8 @@ import { Component } from '@angular/core';
 	`,
 	styles: [
 		`#month-and-year-controls {
-
-			text-align: center;
+			display: flex;
+			justify-content: center;
 		}`
 	]
 })
