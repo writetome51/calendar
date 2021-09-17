@@ -7,7 +7,7 @@ export class TodaysDateService {
 		return {
 			year: this.__todaysDate.getFullYear(),
 			monthIndex: this.__todaysDate.getMonth(),
-			day: this.__todaysDate.getDay()
+			day: this.__todaysDate.getDate()
 		};
 	}
 

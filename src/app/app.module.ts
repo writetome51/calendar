@@ -9,7 +9,6 @@ import { MonthAndYearControlsModule }
 	from './month-and-year-controls_module/month-and-year-controls.module';
 import { NgModule } from '@angular/core';
 import { WeeksOfMonthModule } from '@app/weeks-of-month_module/weeks-of-month.module';
-import { WeekBlockModule } from '@shared/week-block_module/week-block.module';
 
 
 @NgModule({
@@ -24,8 +23,7 @@ import { WeekBlockModule } from '@shared/week-block_module/week-block.module';
 		FormsModule,
 		WeeksOfMonthModule,
 		MonthAndYearControlsModule,
-		BrowserAnimationsModule,
-		WeekBlockModule
+		BrowserAnimationsModule
 	],
 	bootstrap: [
 		AppComponent,

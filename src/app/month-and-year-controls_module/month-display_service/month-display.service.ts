@@ -5,17 +5,15 @@ import { MonthDataCalculatorService as monthCalculator }
 import { MonthAndYearControlsServicesModule } from '../month-and-year-controls-services.module';
 import { MonthNamesData as monthNames } from '@shared/month-names.data';
 import { SelectedData as selected } from '../selected.data';
-import { TodaysDateService as __todaysDate } from './todays-date.service';
+import { TodaysDateService as todaysDate } from '@shared/todays-date.service';
+import { TodayData as today } from '@shared/today.data';
 
 
 @Injectable({providedIn: MonthAndYearControlsServicesModule})
 export class MonthDisplayService {
 
 	constructor() {
-		const todaysDate = __todaysDate.get();
-		selected.year = todaysDate.year;
-		selected.month = monthNames.data[todaysDate.monthIndex];
-
+		this.__setSelectedDateToTodaysDate();
 		this.updateOnChangeOfSelectedMonthOrYear();
 	}
 
@@ -35,6 +33,15 @@ export class MonthDisplayService {
 			monthNames.data.indexOf(selected.month), selected.year
 		);
 		daysOfMonth.data = days;
+	}
+
+
+	private __setSelectedDateToTodaysDate() {
+		today.data = todaysDate.get();
+
+		selected.year = today.data.year;
+		selected.month = monthNames.data[today.data.monthIndex];
+		selected.day = today.data.day;
 	}
 
 }
