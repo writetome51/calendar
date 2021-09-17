@@ -8,7 +8,9 @@ import { ClickExecuteRapidRepeatFunctionContext }
 	template: `
 		<click-execute-rapid-repeat-function [context]="context">
 			<button mat-icon-button>
-				<ng-content></ng-content> <!--  <mat-icon>  -->
+				<mat-icon>
+					<ng-content></ng-content>
+				</mat-icon>
 			</button>
 		</click-execute-rapid-repeat-function>
 	`

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ForwardOneMonthButtonComponent } from './forward-one-month-button.component';
-import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
@@ -27,7 +26,6 @@ import { SelectedMonthComponent } from './selected-month.component';
 		FormsModule,
 		RapidRepeatMatIconButtonModule,
 		MatFormFieldModule,
-		MatIconModule,
 		MatSelectModule,
 		MatOptionModule
 	],

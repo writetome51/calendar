@@ -10,7 +10,7 @@ import { ClickExecuteRapidRepeatFunctionContext }
 		<rapid-repeat-mat-icon-button [context]="this" aria-label="subtract one month"
 			id="back-one-month" class="month-button fills-parent-dimensions"
 		>
-			<mat-icon>keyboard_arrow_left</mat-icon>
+			keyboard_arrow_left
 		</rapid-repeat-mat-icon-button>
 	`
 })

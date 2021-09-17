@@ -11,7 +11,7 @@ import { ClickExecuteRapidRepeatFunctionContext }
 		<rapid-repeat-mat-icon-button [context]="this" aria-label="add one year"
 			class="year-button" id="forward-one-year"
 		>
-			<mat-icon>keyboard_arrow_right</mat-icon>
+			keyboard_arrow_right
 		</rapid-repeat-mat-icon-button>
 	`
 })
