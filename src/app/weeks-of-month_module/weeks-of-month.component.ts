@@ -26,14 +26,18 @@ export class WeeksOfMonthComponent {
 			// @ts-ignore
 			(i) => getPage(i + 1, 7, dys)
 		);
-		let last = this.weeks.length - 1, lastLen = this.weeks[last].length;
-		if (lastLen < 7) {
-			let filler: DaysOfMonth = getArrFilled(7 - lastLen, () => '');
-			this.weeks[last].push(...filler);
-		}
+		let last = this.weeks.length -1;
+		this.weeks[last].push(...this.__getFillerForLastWeek(last));
 	}
 
 
 	weeks: DaysOfMonth[] = [];
+
+
+	private __getFillerForLastWeek(lastWeekIndex): ''[] {
+		let lastLen = this.weeks[lastWeekIndex].length;
+		if (lastLen < 7) return getArrFilled(7 - lastLen, () => '');
+		else return [];
+	}
 
 }
