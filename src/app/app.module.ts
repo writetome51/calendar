@@ -21,7 +21,7 @@ import { WeeksOfMonthModule } from '@app/weeks-of-month_module/weeks-of-month.mo
 		FormsModule,
 		WeeksOfMonthModule,
 		MonthAndYearControlsModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule // required by @angular/material modules
 	],
 	bootstrap: [
 		AppComponent,
