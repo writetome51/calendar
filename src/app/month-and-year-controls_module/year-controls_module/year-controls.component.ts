@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
 			<selected-year></selected-year>
 
 			<div class="left-and-right-arrow-buttons-container">
-				<back-one-year-button></back-one-year-button>
-				<forward-one-year-button></forward-one-year-button>
+				<back-one-year-button class="control-button"></back-one-year-button>
+				<forward-one-year-button class="control-button"></forward-one-year-button>
 			</div>
 		</div>
 	`,

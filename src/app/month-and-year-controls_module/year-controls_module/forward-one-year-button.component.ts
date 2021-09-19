@@ -9,7 +9,7 @@ import { ClickExecuteRapidRepeatFunctionContext }
 	selector: 'forward-one-year-button',
 	template: `
 		<rapid-repeat-mat-icon-button [context]="this" aria-label="add one year"
-			class="year-button" id="forward-one-year"
+			id="forward-one-year"
 		>
 			keyboard_arrow_right
 		</rapid-repeat-mat-icon-button>

@@ -112,7 +112,7 @@ body {
 }
 
 
-.left-and-right-arrow-buttons-container div.click-execute-rapid-repeat-function {
+.left-and-right-arrow-buttons-container .control-button {
 	top: 20px;
 	right: 2px;
 }
