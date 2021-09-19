@@ -1,4 +1,3 @@
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +18,6 @@ import { WeeksOfMonthModule } from '@app/weeks-of-month_module/weeks-of-month.mo
 	],
 	imports: [
 		BrowserModule,
-		AppRoutingModule,
 		FormsModule,
 		WeeksOfMonthModule,
 		MonthAndYearControlsModule,
