@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MonthDisplayService } from '../month-display_service/month-display.service';
+import { MonthDisplayService } from '../../shared/month-display_service/month-display.service';
 import { MonthNamesData } from '@shared/month-names.data';
-import { SelectedData } from '@app/month-and-year-controls_module/selected.data';
+import { SelectedData } from '@shared/selected.data';
 
 
 @Component({
@@ -39,8 +39,6 @@ export class SelectedMonthComponent {
 
 	selected = SelectedData;
 	monthNames = MonthNamesData;
-
-
-	constructor(public monthDisplay: MonthDisplayService) {}
+	monthDisplay = MonthDisplayService;
 
 }

@@ -3,7 +3,7 @@ import { GetDaysOfMonthService as getDaysOfMonth }
 import { GetMonthIncrementedOrDecrementedService as getMonthIncrementedOrDecremented }
 	from './get-month-incremented-or-decremented.service';
 import { MonthData } from './month-data.type';
-import { StartYearData } from '../../start-year.data';
+import { StartYearData } from './start-year.data';
 
 
 export class MonthDataCalculatorService {

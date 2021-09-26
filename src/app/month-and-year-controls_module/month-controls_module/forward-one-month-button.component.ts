@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MonthDisplayService } from '../month-display_service/month-display.service';
+import { MonthDisplayService as monthDisplay }
+	from '../../shared/month-display_service/month-display.service';
 import { ClickExecuteRapidRepeatFunctionContext }
 	from '@shared/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function-context.interface';
 
@@ -16,11 +17,8 @@ import { ClickExecuteRapidRepeatFunctionContext }
 })
 export class ForwardOneMonthButtonComponent implements ClickExecuteRapidRepeatFunctionContext {
 
-	constructor(public monthDisplay: MonthDisplayService) {}
-
-
 	function() {
-		this.monthDisplay.goForwardOrBackOne(1);
+		monthDisplay.goForwardOrBackOne(1);
 	}
 
 }

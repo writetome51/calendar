@@ -2,7 +2,7 @@ import { Appointment } from '@shared/appointment.type';
 import { Component, Input, OnInit } from '@angular/core';
 import { DayScheduleService } from '@shared/day-schedule.service';
 import { MonthNamesData as monthNames } from '@shared/month-names.data';
-import { SelectedData as selected } from '@app/month-and-year-controls_module/selected.data';
+import { SelectedData as selected } from '@shared/selected.data';
 import { TodayData as today } from '@shared/today.data';
 
 

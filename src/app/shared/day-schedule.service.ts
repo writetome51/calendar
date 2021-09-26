@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { ImplementationContainer } from '@shared/implementation-container';
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class DayScheduleService
 	extends ImplementationContainer<CalendarContextDaySchedule> {
 

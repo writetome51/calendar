@@ -1,4 +1,4 @@
-import { StartYearData as startYear } from './start-year.data';
+import { StartYearData as startYear } from '../../start-year.data';
 import { toStr } from '@writetome51/to-str';
 
 
