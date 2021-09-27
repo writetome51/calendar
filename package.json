@@ -22,7 +22,7 @@
 		"@angular/platform-browser-dynamic": "~12.2.0",
 		"@writetome51/array-get-head-tail": "^2.0.0",
 		"@writetome51/array-get-page": "^2.0.0",
-		"@writetome51/calendar-helpers": "^0.0.1",
+		"@writetome51/calendar-helpers": "^0.0.2",
 		"@writetome51/get-arr-filled": "^0.0.6",
 		"@writetome51/get-rounded-up-down": "^3.0.1",
 		"@writetome51/get-sum-average-product": "^2.0.3",
