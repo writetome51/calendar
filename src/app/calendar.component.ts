@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CalendarContext } from '@app/calendar-context.interface';
-import { DaysOfMonthData } from '@shared/days-of-month.data';
+import { DaysOfMonthData } from '@writetome51/calendar-helpers';
 import { DayScheduleService } from '@shared/day-schedule.service';
-import { MonthDisplayService as monthDisplay }
-	from '@shared/month-display_service/month-display.service';
+import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpers';
 
 
 @Component({

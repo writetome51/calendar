@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SelectedData } from '@shared/selected.data';
+import { SelectedData } from '@writetome51/calendar-helpers';
 
 
 @Component({

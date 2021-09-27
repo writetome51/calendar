@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DaysOfMonth } from '@app/shared/days-of-month.type';
+import { DaysOfMonth } from '@writetome51/calendar-helpers';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { getPage } from '@writetome51/array-get-page';
 import { getRoundedUp } from '@writetome51/get-rounded-up-down';
