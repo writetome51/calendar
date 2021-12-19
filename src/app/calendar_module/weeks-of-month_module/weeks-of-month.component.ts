@@ -17,9 +17,6 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 })
 export class WeeksOfMonthComponent {
 
-	readonly data = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
-
-
 	@Input() set days(dys: DaysOfMonth) {
 		this.weeks = getArrFilled(
 			getRoundedUp(dys.length / 7),

@@ -17,7 +17,7 @@ import { not } from '@writetome51/not';
 })
 export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
 
-	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => undefined };
+	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => void 0 };
 
 	private readonly __defaultInitialDelayBeforeRapid = 500; // ms
 	private readonly __defaultRapidDelay = 70; // ms

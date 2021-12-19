@@ -1,27 +1,18 @@
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { CalendarComponent } from '@app/calendar.component';
-import { DayNamesComponent } from '@app/day-names.component';
+import { CalendarModule } from './calendar_module';
 import { FormsModule } from '@angular/forms';
-import { MonthAndYearControlsModule }
-	from './month-and-year-controls_module/month-and-year-controls.module';
 import { NgModule } from '@angular/core';
-import { WeeksOfMonthModule } from '@app/weeks-of-month_module/weeks-of-month.module';
 
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		CalendarComponent,
-		DayNamesComponent
-	],
+	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
 		FormsModule,
-		WeeksOfMonthModule,
-		MonthAndYearControlsModule,
-		BrowserAnimationsModule // required by @angular/material modules
+		BrowserAnimationsModule, // required by @angular/material modules
+		CalendarModule
 	],
 	bootstrap: [
 		AppComponent,
@@ -35,7 +26,7 @@ export class AppModule {
 
 	 constructor(private injector: Injector) {
 		const el = createCustomElement(CalendarComponent, {injector});
-		customElements.define('calendar-widget', el);
+		customElements.define('calendar_module-widget', el);
 	}
 
 	ngDoBootstrap() {}

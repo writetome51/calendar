@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ClickExecuteRapidRepeatFunctionContext }
-	from '@shared/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function-context.interface';
+	from '../click-execute-rapid-repeat-function_module';
 
 
 @Component({

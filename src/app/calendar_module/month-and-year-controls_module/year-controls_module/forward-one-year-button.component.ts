@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpers';
 import { SelectedData } from '@writetome51/calendar-helpers';
 import { ClickExecuteRapidRepeatFunctionContext }
-	from '@shared/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function-context.interface';
+	from '@app/calendar_module/shared/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function-context.interface';
 
 
 @Component({

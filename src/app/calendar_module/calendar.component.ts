@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CalendarContext } from '@app/calendar-context.interface';
-import { DaysOfMonthData } from '@writetome51/calendar-helpers';
-import { DayScheduleService } from '@shared/day-schedule.service';
-import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpers';
+import { CalendarContext } from './calendar-context.interface';
+import { DaysOfMonthData, MonthDisplayService as monthDisplay }
+	from '@writetome51/calendar-helpers';
+import { DayScheduleService } from './day-schedule.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpe
 })
 export class CalendarComponent implements OnInit {
 
-	// If left undefined, the calendar is a simple date-picker widget.
+	// If left undefined, the calendar_module is a simple date-picker widget.
 	@Input() context: CalendarContext | undefined;
 
 	daysOfMonth = DaysOfMonthData;

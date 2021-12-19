@@ -10,3 +10,6 @@ import { ClickExecuteRapidRepeatFunctionComponent }
 	exports: [ClickExecuteRapidRepeatFunctionComponent]
 })
 export class ClickExecuteRapidRepeatFunctionModule {}
+
+export { ClickExecuteRapidRepeatFunctionContext }
+	from './click-execute-rapid-repeat-function-context.interface';

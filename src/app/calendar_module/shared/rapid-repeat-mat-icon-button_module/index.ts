@@ -1,5 +1,5 @@
 import { ClickExecuteRapidRepeatFunctionModule }
-	from '@shared/click-execute-rapid-repeat-function_module/click-execute-rapid-repeat-function.module';
+	from '../click-execute-rapid-repeat-function_module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';

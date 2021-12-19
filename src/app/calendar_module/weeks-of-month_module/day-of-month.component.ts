@@ -1,6 +1,6 @@
-import { Appointment } from '@shared/appointment.type';
+import { Appointment } from '@app/calendar_module/appointment.type';
 import { Component, Input, OnInit } from '@angular/core';
-import { DayScheduleService } from '@shared/day-schedule.service';
+import { DayScheduleService } from '../day-schedule.service';
 import { MonthNamesData as monthNames } from '@writetome51/calendar-helpers';
 import { SelectedData as selected } from '@writetome51/calendar-helpers';
 import { TodayData as today } from '@writetome51/calendar-helpers';

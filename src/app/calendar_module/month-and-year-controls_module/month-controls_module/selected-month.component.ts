@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { MonthDisplayService } from '@writetome51/calendar-helpers';
-import { MonthNamesData } from '@writetome51/calendar-helpers';
-import { SelectedData } from '@writetome51/calendar-helpers';
+import { MonthDisplayService, MonthNamesData, SelectedData }
+	from '@writetome51/calendar-helpers';
 
 
 @Component({

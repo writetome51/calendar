@@ -1,4 +1,4 @@
-import { Appointment } from '@shared/appointment.type';
+import { Appointment } from './appointment.type';
 
 
 export interface CalendarContextDaySchedule {

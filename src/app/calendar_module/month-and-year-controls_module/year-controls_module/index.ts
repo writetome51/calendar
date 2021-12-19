@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ForwardOneYearButtonComponent } from './forward-one-year-button.component';
 import { NgModule } from '@angular/core';
 import { RapidRepeatMatIconButtonModule }
-	from '@shared/rapid-repeat-mat-icon-button_module/rapid-repeat-mat-icon-button.module';
+	from '../../shared/rapid-repeat-mat-icon-button_module';
 import { SelectedYearComponent } from './selected-year.component';
 import { YearControlsComponent } from './year-controls.component';
 

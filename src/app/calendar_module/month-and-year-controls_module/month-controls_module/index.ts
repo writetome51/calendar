@@ -9,7 +9,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MonthControlsComponent } from './month-controls.component';
 import { NgModule } from '@angular/core';
 import { RapidRepeatMatIconButtonModule }
-	from '@shared/rapid-repeat-mat-icon-button_module/rapid-repeat-mat-icon-button.module';
+	from '@app/calendar_module/shared/rapid-repeat-mat-icon-button_module';
 import { SelectedMonthComponent } from './selected-month.component';
 
 
