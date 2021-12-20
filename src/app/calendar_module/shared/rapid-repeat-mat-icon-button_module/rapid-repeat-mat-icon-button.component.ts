@@ -17,6 +17,6 @@ import { ClickExecuteRapidRepeatFunctionContext }
 })
 export class RapidRepeatMatIconButtonComponent {
 
-	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => undefined };
+	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => void 0 };
 
 }

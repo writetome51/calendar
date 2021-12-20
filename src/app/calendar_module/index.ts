@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { CalendarComponent } from './calendar.component';
 import { DayNamesComponent } from './day-names.component';
-import { WeeksOfMonthModule } from './weeks-of-month_module';
 import { MonthAndYearControlsModule } from './month-and-year-controls_module';
+import { NgModule } from '@angular/core';
+import { WeeksOfMonthModule } from './weeks-of-month_module';
 
 
 @NgModule({
@@ -13,8 +13,8 @@ import { MonthAndYearControlsModule } from './month-and-year-controls_module';
 	],
 	imports: [
 		BrowserModule,
-		WeeksOfMonthModule,
 		MonthAndYearControlsModule,
+		WeeksOfMonthModule,
 	],
 	exports: [CalendarComponent]
 })

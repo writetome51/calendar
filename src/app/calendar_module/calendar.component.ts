@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CalendarContext } from './calendar-context.interface';
 import { DaysOfMonthData, MonthDisplayService as monthDisplay }
 	from '@writetome51/calendar-helpers';
-import { DayScheduleService } from './day-schedule.service';
+import { DayScheduleService } from './day-schedule_service';
 
 
 @Component({

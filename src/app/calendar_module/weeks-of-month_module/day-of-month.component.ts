@@ -1,9 +1,8 @@
-import { Appointment } from '@app/calendar_module/appointment.type';
+import { Appointment } from '@app/calendar_module/shared/appointment.type';
 import { Component, Input, OnInit } from '@angular/core';
-import { DayScheduleService } from '../day-schedule.service';
-import { MonthNamesData as monthNames } from '@writetome51/calendar-helpers';
-import { SelectedData as selected } from '@writetome51/calendar-helpers';
-import { TodayData as today } from '@writetome51/calendar-helpers';
+import { DayScheduleService } from '../day-schedule_service';
+import { MonthNamesData as monthNames, SelectedData as selected, TodayData as today }
+	from '@writetome51/calendar-helpers';
 
 
 @Component({
@@ -17,7 +16,7 @@ import { TodayData as today } from '@writetome51/calendar-helpers';
 			</span>
 		</div>
 	`,
-	styles: [`.today {background-color: rgba(167, 255, 167, 0.87)}`]
+	styles: [`.today { background-color: rgba(167, 255, 167, 0.87) }`]
 })
 export class DayOfMonthComponent implements OnInit {
 
@@ -38,7 +37,7 @@ export class DayOfMonthComponent implements OnInit {
 	isToday(): boolean {
 		return (
 			today.data.day === this.number &&
-			monthNames.data[today.data.monthIndex] === selected.month  &&
+			monthNames.data[today.data.monthIndex] === selected.month &&
 			today.data.year === selected.year
 		);
 	}
