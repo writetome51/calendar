@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ButtonData } from './arrow-button.component';
 
 
 @Component({
@@ -6,9 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 	template: `
 		<div class="left-and-right-arrow-buttons-container">
 
-			<arrow-button *ngFor="let button of buttons" [arrowIcon]="button.arrowIcon"
-				[id]="button.id" [ariaLabel]="button.ariaLabel"
-				[context]="{function: button.function}"
+			<arrow-button *ngFor="let buttonData of buttonsData" [buttonData]="buttonData"
 				class="control-button"
 			></arrow-button>
 
@@ -25,22 +24,22 @@ export class LeftAndRightArrowButtonsComponent implements OnInit {
 	@Input() leftFunction;
 	@Input() rightFunction;
 
-	buttons: any[] = [];
+	buttonsData: ButtonData[] = [];
 
 
 	ngOnInit() {
-		this.buttons = [
+		this.buttonsData = [
 			{
 				arrowIcon: 'keyboard_arrow_left',
 				id: this.leftId,
 				ariaLabel: this.leftAriaLabel,
-				function: this.leftFunction
+				context: {function: this.leftFunction}
 			},
 			{
 				arrowIcon: 'keyboard_arrow_right',
 				id: this.rightId,
 				ariaLabel: this.rightAriaLabel,
-				function: this.rightFunction
+				context: {function: this.rightFunction}
 			}
 		];
 	}

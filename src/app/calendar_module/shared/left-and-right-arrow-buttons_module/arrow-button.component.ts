@@ -6,18 +6,23 @@ import { ClickExecuteRapidRepeatFunctionContext }
 @Component({
 	selector: 'arrow-button',
 	template: `
-		<rapid-repeat-mat-icon-button [context]="context" aria-label="{{ariaLabel}}"
-			id="{{id}}" class="month-button fills-parent-dimensions"
+		<rapid-repeat-mat-icon-button
+			[context]="buttonData.context" aria-label="{{buttonData.ariaLabel}}"
+			id="{{buttonData.id}}" class="month-button fills-parent-dimensions"
 		>
-			{{arrowIcon}}
+			{{buttonData.arrowIcon}}
 		</rapid-repeat-mat-icon-button>
 	`
 })
 export class ArrowButtonComponent {
 
-	@Input() arrowIcon: 'keyboard_arrow_right' | 'keyboard_arrow_left' | undefined;
-	@Input() id = '';
-	@Input() ariaLabel = '';
-	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => void 0 };
+	@Input() buttonData: ButtonData | undefined;
 
 }
+
+export type ButtonData = {
+	arrowIcon: 'keyboard_arrow_right' | 'keyboard_arrow_left' | undefined;
+	id: string;
+	ariaLabel: string;
+	context: ClickExecuteRapidRepeatFunctionContext;
+};

@@ -27,8 +27,8 @@ import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpe
 })
 export class MonthControlsComponent {
 
-	leftFunction() { monthDisplay.goForwardOrBackOne(-1); }
+	leftFunction = () => { monthDisplay.goForwardOrBackOne(-1); }
 
-	rightFunction() { monthDisplay.goForwardOrBackOne(1); }
+	rightFunction = () => { monthDisplay.goForwardOrBackOne(1); }
 
 }
