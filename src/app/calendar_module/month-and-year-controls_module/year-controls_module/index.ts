@@ -8,6 +8,7 @@ import { RapidRepeatMatIconButtonModule }
 	from '../../shared/rapid-repeat-mat-icon-button_module';
 import { SelectedYearComponent } from './selected-year.component';
 import { YearControlsComponent } from './year-controls.component';
+import { LeftAndRightArrowButtonsModule } from '@app/calendar_module/shared/left-and-right-arrow-buttons_module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { YearControlsComponent } from './year-controls.component';
 		RapidRepeatMatIconButtonModule,
 		CommonModule,
 		BrowserModule,
-		FormsModule
+		FormsModule,
+		LeftAndRightArrowButtonsModule
 	],
 	exports: [YearControlsComponent]
 })

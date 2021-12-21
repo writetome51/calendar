@@ -11,7 +11,7 @@ import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpe
 				[leftId]="'back-one-month-button'" [rightId]="'forward-one-month-button'"
 				[leftAriaLabel]="'back-one-month-button'"
 				[rightAriaLabel]="'forward-one-month-button'"
-				[leftFunction]="leftFunction" [rightFunction]="rightFunction"
+				[leftFunction]="backOneMonth" [rightFunction]="forwardOneMonth"
 			></left-and-right-arrow-buttons>
 
 			<selected-month></selected-month>
@@ -27,8 +27,8 @@ import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpe
 })
 export class MonthControlsComponent {
 
-	leftFunction = () => { monthDisplay.goForwardOrBackOne(-1); }
+	backOneMonth = () => monthDisplay.goForwardOrBackOne(-1);
 
-	rightFunction = () => { monthDisplay.goForwardOrBackOne(1); }
+	forwardOneMonth = () => monthDisplay.goForwardOrBackOne(1);
 
 }

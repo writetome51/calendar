@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {
+	MonthDisplayService as monthDisplay, MonthNamesData as monthNames, SelectedData as selected
+} from '@writetome51/calendar-helpers';
 
 
 @Component({
@@ -8,17 +11,33 @@ import { Component } from '@angular/core';
 
 			<selected-year></selected-year>
 
-			<div class="left-and-right-arrow-buttons-container">
-				<back-one-year-button class="control-button"></back-one-year-button>
-				<forward-one-year-button class="control-button"></forward-one-year-button>
-			</div>
+			<left-and-right-arrow-buttons
+				[leftId]="'back-one-year-button'" [rightId]="'forward-one-year-button'"
+				[leftAriaLabel]="'back-one-year-button'"
+				[rightAriaLabel]="'forward-one-year-button'"
+				[leftFunction]="backOneYear" [rightFunction]="forwardOneYear"
+			></left-and-right-arrow-buttons>
+
 		</div>
-	`,
-	styles: [
-		`.left-and-right-arrow-buttons-container{
-			margin-left: 5px;
-			height:100%;
-		}`
-	]
+	`
 })
-export class YearControlsComponent {}
+export class YearControlsComponent {
+
+	backOneYear = () => {
+		--selected.year;
+		this.__updateDaysOfMonth(selected);
+	};
+
+	forwardOneYear = () => {
+		++selected.year;
+		this.__updateDaysOfMonth(selected);
+	};
+
+	private __updateDaysOfMonth(selected) {
+		monthDisplay.updateDays({
+			monthIndex: monthNames.data.indexOf(selected.month),
+			year: selected.year
+		});
+	}
+
+}
