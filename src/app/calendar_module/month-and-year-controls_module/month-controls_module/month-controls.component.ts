@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpers/dist/privy/month-display_service';
 
 
 @Component({
@@ -6,12 +7,15 @@ import { Component } from '@angular/core';
 	template: `
 		<div id="month-controls" class="controls-container">
 
-			<div class="left-and-right-arrow-buttons-container">
-				<back-one-month-button class="control-button"></back-one-month-button>
-				<forward-one-month-button class="control-button"></forward-one-month-button>
-			</div>
+			<left-and-right-arrow-buttons
+				[leftId]="'back-one-month-button'" [rightId]="'forward-one-month-button'"
+				[leftAriaLabel]="'back-one-month-button'"
+				[rightAriaLabel]="'forward-one-month-button'"
+				[leftFunction]="leftFunction" [rightFunction]="rightFunction"
+			></left-and-right-arrow-buttons>
 
 			<selected-month></selected-month>
+
 		</div>
 	`,
 	styles: [`
@@ -19,9 +23,12 @@ import { Component } from '@angular/core';
 			margin-top: 0;
 			margin-right: 5px;
 		}
-		.left-and-right-arrow-buttons-container{
-			margin-right: 5px;
-		}
 	`]
 })
-export class MonthControlsComponent {}
+export class MonthControlsComponent {
+
+	leftFunction() { monthDisplay.goForwardOrBackOne(-1); }
+
+	rightFunction() { monthDisplay.goForwardOrBackOne(1); }
+
+}

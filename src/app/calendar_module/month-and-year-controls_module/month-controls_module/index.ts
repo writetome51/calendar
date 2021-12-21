@@ -11,6 +11,7 @@ import { NgModule } from '@angular/core';
 import { RapidRepeatMatIconButtonModule }
 	from '../../shared/rapid-repeat-mat-icon-button_module';
 import { SelectedMonthComponent } from './selected-month.component';
+import { LeftAndRightArrowButtonsModule } from '@app/calendar_module/shared/left-and-right-arrow-buttons_module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SelectedMonthComponent } from './selected-month.component';
 		RapidRepeatMatIconButtonModule,
 		MatFormFieldModule,
 		MatSelectModule,
-		MatOptionModule
+		MatOptionModule,
+		LeftAndRightArrowButtonsModule
 	],
 	exports: [MonthControlsComponent]
 })
