@@ -1,5 +1,5 @@
-import { Appointment } from '../shared/appointment.type';
-import { CalendarContextDaySchedule } from '../shared/calendar-context-day-schedule.interface';
+import { Appointment } from '../appointment.type';
+import { CalendarContextDaySchedule } from '../calendar-context-day-schedule.interface';
 import { Injectable } from '@angular/core';
 import { ImplementationContainer } from './implementation-container';
 
