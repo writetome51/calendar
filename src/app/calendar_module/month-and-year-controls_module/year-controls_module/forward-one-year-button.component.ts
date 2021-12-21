@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ClickExecuteRapidRepeatFunctionContext }
 	from '../../shared/click-execute-rapid-repeat-function_module';
-import { MonthDisplayService as monthDisplay, SelectedData }
-	from '@writetome51/calendar-helpers';
+import {
+	MonthDisplayService as monthDisplay, MonthNamesData as monthNames, SelectedData as selected
+} from '@writetome51/calendar-helpers';
 
 
 @Component({
@@ -17,12 +18,13 @@ import { MonthDisplayService as monthDisplay, SelectedData }
 })
 export class ForwardOneYearButtonComponent implements ClickExecuteRapidRepeatFunctionContext {
 
-	selected = SelectedData;
-
-
 	function() {
-		++this.selected.year;
-		monthDisplay.updateOnChangeOfSelectedMonthOrYear();
+		++selected.year;
+
+		monthDisplay.updateDays({
+			monthIndex: monthNames.data.indexOf(selected.month),
+			year: selected.year
+		});
 	}
 
 }

@@ -10,8 +10,8 @@ import { MonthDisplayService, MonthNamesData, SelectedData }
 			<mat-form-field appearance="outline" class="fills-parent-height">
 
 				<mat-select id="month-selector" class="fills-parent-dimensions"
-							[(value)]="selected.month" [placeholder]="selected.month"
-							(valueChange)="monthDisplay.updateOnChangeOfSelectedMonthOrYear()"
+								[(value)]="selected.month" [placeholder]="selected.month"
+								(valueChange)="monthDisplay.updateDays(getMonthIndexAndYear())"
 				>
 					<mat-option *ngFor="let monthName of monthNames.data" [value]="monthName">
 						{{monthName}}
@@ -39,5 +39,13 @@ export class SelectedMonthComponent {
 	selected = SelectedData;
 	monthNames = MonthNamesData;
 	monthDisplay = MonthDisplayService;
+
+
+	getMonthIndexAndYear() {
+		return {
+			monthIndex: this.monthNames.data.indexOf(this.selected.month),
+			year: this.selected.year
+		}
+	}
 
 }
