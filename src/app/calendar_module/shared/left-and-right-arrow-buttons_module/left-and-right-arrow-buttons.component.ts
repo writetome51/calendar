@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ButtonData } from './rapid-repeat-arrow-button.component';
+import { RapidRepeatArrowButtonData } from './rapid-repeat-arrow-button.component';
 
 
 @Component({
@@ -7,39 +7,33 @@ import { ButtonData } from './rapid-repeat-arrow-button.component';
 	template: `
 		<div class="left-and-right-arrow-buttons-container">
 
-			<rapid-repeat-arrow-button *ngFor="let buttonData of buttonsData"
-				[buttonData]="buttonData" class="control-button"
+			<rapid-repeat-arrow-button *ngFor="let context of contexts"
+				[context]="context" class="control-button"
 			></rapid-repeat-arrow-button>
 
 		</div>
 	`,
-	styles:[`.left-and-right-arrow-buttons-container{ margin-right: 5px; }`]
+	styles: [`.left-and-right-arrow-buttons-container {
+		margin-right: 5px;
+	}`]
 })
 export class LeftAndRightArrowButtonsComponent implements OnInit {
 
-	@Input() leftId;
-	@Input() rightId;
-	@Input() leftAriaLabel;
-	@Input() rightAriaLabel;
 	@Input() leftFunction;
 	@Input() rightFunction;
 
-	buttonsData: ButtonData[] = [];
+	contexts: RapidRepeatArrowButtonData[] = [];
 
 
 	ngOnInit() {
-		this.buttonsData = [
+		this.contexts = [
 			{
-				arrowIcon: 'keyboard_arrow_left',
-				id: this.leftId,
-				ariaLabel: this.leftAriaLabel,
-				context: {function: this.leftFunction}
+				function: this.leftFunction,
+				arrowIcon: 'keyboard_arrow_left'
 			},
 			{
-				arrowIcon: 'keyboard_arrow_right',
-				id: this.rightId,
-				ariaLabel: this.rightAriaLabel,
-				context: {function: this.rightFunction}
+				function: this.rightFunction,
+				arrowIcon: 'keyboard_arrow_right'
 			}
 		];
 	}

@@ -12,9 +12,6 @@ import {
 			<selected-year></selected-year>
 
 			<left-and-right-arrow-buttons
-				[leftId]="'back-one-year-button'" [rightId]="'forward-one-year-button'"
-				[leftAriaLabel]="'back-one-year-button'"
-				[rightAriaLabel]="'forward-one-year-button'"
 				[leftFunction]="backOneYear" [rightFunction]="forwardOneYear"
 			></left-and-right-arrow-buttons>
 

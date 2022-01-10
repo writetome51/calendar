@@ -9,9 +9,6 @@ import { MonthDisplayService as monthDisplay }
 		<div id="month-controls" class="controls-container">
 
 			<left-and-right-arrow-buttons
-				[leftId]="'back-one-month-button'" [rightId]="'forward-one-month-button'"
-				[leftAriaLabel]="'back-one-month-button'"
-				[rightAriaLabel]="'forward-one-month-button'"
 				[leftFunction]="backOneMonth" [rightFunction]="forwardOneMonth"
 			></left-and-right-arrow-buttons>
 
