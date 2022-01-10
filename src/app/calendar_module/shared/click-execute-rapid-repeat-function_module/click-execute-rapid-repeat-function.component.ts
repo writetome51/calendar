@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ClickExecuteRapidRepeatFunctionContext }
 	from './click-execute-rapid-repeat-function-context.interface';
 import { not } from '@writetome51/not';
@@ -15,20 +15,15 @@ import { not } from '@writetome51/not';
 		</div>
 	`
 })
-export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
+export class ClickExecuteRapidRepeatFunctionComponent {
 
-	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => void 0 };
+	@Input() context: ClickExecuteRapidRepeatFunctionContext = {
+		function: () => void 0,
+		initialDelayBeforeRapid: 500, // ms
+		rapidDelay: 70 // ms
+	};
 
-	private readonly __defaultInitialDelayBeforeRapid = 500; // ms
-	private readonly __defaultRapidDelay = 70; // ms
 	private __clickEnded = true;
-
-
-	ngOnInit() {
-		if (not(this.context.initialDelayBeforeRapid))
-			this.context.initialDelayBeforeRapid = this.__defaultInitialDelayBeforeRapid;
-		if (not(this.context.rapidDelay)) this.context.rapidDelay = this.__defaultRapidDelay;
-	}
 
 
 	start(event) {
