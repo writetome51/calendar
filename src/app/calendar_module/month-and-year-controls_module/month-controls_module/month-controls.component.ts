@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MonthDisplayService as monthDisplay } from '@writetome51/calendar-helpers/dist/privy/month-display_service';
+import { MonthDisplayService as monthDisplay }
+	from '@writetome51/calendar-helpers/dist/privy/month-display_service';
 
 
 @Component({
