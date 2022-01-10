@@ -24,7 +24,7 @@ export class LeftAndRightArrowButtonsComponent implements OnInit {
 	@Input() leftFunction;
 	@Input() rightFunction;
 
-	private buttonsData: ButtonData[] = [];
+	buttonsData: ButtonData[] = [];
 
 
 	ngOnInit() {
