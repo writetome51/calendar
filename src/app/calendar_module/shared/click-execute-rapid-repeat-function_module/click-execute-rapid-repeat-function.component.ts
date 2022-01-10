@@ -19,15 +19,15 @@ export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
 
 	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => void 0 };
 
-	private readonly __defaultInitialDelayBeforeRapid = 500; // ms
-	private readonly __defaultRapidDelay = 70; // ms
 	private __clickEnded = true;
 
 
 	ngOnInit() {
-		if (not(this.context.initialDelayBeforeRapid))
-			this.context.initialDelayBeforeRapid = this.__defaultInitialDelayBeforeRapid;
-		if (not(this.context.rapidDelay)) this.context.rapidDelay = this.__defaultRapidDelay;
+		this.context = {
+			initialDelayBeforeRapid: 500, // ms
+			rapidDelay: 70, // ms
+			...this.context
+		};
 	}
 
 
