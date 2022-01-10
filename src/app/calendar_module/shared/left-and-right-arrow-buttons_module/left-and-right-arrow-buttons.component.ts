@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ButtonData } from './arrow-button.component';
+import { ButtonData } from './rapid-repeat-arrow-button.component';
 
 
 @Component({
@@ -7,9 +7,9 @@ import { ButtonData } from './arrow-button.component';
 	template: `
 		<div class="left-and-right-arrow-buttons-container">
 
-			<arrow-button *ngFor="let buttonData of buttonsData" [buttonData]="buttonData"
-				class="control-button"
-			></arrow-button>
+			<rapid-repeat-arrow-button *ngFor="let buttonData of buttonsData"
+				[buttonData]="buttonData" class="control-button"
+			></rapid-repeat-arrow-button>
 
 		</div>
 	`,
@@ -24,7 +24,7 @@ export class LeftAndRightArrowButtonsComponent implements OnInit {
 	@Input() leftFunction;
 	@Input() rightFunction;
 
-	buttonsData: ButtonData[] = [];
+	private buttonsData: ButtonData[] = [];
 
 
 	ngOnInit() {

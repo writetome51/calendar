@@ -4,7 +4,7 @@ import { ClickExecuteRapidRepeatFunctionContext }
 
 
 @Component({
-	selector: 'arrow-button',
+	selector: 'rapid-repeat-arrow-button',
 	template: `
 		<rapid-repeat-mat-icon-button
 			[context]="buttonData.context" aria-label="{{buttonData.ariaLabel}}"
@@ -14,7 +14,7 @@ import { ClickExecuteRapidRepeatFunctionContext }
 		</rapid-repeat-mat-icon-button>
 	`
 })
-export class ArrowButtonComponent {
+export class RapidRepeatArrowButtonComponent {
 
 	@Input() buttonData: ButtonData | undefined;
 
