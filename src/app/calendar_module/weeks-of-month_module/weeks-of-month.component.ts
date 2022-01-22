@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { DaysOfMonth } from '@writetome51/calendar-helpers';
+import { Component } from '@angular/core';
+import { DaysOfMonth, DaysOfMonthData as daysOfMonth } from '@writetome51/calendar-helpers';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { getPage } from '@writetome51/array-get-page';
 import { getRoundedUp } from '@writetome51/get-rounded-up-down';
@@ -17,23 +17,21 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 })
 export class WeeksOfMonthComponent {
 
-	@Input() set days(dys: DaysOfMonth) {
-		this.weeks = getArrFilled(
-			getRoundedUp(dys.length / 7),
+	get weeks(): DaysOfMonth[] {
+		let __weeks = getArrFilled(
+			getRoundedUp(daysOfMonth.data.length / 7),
 			// @ts-ignore
-			(i) => getPage(i + 1, 7, dys)
+			(i) => getPage(i + 1, 7, daysOfMonth.data)
 		);
-		let last = this.weeks.length -1;
-		this.weeks[last].push(...this.__getFillerForLastWeek(last));
+		const last = __weeks.length - 1;
+		const lastWeekLength = __weeks[last].length;
+		__weeks[last].push(...this.__getFillerForLastWeek(lastWeekLength));
+		return __weeks;
 	}
 
 
-	weeks: DaysOfMonth[] = [];
-
-
-	private __getFillerForLastWeek(lastWeekIndex): ''[] {
-		let lastLen = this.weeks[lastWeekIndex].length;
-		if (lastLen < 7) return getArrFilled(7 - lastLen, () => '');
+	private __getFillerForLastWeek(lastWeekLength): ''[] {
+		if (lastWeekLength < 7) return getArrFilled(7 - lastWeekLength, () => '');
 		else return [];
 	}
 
