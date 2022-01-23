@@ -17,23 +17,22 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 })
 export class WeeksOfMonthComponent {
 
+	weeks: DaysOfMonth[] = [];
+
 	@Input() set days(dys: DaysOfMonth) {
 		this.weeks = getArrFilled(
 			getRoundedUp(dys.length / 7),
 			// @ts-ignore
 			(i) => getPage(i + 1, 7, dys)
 		);
-		let last = this.weeks.length -1;
-		this.weeks[last].push(...this.__getFillerForLastWeek(last));
+		const last = this.weeks.length - 1;
+		const lastWeekLength = this.weeks[last].length;
+		this.weeks[last].push(...this.__getFillerForLastWeek(lastWeekLength));
 	}
 
 
-	weeks: DaysOfMonth[] = [];
-
-
-	private __getFillerForLastWeek(lastWeekIndex): ''[] {
-		let lastLen = this.weeks[lastWeekIndex].length;
-		if (lastLen < 7) return getArrFilled(7 - lastLen, () => '');
+	private __getFillerForLastWeek(lastWeekLength): ''[] {
+		if (lastWeekLength < 7) return getArrFilled(7 - lastWeekLength, () => '');
 		else return [];
 	}
 
