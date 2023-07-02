@@ -8,11 +8,11 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 @Component({
 	selector: 'weeks-of-month',
 	template: `
-		<div *ngFor="let week of weeks" class="week-block">
+		<week-block *ngFor="let week of weeks">
 			<div *ngFor="let day of week" class="day-column">
 				<day-of-month [number]="day"></day-of-month>
 			</div>
-		</div>
+		</week-block>
 	`
 })
 export class WeeksOfMonthComponent {
