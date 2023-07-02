@@ -6,7 +6,7 @@ import { ClickExecuteRapidRepeatFunctionContext }
 @Component({
 	selector: 'rapid-repeat-mat-icon-button',
 	template: `
-		<click-execute-rapid-repeat-function [context]="context">
+		<click-execute-rapid-repeat-function [input]="context">
 			<button mat-icon-button (keydown.enter)="context.function()">
 				<mat-icon>
 					<ng-content></ng-content>
