@@ -8,8 +8,11 @@ import { not } from '@writetome51/not';
 	selector: 'click-execute-rapid-repeat-function',
 	template: `
 		<div class="click-execute-rapid-repeat-function"
-			(mousedown)="start($event)" (mouseup)="stop()"
-			(touchstart)="start($event)" (touchend)="stop()"
+		  (mousedown)="start($event)"
+		  (mouseup)="stop()"
+		  (touchstart)="start($event)"
+		  (touchend)="stop()"
+		  (dragstart)="stop()"
 		>
 			<ng-content></ng-content>
 		</div>
@@ -17,16 +20,16 @@ import { not } from '@writetome51/not';
 })
 export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
 
-	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => void 0 };
+	@Input() input: ClickExecuteRapidRepeatFunctionContext = {function: () => void 0};
 
 	private __clickEnded = true;
 
 
 	ngOnInit() {
-		this.context = {
+		this.input = {
 			initialDelayBeforeRapid: 500, // ms
 			rapidDelay: 70, // ms
-			...this.context
+			...this.input
 		};
 	}
 
@@ -37,16 +40,16 @@ export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
 
 		if (not(this.__clickEnded)) return;
 		this.__clickEnded = false;
-		this.context.function();
+		this.input.function();
 
 		const outerInterval = setInterval(
 			() => {
 				const inner = setInterval(
-					() => this.__actionToRepeat(inner), this.context.rapidDelay
+					() => this.__actionToRepeat(inner), this.input.rapidDelay
 				);
 				clearInterval(outerInterval);
 			},
-			this.context.initialDelayBeforeRapid // only happens once
+			this.input.initialDelayBeforeRapid // only happens once
 		);
 	}
 
@@ -57,7 +60,7 @@ export class ClickExecuteRapidRepeatFunctionComponent implements OnInit {
 
 
 	private __actionToRepeat(interval) {
-		if (not(this.__clickEnded)) this.context.function();
+		if (not(this.__clickEnded)) this.input.function();
 		else clearInterval(interval);
 	}
 
