@@ -1,8 +1,8 @@
-import { Appointment } from './appointment.type';
+import {Appointment} from './appointment.type';
 
 
 export interface CalendarContextDaySchedule {
 
-	get: (y, m, d) => Appointment[];
+   get: (y, m, d) => Appointment[];
 
 }

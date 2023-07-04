@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { ClickExecuteRapidRepeatFunctionContext }
-	from '../click-execute-rapid-repeat-function_module';
+import {Component, Input} from '@angular/core';
+import {ClickExecuteRapidRepeatFunctionContext}
+   from '../click-execute-rapid-repeat-function_module';
 
 
 @Component({
-	selector: 'rapid-repeat-mat-icon-button',
-	template: `
+   selector: 'rapid-repeat-mat-icon-button',
+   template: `
 		<click-execute-rapid-repeat-function [input]="context">
 			<button mat-icon-button (keydown.enter)="context.function()">
 				<mat-icon>
@@ -17,6 +17,6 @@ import { ClickExecuteRapidRepeatFunctionContext }
 })
 export class RapidRepeatMatIconButtonComponent {
 
-	@Input() context: ClickExecuteRapidRepeatFunctionContext = { function: () => void 0 };
+   @Input() context: ClickExecuteRapidRepeatFunctionContext = {function: () => void 0};
 
 }

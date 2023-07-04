@@ -1,9 +1,9 @@
 export interface ClickExecuteRapidRepeatFunctionContext {
 
-	function: () => void;
+   function: () => void;
 
-	initialDelayBeforeRapid?: number; // ms
+   initialDelayBeforeRapid?: number; // ms
 
-	rapidDelay?: number; // ms
+   rapidDelay?: number; // ms
 
 }
