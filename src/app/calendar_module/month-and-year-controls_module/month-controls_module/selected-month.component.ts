@@ -9,11 +9,17 @@ import { MonthDisplayService, MonthNamesData, SelectedData }
 		<div id="month-name" class="calendar-input-container">
 			<mat-form-field appearance="outline" class="fills-parent-height">
 
-				<mat-select id="month-selector" class="fills-parent-dimensions"
-								[(value)]="selected.month" [placeholder]="selected.month"
-								(valueChange)="monthDisplay.updateDays(getMonthIndexAndYear())"
+				<mat-select
+					id="month-selector"
+					class="fills-parent-dimensions"
+					[(value)]="selected.month"
+					[placeholder]="selected.month"
+					(valueChange)="monthDisplay.updateDays(getMonthIndexAndYear())"
 				>
-					<mat-option *ngFor="let monthName of monthNames.data" [value]="monthName">
+					<mat-option
+						*ngFor="let monthName of monthNames.data"
+						[value]="monthName"
+					>
 						{{monthName}}
 					</mat-option>
 				</mat-select>

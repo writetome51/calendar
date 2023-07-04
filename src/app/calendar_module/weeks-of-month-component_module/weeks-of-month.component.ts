@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { DaysOfMonth } from '@writetome51/calendar-helpers';
 import { getArrFilled } from '@writetome51/get-arr-filled';
 import { getPage } from '@writetome51/array-get-page';
 import { getRoundedUp } from '@writetome51/get-rounded-up-down';
@@ -17,9 +16,9 @@ import { getRoundedUp } from '@writetome51/get-rounded-up-down';
 })
 export class WeeksOfMonthComponent {
 
-	weeks: DaysOfMonth[] = [];
+	weeks: (number | undefined)[][] = [];
 
-	@Input() set days(dys: DaysOfMonth) {
+	@Input() set days(dys: (number | undefined)[]) {
 		this.weeks = getArrFilled(
 			getRoundedUp(dys.length / 7),
 			// @ts-ignore
@@ -31,8 +30,8 @@ export class WeeksOfMonthComponent {
 	}
 
 
-	private __getFillerForLastWeek(lastWeekLength): ''[] {
-		if (lastWeekLength < 7) return getArrFilled(7 - lastWeekLength, () => '');
+	private __getFillerForLastWeek(lastWeekLength): undefined[] {
+		if (lastWeekLength < 7) return getArrFilled(7 - lastWeekLength, () => undefined);
 		else return [];
 	}
 
