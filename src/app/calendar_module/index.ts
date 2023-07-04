@@ -3,7 +3,7 @@ import { CalendarComponent } from './calendar.component';
 import { DayNamesComponent } from './day-names.component';
 import { MonthAndYearControlsModule } from './month-and-year-controls_module';
 import { NgModule } from '@angular/core';
-import { WeeksOfMonthModule } from './weeks-of-month_module';
+import { WeeksOfMonthComponentModule } from './weeks-of-month-component_module';
 import { WeekBlockComponentModule } from './shared/week-block-component_module';
 
 
@@ -15,7 +15,7 @@ import { WeekBlockComponentModule } from './shared/week-block-component_module';
 	imports: [
 		BrowserModule,
 		MonthAndYearControlsModule,
-		WeeksOfMonthModule,
+		WeeksOfMonthComponentModule,
 		WeekBlockComponentModule,
 	],
 	exports: [CalendarComponent]

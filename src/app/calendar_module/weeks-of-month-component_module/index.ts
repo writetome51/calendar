@@ -2,9 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DayOfMonthComponent } from './day-of-month.component';
 import { NgModule } from '@angular/core';
 import { WeeksOfMonthComponent } from './weeks-of-month.component';
-import {
-   WeekBlockComponentModule
-} from '@app/calendar_module/shared/week-block-component_module';
+import { WeekBlockComponentModule } from '../shared/week-block-component_module';
 
 
 @NgModule({
@@ -12,7 +10,7 @@ import {
 		WeeksOfMonthComponent,
 		DayOfMonthComponent
 	],
-   imports: [BrowserModule, WeekBlockComponentModule],
+	imports: [BrowserModule, WeekBlockComponentModule],
 	exports: [WeeksOfMonthComponent]
 })
-export class WeeksOfMonthModule {}
+export class WeeksOfMonthComponentModule {}
