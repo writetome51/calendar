@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { WeeksOfMonthComponent } from './weeks-of-month.component';
 import {
    WeekBlockComponentModule
-} from '@app/calendar_module/shared/week-block-component_module/week-block-component.module';
+} from '@app/calendar_module/shared/week-block-component_module';
 
 
 @NgModule({

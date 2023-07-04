@@ -15,4 +15,4 @@ import { RapidRepeatMatIconButtonComponent } from './rapid-repeat-mat-icon-butto
 	],
 	exports: [RapidRepeatMatIconButtonComponent]
 })
-export class RapidRepeatMatIconButtonModule {}
+export class RapidRepeatMatIconButtonComponentModule {}
